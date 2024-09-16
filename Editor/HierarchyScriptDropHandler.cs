@@ -1,0 +1,78 @@
+using System;
+using UnityEditor;
+using UnityEngine;
+
+
+/// <summary>
+///     From Warped Imagination: https://www.youtube.com/watch?v=FpOAcfULmTE
+/// </summary>
+[InitializeOnLoad]
+public class HierarchyScriptDropHandler
+{
+    static HierarchyScriptDropHandler()
+    {
+        DragAndDrop.AddDropHandler(OnSciptHierarchyDrop);
+    }
+
+
+    private static DragAndDropVisualMode OnSciptHierarchyDrop(int draginstanceid, HierarchyDropFlags dropMode, Transform parentForDraggedObjects, bool perform)
+    {
+        var monoScript = GetScriptBeingDragged();
+
+        if (monoScript != null)
+        {
+            if (perform)
+            {
+                var gameObject = CreateAndRename(monoScript.name);
+                var component = gameObject.AddComponent(monoScript.GetClass());
+            }
+
+            return DragAndDropVisualMode.Copy;
+        }
+
+        return DragAndDropVisualMode.None;
+    }
+
+
+    public static GameObject CreateAndRename(string startingName)
+    {
+        var gameObject = new GameObject(startingName);
+
+        if (Selection.activeObject)
+        {
+            gameObject.transform.parent = Selection.activeGameObject.transform;
+            gameObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        }
+
+        Selection.activeGameObject = gameObject;
+
+        Undo.RegisterCreatedObjectUndo(gameObject, "Created GameObject");
+
+        EditorApplication.delayCall += () =>
+        {
+            var sceneHierarchyType = Type.GetType("UnityEditor.SceneHierarchyWindow,UnityEditor");
+            EditorWindow.GetWindow(sceneHierarchyType).SendEvent(EditorGUIUtility.CommandEvent("Rename"));
+        };
+
+        return gameObject;
+    }
+
+
+    private static MonoScript GetScriptBeingDragged()
+    {
+        foreach (var objectReference in DragAndDrop.objectReferences)
+        {
+            if (objectReference is MonoScript monoScript)
+            {
+                var scriptType = monoScript.GetClass();
+
+                if (scriptType != null && scriptType.IsSubclassOf(typeof(MonoBehaviour)))
+                {
+                    return monoScript;
+                }
+            }
+        }
+
+        return null;
+    }
+}
