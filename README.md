@@ -9,8 +9,10 @@ Quite a few of the components here are not by my design. They're all Open Source
 This is a collection of Editor Tools that I've found useful in my day-to-day work. They're all designed to be as unobtrusive as possible, and to be as easy to use as possible. I've tried to keep the number of dependencies to a minimum, and to keep the code as clean as possible.
 
 ## Installation
-
-To install, add this repo to the package manager. You can do this by hitting the '+' button in the package manager, and adding the URL of this repository. Make sure to add .git at the end of the URL.
+1. Open the Unity project you want to install the gizmos into.
+2. Open the Package Manager window.
+3. Click on the `+` button and select `Add package from git URL...`.
+4. Paste the URL of this repo into the text field and press `Add`.
 
 ## Tools - Attributes
 ### BoxRangeAttribute

@@ -1,4 +1,3 @@
-using SOSXR.EnhancedLogger;
 using UnityEditor;
 using UnityEngine;
 #if UNITY_EDITOR
@@ -30,18 +29,18 @@ public class MissingMonoBehaviourDetector : MonoBehaviour
                     continue;
                 }
 
-                Log.Error(nameof(MissingMonoBehaviourDetector), "Missing MonoBehaviour found on child of", gameObject.transform.root.name); // Somehow the direct GO of the missing MB didn't want to print their name
+                Debug.LogError(nameof(MissingMonoBehaviourDetector) + "Missing MonoBehaviour found on child of " + gameObject.transform.root.name); // Somehow the direct GO of the missing MB didn't want to print their name
                 count++;
             }
         }
 
         if (count > 0)
         {
-            Log.Error(nameof(MissingMonoBehaviourDetector), "Found", count, "GameObjects with missing MonoBehaviours.");
+            Debug.LogError(nameof(MissingMonoBehaviourDetector) + " Found " + count + " GameObjects with missing MonoBehaviours.");
         }
         else
         {
-            Log.Success(nameof(MissingMonoBehaviourDetector), "No GameObjects with missing MonoBehaviours found.");
+            Debug.Log(nameof(MissingMonoBehaviourDetector) + " No GameObjects with missing MonoBehaviours found.");
         }
     }
 }

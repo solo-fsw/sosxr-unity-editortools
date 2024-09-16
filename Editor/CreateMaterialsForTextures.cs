@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using SOSXR.EnhancedLogger;
 using UnityEditor;
 using UnityEngine;
 
@@ -40,7 +39,7 @@ public class CreateMaterialsForTextures : ScriptableWizard
 
                 if (AssetDatabase.LoadAssetAtPath(path, typeof(Material)) != null)
                 {
-                    Log.Warning("Can't create material, it already exists: " + path);
+                    Debug.LogWarning("Can't create material, it already exists: " + path);
 
                     continue;
                 }
