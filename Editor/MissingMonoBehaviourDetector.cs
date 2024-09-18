@@ -11,7 +11,7 @@ public class MissingMonoBehaviourDetector : MonoBehaviour
     #if UNITY_EDITOR
     [DidReloadScripts]
     #endif
-    [MenuItem("SOSXR/Find GameObjects with Missing Scripts")]
+    [MenuItem("SOSXR/Find GameObjects with Missing Scripts")] // This is not strictly necessary, but it's a nice touch. This script will reload anyway once the scripts are recompiled.
     [ContextMenu(nameof(FindGameObjectsWithMissingScripts))]
     private static void FindGameObjectsWithMissingScripts()
     {
@@ -38,9 +38,6 @@ public class MissingMonoBehaviourDetector : MonoBehaviour
         {
             Debug.LogError(nameof(MissingMonoBehaviourDetector) + " Found " + count + " GameObjects with missing MonoBehaviours.");
         }
-        else
-        {
-            Debug.Log(nameof(MissingMonoBehaviourDetector) + " No GameObjects with missing MonoBehaviours found.");
-        }
+        // Debug.Log(nameof(MissingMonoBehaviourDetector) + " No GameObjects with missing MonoBehaviours found.");
     }
 }
