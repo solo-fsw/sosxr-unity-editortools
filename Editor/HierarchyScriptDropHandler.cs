@@ -40,7 +40,11 @@ public class HierarchyScriptDropHandler
 
         if (Selection.activeObject)
         {
-            gameObject.transform.parent = Selection.activeGameObject.transform;
+            if (gameObject.transform.parent != null)
+            {
+                gameObject.transform.parent = Selection.activeGameObject.transform;
+            }
+
             gameObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
         }
 
