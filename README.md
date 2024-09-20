@@ -100,6 +100,4 @@ The ReadmeShower class is a Unity editor script that displays a README file in t
 
 
 ### SetIconWindow
-The SetIconWindow class is a Unity editor window that allows you to set custom icons for selected GameObjects in the scene. When opened, it displays a grid of icons that can be assigned to GameObjects, allowing you to visually differentiate objects in the scene hierarchy. The window provides a simple interface for selecting and applying icons to GameObjects, enhancing the organization and visual representation of the scene contents. This tool is useful for customizing the appearance of GameObjects in the Unity Editor, making it easier to identify and manage objects within the scene.
-
-
+The SetIconWindow class is a Unity editor window that allows you to set custom icons for selected GameObjects in the scene. When opened, it displays a grid of icons that can be assigned to GameObjects, allowing you to visually differentiate objects in the scene hierarchy. The window provides a simple interface for selecting and applying icons to GameObjects, enhancing the organization and visual representation of the scene contents. This tool is useful for customizing the appearance of GameObjects in the Unity Editor, making it easier to identify and manage objects within the scene. Icons need to be tagged with 'scriptIcon' to be displayed in the grid. Select all scripts you want to change the icon of, and hit Cmd+I to open the window.
