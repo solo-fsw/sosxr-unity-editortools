@@ -40,7 +40,7 @@ public class HierarchyScriptDropHandler
 
         if (Selection.activeObject)
         {
-           // if (gameObject.transform.parent != null)
+            // if (gameObject.transform.parent != null)
             {
                 gameObject.transform.parent = Selection.activeGameObject.transform;
             }
