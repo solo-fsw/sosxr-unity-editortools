@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-namespace SOSXR.EditorTools
+namespace SOSXR.EditorTools.Attributes
 {
     [CustomPropertyDrawer(typeof(DecimalsAttribute))]
     public class DecimalsDrawer : PropertyDrawer

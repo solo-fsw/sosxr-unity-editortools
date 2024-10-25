@@ -5,20 +5,23 @@ using UnityEngine;
 // No IValidate
 
 
-public static class MonoBehaviourUtility
+namespace SOSXR.EditorTools
 {
-    #if UNITY_EDITOR
-    public static int GetMonoBehavioursWithMissingScriptCount(MonoBehaviour behaviour)
+    public static class MonoBehaviourUtility
     {
-        var serializedObject = new SerializedObject(behaviour);
-        var prop = serializedObject.FindProperty("m_Script");
-
-        if (prop == null || prop.objectReferenceValue == null)
+        #if UNITY_EDITOR
+        public static int GetMonoBehavioursWithMissingScriptCount(MonoBehaviour behaviour)
         {
-            return 1;
-        }
+            var serializedObject = new SerializedObject(behaviour);
+            var prop = serializedObject.FindProperty("m_Script");
 
-        return 0;
+            if (prop == null || prop.objectReferenceValue == null)
+            {
+                return 1;
+            }
+
+            return 0;
+        }
+        #endif
     }
-    #endif
 }

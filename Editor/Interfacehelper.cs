@@ -5,7 +5,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 
-namespace SOSXR.SimpleHelpers
+namespace SOSXR.EditorTools
 {
     /// <summary>
     ///     This allows you to actually do a FindObject for Interfaces!

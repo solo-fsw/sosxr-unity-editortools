@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-namespace SOSXR.EditorTools
+namespace SOSXR.EditorTools.Attributes
 {
     /// <summary>
     ///     From: https://docs.unity3d.com/ScriptReference/PropertyDrawer.html

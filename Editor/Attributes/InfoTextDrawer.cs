@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-namespace SOSXR.EditorTools
+namespace SOSXR.EditorTools.Attributes
 {
     [CustomPropertyDrawer(typeof(InfoTextAttribute))]
     public class InfoTextDrawer : PropertyDrawer

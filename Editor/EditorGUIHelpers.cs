@@ -3,13 +3,13 @@ using UnityEditor;
 using UnityEngine;
 
 
-namespace SOSXR
+namespace SOSXR.EditorTools
 {
     /// <summary>
     ///     Derive from this to use easier custom methods for creating better Editor Windows
     ///     By: Maarten R. Struijk Wilbrink
     /// </summary>
-    public abstract class EditorGUIHelpers : Editor
+    public abstract class EditorGUIHelpers : UnityEditor.Editor
     {
         private GUIStyle _alternateBoxStyle;
         private GUIStyle _defaultBoxStyle;

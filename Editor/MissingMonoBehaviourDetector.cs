@@ -1,43 +1,44 @@
 using UnityEditor;
-using UnityEngine;
-#if UNITY_EDITOR
 using UnityEditor.Callbacks;
-#endif
+using UnityEngine;
 
 
-[ExecuteAlways]
-public class MissingMonoBehaviourDetector : MonoBehaviour
+namespace SOSXR.EditorTools
 {
-    #if UNITY_EDITOR
-    [DidReloadScripts]
-    #endif
-    [MenuItem("SOSXR/Find GameObjects with Missing Scripts")] // This is not strictly necessary, but it's a nice touch. This script will reload anyway once the scripts are recompiled.
-    [ContextMenu(nameof(FindGameObjectsWithMissingScripts))]
-    private static void FindGameObjectsWithMissingScripts()
+    [ExecuteAlways]
+    public class MissingMonoBehaviourDetector : MonoBehaviour
     {
-        var allObjectsInScene = FindObjectsOfType<GameObject>();
-        var count = 0;
-
-        foreach (var gameObject in allObjectsInScene)
+        #if UNITY_EDITOR
+        [DidReloadScripts]
+        #endif
+        [MenuItem("SOSXR/Find GameObjects with Missing Scripts")] // This is not strictly necessary, but it's a nice touch. This script will reload anyway once the scripts are recompiled.
+        [ContextMenu(nameof(FindGameObjectsWithMissingScripts))]
+        private static void FindGameObjectsWithMissingScripts()
         {
-            var allMonoBehavioursInScene = gameObject.GetComponents<MonoBehaviour>();
+            var allObjectsInScene = FindObjectsOfType<GameObject>();
+            var count = 0;
 
-            foreach (var monoBehaviour in allMonoBehavioursInScene)
+            foreach (var gameObject in allObjectsInScene)
             {
-                if (monoBehaviour != null)
+                var allMonoBehavioursInScene = gameObject.GetComponents<MonoBehaviour>();
+
+                foreach (var monoBehaviour in allMonoBehavioursInScene)
                 {
-                    continue;
+                    if (monoBehaviour != null)
+                    {
+                        continue;
+                    }
+
+                    Debug.LogError(nameof(MissingMonoBehaviourDetector) + "Missing MonoBehaviour found on child of " + gameObject.transform.root.name); // Somehow the direct GO of the missing MB didn't want to print their name
+                    count++;
                 }
-
-                Debug.LogError(nameof(MissingMonoBehaviourDetector) + "Missing MonoBehaviour found on child of " + gameObject.transform.root.name); // Somehow the direct GO of the missing MB didn't want to print their name
-                count++;
             }
-        }
 
-        if (count > 0)
-        {
-            Debug.LogError(nameof(MissingMonoBehaviourDetector) + " Found " + count + " GameObjects with missing MonoBehaviours.");
+            if (count > 0)
+            {
+                Debug.LogError(nameof(MissingMonoBehaviourDetector) + " Found " + count + " GameObjects with missing MonoBehaviours.");
+            }
+            // Debug.Log(nameof(MissingMonoBehaviourDetector) + " No GameObjects with missing MonoBehaviours found.");
         }
-        // Debug.Log(nameof(MissingMonoBehaviourDetector) + " No GameObjects with missing MonoBehaviours found.");
     }
 }

@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace SOSXR.EditorTools
+namespace SOSXR.EditorTools.Attributes
 {
     [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
     public class ReadOnlyDrawer : PropertyDrawer
