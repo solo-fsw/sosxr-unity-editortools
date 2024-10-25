@@ -2,52 +2,55 @@ using UnityEditor;
 using UnityEngine;
 
 
-public static class GameObjectUtilityExtension
+namespace SOSXR.EditorTools
 {
-    #if UNITY_EDITOR
-    [MenuItem("SOSXR/DANGER/Remove Missing Scripts")]
-    public static void RemoveMissingScripts()
+    public static class GameObjectUtilityExtension
     {
-        var gameObjects = Selection.gameObjects;
-        var count = 0;
-
-        foreach (var gameObject in gameObjects)
+        #if UNITY_EDITOR
+        [MenuItem("SOSXR/DANGER/Remove Missing Scripts")]
+        public static void RemoveMissingScripts()
         {
-            if (RemoveMissingScripts(gameObject))
+            var gameObjects = Selection.gameObjects;
+            var count = 0;
+
+            foreach (var gameObject in gameObjects)
             {
-                count++;
+                if (RemoveMissingScripts(gameObject))
+                {
+                    count++;
+                }
             }
+
+            Debug.Log($"Removed missing scripts from {count} GameObject(s).");
         }
 
-        Debug.Log($"Removed missing scripts from {count} GameObject(s).");
-    }
 
-
-    private static bool RemoveMissingScripts(GameObject gameObject)
-    {
-        var components = gameObject.GetComponents<Component>();
-        var serializedObject = new SerializedObject(gameObject);
-        var prop = serializedObject.FindProperty("m_Component");
-        var r = 0;
-
-        for (var j = 0; j < components.Length; j++)
+        private static bool RemoveMissingScripts(GameObject gameObject)
         {
-            if (components[j] == null)
+            var components = gameObject.GetComponents<Component>();
+            var serializedObject = new SerializedObject(gameObject);
+            var prop = serializedObject.FindProperty("m_Component");
+            var r = 0;
+
+            for (var j = 0; j < components.Length; j++)
             {
-                prop.DeleteArrayElementAtIndex(j - r);
-                r++;
+                if (components[j] == null)
+                {
+                    prop.DeleteArrayElementAtIndex(j - r);
+                    r++;
+                }
             }
+
+            if (r > 0)
+            {
+                serializedObject.ApplyModifiedProperties();
+                serializedObject.Update();
+
+                return true;
+            }
+
+            return false;
         }
-
-        if (r > 0)
-        {
-            serializedObject.ApplyModifiedProperties();
-            serializedObject.Update();
-
-            return true;
-        }
-
-        return false;
+        #endif
     }
-    #endif
 }
