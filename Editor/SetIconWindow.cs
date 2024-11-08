@@ -16,12 +16,12 @@ namespace SOSXR.EditorTools
         private GUIStyle _iconButtonStyle;
 
         private Vector2 scrollPos = default;
+        private int _iconsPerRow; // Icons displayed per 
         private const string MENU_PATH = "SOSXR/Set Icon... _%i"; // Shortcut: Ctrl/Cmd + I
         private const string ICON_LABEL = "ScriptIcon";
         private const int ICON_WIDTH = 200;
         private const int ICON_HEIGHT = 200;
         private const int BUTTON_WIDTH = 200;
-        private int _iconsPerRow; // Icons displayed per 
 
 
         [MenuItem(MENU_PATH, priority = 0)]

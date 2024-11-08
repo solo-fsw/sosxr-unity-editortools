@@ -9,7 +9,7 @@ namespace SOSXR.EditorTools
     ///     Derive from this to use easier custom methods for creating better Editor Windows
     ///     By: Maarten R. Struijk Wilbrink
     /// </summary>
-    public abstract class EditorGUIHelpers : UnityEditor.Editor
+    public abstract class EditorGUIHelpers : Editor
     {
         private GUIStyle _alternateBoxStyle;
         private GUIStyle _defaultBoxStyle;

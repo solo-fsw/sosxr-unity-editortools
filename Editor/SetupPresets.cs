@@ -31,7 +31,7 @@ namespace SOSXR.EditorTools
                 var path = AssetDatabase.GUIDToAssetPath(guid);
 
                 var preset = AssetDatabase.LoadAssetAtPath<Preset>(path);
-                
+
                 if (!preset.name.Contains("Default"))
                 {
                     return;
@@ -45,7 +45,7 @@ namespace SOSXR.EditorTools
                 {
                     return;
                 }
-           
+
                 list.Add(new DefaultPreset(null, preset));
 
                 Preset.SetDefaultPresetsForType(type, list.ToArray());

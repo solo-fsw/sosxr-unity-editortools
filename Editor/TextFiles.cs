@@ -6,8 +6,6 @@ using UnityEngine;
 
 namespace SOSXR.EditorTools
 {
-
-
     public static class TextFiles
     {
         [MenuItem("SOSXR/Create Markdown file here")]

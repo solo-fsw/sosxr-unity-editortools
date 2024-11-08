@@ -13,7 +13,8 @@ namespace SOSXR.EditorTools
         {
             Description = description;
         }
-        
+
+
         public string Description { get; private set; } = null;
     }
 }

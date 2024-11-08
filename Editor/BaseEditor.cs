@@ -11,14 +11,14 @@ namespace SOSXR.EditorTools
     ///     https://www.youtube.com/watch?v=DztxQiMr4EU&t=784s
     /// </summary>
     //[CustomEditor(typeof(MonoBehaviour), true, isFallback = false)]
-    public class BaseEditor : UnityEditor.Editor
+    public class BaseEditor : Editor
     {
         private readonly string _logoTextureName = "SOSXR_Logo";
-        private static Texture2D _Logo = null;
-    
+
         private readonly string[] _desiredNamespace = {"SOSXR"};
+        private static Texture2D _Logo = null;
         private bool isDesiredNamespace;
-    
+
         private DescriptionAttribute _descriptionAttribute = null;
 
 
@@ -46,7 +46,7 @@ namespace SOSXR.EditorTools
         public override void OnInspectorGUI()
         {
             DescriptionGUI(_descriptionAttribute);
-        
+
             base.OnInspectorGUI();
 
             if (isDesiredNamespace)
@@ -88,7 +88,7 @@ namespace SOSXR.EditorTools
             if (descriptionAttribute != null && !string.IsNullOrEmpty(descriptionAttribute.Description))
             {
                 EditorGUILayout.Space(5);
-            
+
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.FlexibleSpace();
 
@@ -99,12 +99,12 @@ namespace SOSXR.EditorTools
                 EditorGUILayout.EndHorizontal();
 
                 EditorGUILayout.Space(5);
-            
+
                 var lineHeight = 1;
                 var lineRect = EditorGUILayout.GetControlRect(false, lineHeight);
                 lineRect.height = 1;
                 EditorGUI.DrawRect(lineRect, Color.grey);
-            
+
                 EditorGUILayout.Space(5);
             }
         }
