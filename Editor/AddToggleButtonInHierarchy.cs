@@ -17,31 +17,35 @@ namespace SOSXR.EditorTools
         }
 
 
-        private static void HandleHierarchyWindowItemOnGUI(int instanceid, Rect selectionrect)
+        private static void HandleHierarchyWindowItemOnGUI(int instanceID, Rect selectionRect)
         {
-            var gameObject = EditorUtility.InstanceIDToObject(instanceid) as GameObject;
+            var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
 
             if (gameObject == null)
             {
                 return;
             }
 
-            var rect = new Rect(selectionrect);
+            var rect = new Rect(selectionRect);
             rect.x -= 27f; // 27f is given by Warped Imagination
             rect.width = 13f; // 13f is given by Warped Imagination 
 
             var active = EditorGUI.Toggle(rect, gameObject.activeSelf);
 
-            if (active != gameObject.activeSelf)
+            if (active == gameObject.activeSelf)
             {
-                Undo.RecordObject(gameObject, "Active state change");
-                gameObject.SetActive(active);
-
-                if (!Application.isPlaying)
-                {
-                    EditorSceneManager.MarkSceneDirty(gameObject.scene);
-                }
+                return;
             }
+
+            Undo.RecordObject(gameObject, "Active state change");
+            gameObject.SetActive(active);
+
+            if (Application.isPlaying)
+            {
+                return;
+            }
+
+            EditorSceneManager.MarkSceneDirty(gameObject.scene);
         }
     }
 }
