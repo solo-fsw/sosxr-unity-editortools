@@ -36,7 +36,11 @@ namespace SOSXR.EditorTools
             {
                 Undo.RecordObject(gameObject, "Active state change");
                 gameObject.SetActive(active);
-                EditorSceneManager.MarkSceneDirty(gameObject.scene);
+
+                if (!Application.isPlaying)
+                {
+                    EditorSceneManager.MarkSceneDirty(gameObject.scene);
+                }
             }
         }
     }
