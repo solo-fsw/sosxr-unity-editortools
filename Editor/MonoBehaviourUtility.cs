@@ -2,9 +2,6 @@ using UnityEditor;
 using UnityEngine;
 
 
-// No IValidate
-
-
 namespace SOSXR.EditorTools
 {
     public static class MonoBehaviourUtility

@@ -107,11 +107,4 @@ namespace SOSXR.EditorTools.Attributes
             return EditorGUILayout.IntSlider(new GUIContent(name.ToUpper()), intValue, intRange.x, intRange.y);
         }
     }
-    
-    
-}
-
-
-namespace SOSXR.EditorTools
-{
 }

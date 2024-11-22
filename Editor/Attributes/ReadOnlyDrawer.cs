@@ -15,10 +15,9 @@ namespace SOSXR.EditorTools.Attributes
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            using (var scope = new EditorGUI.DisabledGroupScope(true))
-            {
-                EditorGUI.PropertyField(position, property, label, true);
-            }
+            using var scope = new EditorGUI.DisabledGroupScope(true);
+
+            EditorGUI.PropertyField(position, property, label, true);
         }
     }
 }

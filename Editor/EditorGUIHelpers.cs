@@ -7,21 +7,63 @@ namespace SOSXR.EditorTools
 {
     /// <summary>
     ///     Derive from this to use easier custom methods for creating better Editor Windows
-    ///     By: Maarten R. Struijk Wilbrink
     /// </summary>
     public abstract class EditorGUIHelpers : Editor
     {
-        private GUIStyle _alternateBoxStyle;
-        private GUIStyle _defaultBoxStyle;
-        private GUIStyle _labelStyle;
-        private GUIStyle _smallFontButtonStyle;
+        protected GUIStyle DefaultBoxStyle;
+        protected GUIStyle AlternateBoxStyle;
+        protected GUIStyle LabelStyle;
+        protected GUIStyle SmallFontButtonStyle;
+        protected GUIStyle TitleStyle;
 
         protected bool EnableDefaultInspector = false;
-        protected GUIStyle TitleStyle;
+
+        protected Editor InternalEditor;
 
         protected const int DefaultSmallSpace = 5;
         protected const int DefaultLargeSpace = 20;
         private const int DefaultCheckBoxWidth = 15;
+
+        protected const float ButtonWidth = 150f;
+
+
+        protected void GetInternalEditor(string typeName)
+        {
+            if (InternalEditor != null)
+            {
+                return;
+            }
+
+            var fullName = $"UnityEditor.{typeName}, UnityEditor";
+            var editorType = Type.GetType(fullName);
+
+            if (editorType == null)
+            {
+                Debug.LogWarning($"Could not find the {typeName} type using reflection.");
+
+                return;
+            }
+
+            InternalEditor = CreateEditor(target, editorType);
+        }
+
+
+        protected void GetInternalEditor(Type editorType)
+        {
+            if (InternalEditor != null)
+            {
+                return;
+            }
+
+            if (editorType == null)
+            {
+                Debug.LogWarning("Editor type is null.");
+
+                return;
+            }
+
+            InternalEditor = CreateEditor(target, editorType);
+        }
 
 
         /// <summary>
@@ -45,10 +87,44 @@ namespace SOSXR.EditorTools
             else
             {
                 CreateScriptField(target);
+
+                if (InternalEditor == null)
+                {
+                    return;
+                }
+
+                InternalEditor.OnInspectorGUI();
+
+                AddSOSXRHeader();
+
                 CustomInspectorContent();
             }
 
             serializedObject.ApplyModifiedProperties(); // Needed to allow a List to be populated
+        }
+
+
+        protected static void AddSOSXRHeader()
+        {
+            GUILayout.Box("", GUILayout.ExpandWidth(true), GUILayout.Height(5));
+
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+
+            GUIStyle HeaderStyle = new()
+            {
+                fontSize = 15,
+                fontStyle = FontStyle.Bold,
+                alignment = TextAnchor.MiddleCenter,
+                normal = {textColor = Color.white}
+            };
+
+            GUILayout.Label("SOSXR Tools", HeaderStyle);
+
+            GUILayout.FlexibleSpace();
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(5);
         }
 
 
@@ -60,12 +136,12 @@ namespace SOSXR.EditorTools
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
 
-            if (!EnableDefaultInspector && CreateButton("Default Inspector", _smallFontButtonStyle))
+            if (!EnableDefaultInspector && CreateButton("Default Inspector", SmallFontButtonStyle))
             {
                 EnableDefaultInspector = true;
             }
 
-            if (EnableDefaultInspector && CreateButton("Custom Inspector", _smallFontButtonStyle))
+            if (EnableDefaultInspector && CreateButton("Custom Inspector", SmallFontButtonStyle))
             {
                 EnableDefaultInspector = false;
             }
@@ -76,13 +152,13 @@ namespace SOSXR.EditorTools
 
         private void InitLabelStyle()
         {
-            _labelStyle = new GUIStyle(EditorStyles.boldLabel);
+            LabelStyle = new GUIStyle(EditorStyles.boldLabel);
         }
 
 
         private void InitDefaultBoxStyle()
         {
-            _defaultBoxStyle = new GUIStyle("box");
+            DefaultBoxStyle = new GUIStyle("box");
         }
 
 
@@ -91,7 +167,7 @@ namespace SOSXR.EditorTools
         /// </summary>
         private void InitAlternateBoxStyle()
         {
-            _alternateBoxStyle = new GUIStyle("box");
+            AlternateBoxStyle = new GUIStyle("box");
         }
 
 
@@ -111,7 +187,7 @@ namespace SOSXR.EditorTools
 
         private void InitSmallFontButtonStyle()
         {
-            _smallFontButtonStyle = new GUIStyle(GUI.skin.button) // Make sure to set it as 'NEW guistyle', otherwise settings will influence the 'base' GUIStyle
+            SmallFontButtonStyle = new GUIStyle(GUI.skin.button) // Make sure to set it as 'NEW guistyle', otherwise settings will influence the 'base' GUIStyle
             {
                 fontSize = 10
             };
@@ -152,7 +228,7 @@ namespace SOSXR.EditorTools
         protected void DefaultVerticalBoxedLayout(Action methodName)
         {
             GUILayout.Space(DefaultSmallSpace);
-            GUILayout.BeginVertical(_defaultBoxStyle);
+            GUILayout.BeginVertical(DefaultBoxStyle);
 
             methodName();
 
@@ -167,7 +243,7 @@ namespace SOSXR.EditorTools
         protected void AlternateVerticalBoxedLayout(Action methodName)
         {
             GUILayout.Space(DefaultSmallSpace);
-            GUILayout.BeginVertical(_defaultBoxStyle);
+            GUILayout.BeginVertical(DefaultBoxStyle);
 
             methodName();
 
@@ -193,7 +269,7 @@ namespace SOSXR.EditorTools
         }
 
 
-        protected void CreateHeader(string titleName, GUIStyle style)
+        protected static void CreateHeader(string titleName, GUIStyle style)
         {
             GUILayout.BeginHorizontal();
 
@@ -210,7 +286,7 @@ namespace SOSXR.EditorTools
             var serializedProperty = serializedObject.FindProperty(propertyName);
             serializedProperty.boolValue = EditorGUILayout.ToggleLeft("", serializedProperty.boolValue, GUILayout.Width(DefaultCheckBoxWidth));
 
-            EditorGUILayout.LabelField(titleName, _labelStyle);
+            EditorGUILayout.LabelField(titleName, LabelStyle);
 
             GUILayout.EndHorizontal();
 
@@ -315,6 +391,17 @@ namespace SOSXR.EditorTools
             var serializedProperty = serializedObject.FindProperty(propertyName);
 
             serializedProperty.stringValue = EditorGUILayout.TextField(new GUIContent(serializedProperty.name, toolTip), serializedProperty.stringValue);
+        }
+
+
+        protected void OnDisable()
+        {
+            if (InternalEditor == null)
+            {
+                return;
+            }
+
+            DestroyImmediate(InternalEditor);
         }
     }
 }

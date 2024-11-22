@@ -25,6 +25,7 @@ namespace SOSXR.EditorTools
             });
         }
 
+
         private static void HandleHierarchyWindowItemOnGUI(int instanceID, Rect selectionRect)
         {
             var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
