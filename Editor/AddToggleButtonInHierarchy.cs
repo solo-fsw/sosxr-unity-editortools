@@ -13,9 +13,17 @@ namespace SOSXR.EditorTools
     {
         static AddToggleButtonInHierarchy()
         {
-            EditorApplication.hierarchyWindowItemOnGUI += HandleHierarchyWindowItemOnGUI;
-        }
+            Package.IsInstalled("com.browar.editor-toolbox", packageInstalled =>
+            {
+                if (packageInstalled)
+                {
+                    return;
+                }
 
+                // Only add the toggle button if the EditorPackage is not installed
+                EditorApplication.hierarchyWindowItemOnGUI += HandleHierarchyWindowItemOnGUI;
+            });
+        }
 
         private static void HandleHierarchyWindowItemOnGUI(int instanceID, Rect selectionRect)
         {

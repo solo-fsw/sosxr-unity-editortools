@@ -16,8 +16,17 @@ namespace SOSXR.EditorTools
     {
         static HierarchyIconDisplay()
         {
-            EditorApplication.hierarchyWindowItemOnGUI += OnHierarchyWindowItemOnGUI;
-            EditorApplication.update += OnEditorUpdate;
+            Package.IsInstalled("com.browar.editor-toolbox", packageInstalled =>
+            {
+                if (packageInstalled)
+                {
+                    return;
+                }
+
+                // Only add the toggle button if the EditorPackage is not installed
+                EditorApplication.hierarchyWindowItemOnGUI += OnHierarchyWindowItemOnGUI;
+                EditorApplication.update += OnEditorUpdate;
+            });
         }
 
 
@@ -97,9 +106,9 @@ namespace SOSXR.EditorTools
 
 
             var color = UnityEditorBackgroundColor.Get(isSelected, isHovering, _hierarchyHasFocus);
-            var backgroundrect = selectionrect;
-            backgroundrect.width = 18.5f; // 18.5f is given by Warped Imagination
-            EditorGUI.DrawRect(backgroundrect, color);
+            var backgroundRect = selectionrect;
+            backgroundRect.width = 18.5f; // 18.5f is given by Warped Imagination
+            EditorGUI.DrawRect(backgroundRect, color);
 
             EditorGUI.LabelField(selectionrect, content);
         }
