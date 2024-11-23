@@ -11,18 +11,8 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 
 - Editor define symbols manager
 - Updated TagSelector
+- Added DrawGizmo class + editor. Is now in one class, and you can select what type of Gizmo it should represent. 
 
-### Fixed
-
--
-
-### Changed
-
-- 
-
-### Removed
-
-- 
 
 
 ## [1.2.0] - 2024-11-22
