@@ -3,7 +3,6 @@
   "rootNamespace": "SOSXR.EditorTools",
   "references": [
     "GUID:7dbfc0c0f47f74b9780a4e8bbf532ae8",
-    "GUID:eb1034696cce04f25a4a7d38d2e0e5a4",
     "GUID:190979c3ed6e41c448f5e9925429edf9",
     "GUID:fe685ec1767f73d42b749ea8045bfe43"
   ],

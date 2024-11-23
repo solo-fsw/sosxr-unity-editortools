@@ -14,7 +14,7 @@ namespace SOSXR.EditorTools
         [ContextMenu(nameof(FindGameObjectsWithMissingScripts))]
         private static void FindGameObjectsWithMissingScripts()
         {
-            var allObjectsInScene = FindObjectsOfType<GameObject>();
+            var allObjectsInScene = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
             var count = 0;
 
             foreach (var gameObject in allObjectsInScene)

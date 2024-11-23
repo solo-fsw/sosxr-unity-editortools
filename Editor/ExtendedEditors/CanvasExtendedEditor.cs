@@ -30,10 +30,10 @@ namespace SOSXR.EditorTools
             }
 
             CreateHeader("Warning: This only works when the MainCam is in the scene during development", LabelStyle);
-            
+
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            
+
             _setMainCamera = GUILayout.Toggle(_setMainCamera, "Set MainCam as WorldCam", GUILayout.Width(ButtonWidth * 1.25f));
 
             if (_setMainCamera && canvas.worldCamera == null)

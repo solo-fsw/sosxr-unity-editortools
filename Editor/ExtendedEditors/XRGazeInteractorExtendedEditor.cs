@@ -18,11 +18,11 @@ namespace SOSXR.EditorTools
         {
             var interactor = (XRGazeInteractor) target;
 
-            XRInteractButtons. CreateHoverButtons(interactor);
+            XRInteractButtons.CreateHoverButtons(interactor);
 
-            XRInteractButtons.   CreateSelectButtons(interactor);
+            XRInteractButtons.CreateSelectButtons(interactor);
 
-            XRInteractButtons.  CreateUIHoverButtons(interactor);
+            XRInteractButtons.CreateUIHoverButtons(interactor);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace SOSXR.EditorTools
 
             XRInteractButtons.CreateHoverButtons(interactor);
 
-            XRInteractButtons.  CreateSelectButtons(interactor);
+            XRInteractButtons.CreateSelectButtons(interactor);
         }
     }
 }
