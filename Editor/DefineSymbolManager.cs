@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEngine;
 
 
@@ -14,43 +15,48 @@ namespace SOSXR.EditorTools
         }
 
 
-        // Add the define symbol to the current build target group
+        // Add the define symbol to the current build target
         public static void AddDefineSymbol(string defineSymbol)
         {
-            var currentBuildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
+            var namedBuildTarget = GetCurrentNamedBuildTarget();
 
-            var currentDefines = PlayerSettings.GetScriptingDefineSymbolsForGroup(currentBuildTargetGroup);
+            var currentDefines = PlayerSettings.GetScriptingDefineSymbols(namedBuildTarget);
 
             if (!currentDefines.Contains(defineSymbol))
             {
                 currentDefines = currentDefines + ";" + defineSymbol;
-                PlayerSettings.SetScriptingDefineSymbolsForGroup(currentBuildTargetGroup, currentDefines);
+                PlayerSettings.SetScriptingDefineSymbols(namedBuildTarget, currentDefines);
                 Debug.Log($"Added define symbol: {defineSymbol}");
-            }
-            else
-            {
-                Debug.Log($"Define symbol {defineSymbol} is already present.");
             }
         }
 
 
-        // Remove the define symbol from the current build target group
+        // Remove the define symbol from the current build target
         public static void RemoveDefineSymbol(string defineSymbol)
         {
-            var currentBuildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
+            var namedBuildTarget = GetCurrentNamedBuildTarget();
 
-            var currentDefines = PlayerSettings.GetScriptingDefineSymbolsForGroup(currentBuildTargetGroup);
+            var currentDefines = PlayerSettings.GetScriptingDefineSymbols(namedBuildTarget);
 
             if (currentDefines.Contains(defineSymbol))
             {
                 currentDefines = currentDefines.Replace(defineSymbol, "").Replace(";;", ";"); // Remove the symbol and clean up extra semicolons
-                PlayerSettings.SetScriptingDefineSymbolsForGroup(currentBuildTargetGroup, currentDefines);
+                PlayerSettings.SetScriptingDefineSymbols(namedBuildTarget, currentDefines);
                 Debug.Log($"Removed define symbol: {defineSymbol}");
             }
             else
             {
-                Debug.Log($"Define symbol {defineSymbol} not found.");
+                Debug.LogWarning($"Define symbol {defineSymbol} not found.");
             }
+        }
+
+
+        // Helper method to get the current NamedBuildTarget
+        private static NamedBuildTarget GetCurrentNamedBuildTarget()
+        {
+            var buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
+
+            return NamedBuildTarget.FromBuildTargetGroup(buildTargetGroup);
         }
     }
 

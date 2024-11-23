@@ -17,6 +17,5 @@
   "autoReferenced": true,
   "defineConstraints": [],
   "versionDefines": [],
-  "noEngineReferences": false,
-  "scriptingDefineSymbols": ["SOSXR_EDITORTOOLS_INSTALLED"]
+  "noEngineReferences": false
 }

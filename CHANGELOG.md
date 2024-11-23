@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 
+## [1.3.0] - 2024-11-23
+
+
+### Added
+
+- Editor define symbols manager
+- Updated TagSelector
+
+### Fixed
+
+-
+
+### Changed
+
+- 
+
+### Removed
+
+- 
+
+
 ## [1.2.0] - 2024-11-22
 
 
@@ -25,7 +46,7 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 
 
 
-_## [1.1.0] - 2024-09-20
+## [1.1.0] - 2024-09-20
 
 ### Changed
 
