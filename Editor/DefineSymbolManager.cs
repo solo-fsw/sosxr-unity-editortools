@@ -70,16 +70,19 @@ namespace SOSXR.EditorTools
             // Check if any assets related to the package (or script) have been deleted
             foreach (var deletedAsset in deletedAssets)
             {
-                Debug.LogFormat("Deleted asset: {0}", deletedAsset);
+                // Debug.LogFormat("Deleted asset: {0}", deletedAsset);
 
-                if (deletedAsset.Contains("SOSXR_EditorTools"))
+                if (!deletedAsset.Contains("SOSXR_EditorTools"))
                 {
-                    // If the package or script is deleted, remove the define symbol
-                    DefineSymbolManager.RemoveDefineSymbol("SOSXR_EDITORTOOLS_INSTALLED");
-                    Debug.Log("SOSXR Editor Tools package removed. Define symbol removed.");
-
-                    break;
+                    continue;
                 }
+
+                // If the package or script is deleted, remove the define symbol
+                DefineSymbolManager.RemoveDefineSymbol("SOSXR_EDITORTOOLS_INSTALLED");
+                
+                Debug.Log("SOSXR Editor Tools package removed. Define symbol removed.");
+
+                break;
             }
         }
     }
