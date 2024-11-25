@@ -193,10 +193,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5beb9b9e0c5e4a14976afcf8ff390c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weight: 0
-  Length: 0
-  Name: 
-  Trees: {x: 0, y: 0}
+  Weight: 667
+  Length: 1.16
+  Duration: 33
+  Name: John James Jones
+  Trees: {x: 100, y: 9}
 --- !u!4 &499923768
 Transform:
   m_ObjectHideFlags: 0

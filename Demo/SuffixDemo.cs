@@ -10,9 +10,12 @@ public class SuffixDemo : MonoBehaviour
     [Suffix("m")]
     public float Length;
 
-    [Suffix("Name")]
+    [Suffix("s")]
+    public int Duration;
+
+    [Suffix("First name")]
     public string Name;
-    
-    [Suffix("Trees")]
+
+    [Suffix("Bush placement")]
     public Vector2 Trees;
 }
