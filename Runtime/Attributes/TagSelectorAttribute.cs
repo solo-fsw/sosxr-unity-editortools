@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-namespace SOSXR.TagSelector
+namespace SOSXR.EditorTools
 {
     /// <summary>
     ///     From: https://www.brechtos.com/tagselectorattribute/

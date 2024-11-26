@@ -79,7 +79,7 @@ namespace SOSXR.EditorTools
 
                 // If the package or script is deleted, remove the define symbol
                 DefineSymbolManager.RemoveDefineSymbol("SOSXR_EDITORTOOLS_INSTALLED");
-                
+
                 Debug.Log("SOSXR Editor Tools package removed. Define symbol removed.");
 
                 break;

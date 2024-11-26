@@ -40,15 +40,16 @@ namespace SOSXR.EditorTools
         {
             var gameObject = new GameObject(startingName);
 
-            if (Selection.activeObject)
+            if (Selection.activeGameObject != null)
             {
-                // if (gameObject.transform.parent != null)
-                {
-                    gameObject.transform.parent = Selection.activeGameObject.transform;
-                }
-
-                gameObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                gameObject.transform.parent = Selection.activeGameObject.transform;
             }
+            else
+            {
+                gameObject.transform.SetParent(null); // Or another default parent
+            }
+
+            gameObject.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
 
             Selection.activeGameObject = gameObject;
 

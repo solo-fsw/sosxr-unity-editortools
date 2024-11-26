@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 namespace SOSXR.EditorTools
 {
+    // No longer needed, as it is now superseded by the UnityEventWithButtonDrawer 
+
+    /*
     /// <summary>
     ///     Based on: Warped Imagination
     ///     https://www.youtube.com/watch?v=iqbUbtwiiz0
@@ -34,5 +37,5 @@ namespace SOSXR.EditorTools
             GUILayout.FlexibleSpace();
             GUILayout.EndHorizontal();
         }
-    }
+    } */
 }

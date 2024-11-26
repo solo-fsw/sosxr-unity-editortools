@@ -13,3 +13,13 @@ Required icon [Flaticon](https://www.flaticon.com/free-icons/asterisk)
 Button icon [Flaticon](https://www.flaticon.com/free-icons/button)
 
 Textbox icon [FlatIcon](https://www.flaticon.com/free-icons/text)
+
+Pijl icon [FlatIcon](https://www.flaticon.com/free-icons/my-location)
+
+Audio icon [FlatIcon](https://www.flaticon.com/free-icons/sound-waves)
+
+Icon icon [FlatIcon](https://www.flaticon.com/free-icons/more)
+
+Attribute icon [FlatIcon](https://www.flaticon.com/free-icons/attribute)
+
+Collider icon [FlatIcon](https://www.flaticon.com/free-icons/collide)

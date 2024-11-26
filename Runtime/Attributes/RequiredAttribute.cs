@@ -4,9 +4,8 @@ using UnityEngine;
 
 namespace SOSXR.EditorTools
 {
-    [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = false) ]
+    [AttributeUsage(AttributeTargets.Field)]
     public class RequiredAttribute : PropertyAttribute
     {
-       
     }
 }

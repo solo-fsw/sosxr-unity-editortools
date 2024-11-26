@@ -58,7 +58,7 @@ namespace SOSXR.EditorTools
 
                 case SerializedPropertyType.String:
                     return string.IsNullOrEmpty(property.stringValue);
-                
+
                 case SerializedPropertyType.Enum:
                     return property.enumValueIndex == 0; // Assuming index 0 is "None" or equivalent
 

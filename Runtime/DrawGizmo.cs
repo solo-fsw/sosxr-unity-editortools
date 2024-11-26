@@ -3,14 +3,14 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
-namespace SOSXR.AdditionalGizmos
+namespace SOSXR.EditorTools
 {
     public class DrawGizmo : MonoBehaviour
     {
         [SerializeField] private GizmoType m_type = GizmoType.Cube;
         [SerializeField] private Transform m_end;
         [SerializeField] private Color m_color = Color.blue;
-        [SerializeField] [Range(0.001f, 5f)] private float m_size = 0.05f;
+        [SerializeField] [Range(0.01f, 5f)] private float m_size = 0.05f;
         [SerializeField] private TransformDirections m_direction = TransformDirections.Forward;
 
         private Transform _startTransform;

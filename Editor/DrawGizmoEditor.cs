@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-namespace SOSXR.AdditionalGizmos
+namespace SOSXR.EditorTools
 {
     [CustomEditor(typeof(DrawGizmo))]
     public class DrawGizmoEditor : Editor
@@ -27,7 +27,7 @@ namespace SOSXR.AdditionalGizmos
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            
+
             var gizmoType = (GizmoType) m_gizmoType.enumValueIndex;
 
             EditorGUILayout.PropertyField(m_gizmoType);
@@ -37,7 +37,7 @@ namespace SOSXR.AdditionalGizmos
             {
                 EditorGUILayout.PropertyField(m_gizmoSize);
             }
-            
+
             switch (gizmoType)
             {
                 case GizmoType.LineBetween:
@@ -45,7 +45,7 @@ namespace SOSXR.AdditionalGizmos
                     {
                         EditorGUILayout.HelpBox("End Transform is not set", MessageType.Warning);
                     }
-                    
+
                     EditorGUILayout.PropertyField(m_endTransform, new GUIContent("End Transform"));
 
                     break;

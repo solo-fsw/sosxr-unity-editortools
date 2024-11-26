@@ -4,7 +4,7 @@ using UnityEditorInternal;
 using UnityEngine;
 
 
-namespace SOSXR.TagSelector
+namespace SOSXR.EditorTools
 {
     /// <summary>
     ///     Original by DYLAN ENGELMAN http://jupiterlighthousestudio.com/custom-inspectors-unity/
