@@ -22,27 +22,34 @@ namespace SOSXR.EditorTools
 
         protected override void CustomInspectorContent()
         {
-            var canvas = (Canvas) target;
+            var targetObject = (Canvas) target;
 
-            if (canvas.renderMode != RenderMode.WorldSpace)
+            if (targetObject.renderMode != RenderMode.WorldSpace)
             {
                 return;
             }
 
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+
             CreateHeader("Warning: This only works when the MainCam is in the scene during development", LabelStyle);
+
+            GUILayout.FlexibleSpace();
+            GUILayout.EndHorizontal();
+
 
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
 
             _setMainCamera = GUILayout.Toggle(_setMainCamera, "Set MainCam as WorldCam", GUILayout.Width(ButtonWidth * 1.25f));
 
-            if (_setMainCamera && canvas.worldCamera == null)
+            if (_setMainCamera && targetObject.worldCamera == null)
             {
                 var mainCamera = Camera.main;
 
                 if (mainCamera != null)
                 {
-                    canvas.worldCamera = mainCamera;
+                    targetObject.worldCamera = mainCamera;
                 }
                 else
                 {

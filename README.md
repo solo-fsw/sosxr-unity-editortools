@@ -23,7 +23,6 @@ The DecimalsDrawer is a custom property drawer for Unity that rounds float prope
 
 MidpointRounding.AwayFromZero is used to ensure that values are rounded to the nearest even number when they fall exactly between two integers. This rounding method is commonly used in financial applications and is the default behavior for the Math.Round method in C#.
 
-
 ### DisableEditingAttribute
 The DisableEditingPropertyDrawer is a custom property drawer for Unity that disables editing of fields marked with `[DisableEditing]`. When applied, it renders the property as read-only, preventing users from modifying its value while still displaying it in the Inspector. This drawer is useful for situations where a property needs to be visible but should not be editable, such as when the value is controlled by other systems or scripts.
 

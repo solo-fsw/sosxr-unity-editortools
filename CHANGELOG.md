@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 
+
+## [1.4.1] - 2024-12-02
+
+
+### Added
+
+- Editor for AudioSource with buttons for playing
+
+### Changed
+
+- Minor refactoring: using same names on targets
+
+### Fixed
+
+- Fixed icon window scaling cache. It was slow, now no more thanks to the robot.
+
+
+
 ## [1.4.0] - 2024-11-25
 
 

@@ -16,21 +16,21 @@ namespace SOSXR.EditorTools
 
         protected override void CustomInspectorContent()
         {
-            var interactor = (XRBaseInteractable) target;
+            var targetObject = (XRBaseInteractable) target;
 
-            XRInteractButtons.CreateFirstLastHoverButtons(interactor);
+            XRInteractButtons.CreateFirstLastHoverButtons(targetObject);
 
-            XRInteractButtons.CreateHoverButtons(interactor);
+            XRInteractButtons.CreateHoverButtons(targetObject);
 
-            XRInteractButtons.CreateFirstLastSelectButtons(interactor);
+            XRInteractButtons.CreateFirstLastSelectButtons(targetObject);
 
-            XRInteractButtons.CreateSelectButtons(interactor);
+            XRInteractButtons.CreateSelectButtons(targetObject);
 
-            XRInteractButtons.CreateFirstLastFocusButtons(interactor);
+            XRInteractButtons.CreateFirstLastFocusButtons(targetObject);
 
-            XRInteractButtons.CreateFocusButtons(interactor);
+            XRInteractButtons.CreateFocusButtons(targetObject);
 
-            XRInteractButtons.CreateActivateButtons(interactor);
+            XRInteractButtons.CreateActivateButtons(targetObject);
         }
     }
 }

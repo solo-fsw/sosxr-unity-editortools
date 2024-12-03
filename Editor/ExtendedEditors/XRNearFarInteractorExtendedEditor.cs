@@ -16,13 +16,13 @@ namespace SOSXR.EditorTools
 
         protected override void CustomInspectorContent()
         {
-            var interactor = (NearFarInteractor) target;
+            var targetObject = (NearFarInteractor) target;
 
-            XRInteractButtons.CreateHoverButtons(interactor);
+            XRInteractButtons.CreateHoverButtons(targetObject);
 
-            XRInteractButtons.CreateSelectButtons(interactor);
+            XRInteractButtons.CreateSelectButtons(targetObject);
 
-            XRInteractButtons.CreateUIHoverButtons(interactor);
+            XRInteractButtons.CreateUIHoverButtons(targetObject);
         }
     }
 }
