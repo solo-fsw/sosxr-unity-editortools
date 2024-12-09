@@ -13,11 +13,11 @@ namespace SOSXR.EditorTools
     {
         static HierarchyScriptDropHandler()
         {
-            DragAndDrop.AddDropHandler(OnSciptHierarchyDrop);
+            DragAndDrop.AddDropHandler(OnScriptHierarchyDrop);
         }
 
 
-        private static DragAndDropVisualMode OnSciptHierarchyDrop(int draginstanceid, HierarchyDropFlags dropMode, Transform parentForDraggedObjects, bool perform)
+        private static DragAndDropVisualMode OnScriptHierarchyDrop(int draginstanceid, HierarchyDropFlags dropMode, Transform parentForDraggedObjects, bool perform)
         {
             var monoScript = GetScriptBeingDragged();
 

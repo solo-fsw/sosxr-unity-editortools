@@ -1,3 +1,7 @@
+// No longer needed, as the functionality is now in the UnityEventDrawerWithButton.cs file
+
+/*
+ 
 using UnityEditor;
 using UnityEditor.UI;
 using UnityEngine;
@@ -5,7 +9,7 @@ using UnityEngine.UI;
 
 
 namespace SOSXR.EditorTools
-{
+{ 
     /// <summary>
     ///     Based on: Warped Imagination
     ///     https://www.youtube.com/watch?v=iqbUbtwiiz0
@@ -35,4 +39,7 @@ namespace SOSXR.EditorTools
             GUILayout.EndHorizontal();
         }
     } 
+    
 }
+
+*/

@@ -9,9 +9,9 @@ namespace SOSXR.EditorTools
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            var suffixAttributte = (SuffixAttribute) attribute;
+            var suffixAttribute = (SuffixAttribute) attribute;
 
-            var labelWidth = Mathf.Max(30f, suffixAttributte.Suffix.Length * 7f);
+            var labelWidth = Mathf.Max(30f, suffixAttribute.Suffix.Length * 7f);
 
             var fieldRect = new Rect(position.x, position.y, position.width, position.height);
             var labelRect = new Rect(position.x + position.width - labelWidth, position.y, labelWidth, position.height);
@@ -26,7 +26,7 @@ namespace SOSXR.EditorTools
                 fontStyle = FontStyle.Italic
             };
 
-            EditorGUI.LabelField(labelRect, suffixAttributte.Suffix, rightAlignedStyle);
+            EditorGUI.LabelField(labelRect, suffixAttribute.Suffix, rightAlignedStyle);
         }
     }
 }

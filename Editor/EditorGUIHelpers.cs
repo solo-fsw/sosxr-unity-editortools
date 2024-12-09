@@ -212,10 +212,6 @@ namespace SOSXR.EditorTools
             {
                 EditorGUILayout.ObjectField("Custom Editor for Script:", MonoScript.FromScriptableObject(editorScriptTarget as ScriptableObject), editorScriptTarget.GetType(), false);
             }
-            else
-            {
-                Debug.LogWarning("Class does neither derive from MonoBehaviour nor ScriptableObject, therefore I don't know how to draw the 'Script' field");
-            }
 
             EditorGUI.EndDisabledGroup();
         }
