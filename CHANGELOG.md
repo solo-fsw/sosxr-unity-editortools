@@ -5,6 +5,9 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 
 
 ## [1.5.1] - 2024-12-09
+### Added
+- Buttons for float, int, string UnityEvents
+
 
 ### Fixed
 - Button on UnityEvent
