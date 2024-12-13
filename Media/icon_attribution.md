@@ -23,3 +23,5 @@ Icon icon [FlatIcon](https://www.flaticon.com/free-icons/more)
 Attribute icon [FlatIcon](https://www.flaticon.com/free-icons/attribute)
 
 Collider icon [FlatIcon](https://www.flaticon.com/free-icons/collide)
+
+Assembly icn [FlatIcon](https://www.flaticon.com/free-icons/assembly)

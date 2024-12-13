@@ -16,19 +16,16 @@ namespace SOSXR.EditorTools
     {
         static HierarchyIconDisplay()
         {
-            Package.IsInstalled("com.browar.editor-toolbox", packageInstalled =>
-            {
-                if (packageInstalled)
-                {
-                    return;
-                }
+            //if (PackageIsInstalled.PackageInstalled("com.browar.editor-toolbox"))
+            //{
+            //    return;
+            //}
 
-                // Only add the toggle button if the EditorPackage is not installed
-                EditorApplication.hierarchyWindowItemOnGUI += OnHierarchyWindowItemOnGUI;
-                EditorApplication.update += OnEditorUpdate;
-            });
+            // Only add the toggle button if the EditorPackage is not installed
+            EditorApplication.hierarchyWindowItemOnGUI += OnHierarchyWindowItemOnGUI;
+            EditorApplication.update += OnEditorUpdate;
         }
-
+        
 
         private static readonly bool IncludeScripts = true;
         private static readonly bool KeepIconsForPrefabs = false;
