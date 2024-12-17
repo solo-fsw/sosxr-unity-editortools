@@ -10,37 +10,43 @@ namespace SOSXR.EditorTools
     {
         #if UNITY_EDITOR
         [DidReloadScripts]
-        [MenuItem("SOSXR/Find GameObjects with Missing Scripts")] // This is not strictly necessary, but it's a nice touch. This script will reload anyway once the scripts are recompiled.
+        [MenuItem("SOSXR/Find GameObjects with Missing Scripts")]
         [ContextMenu(nameof(FindGameObjectsWithMissingScripts))]
         private static void FindGameObjectsWithMissingScripts()
         {
             var allObjectsInScene = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
-            var count = 0;
 
-            foreach (var gameObject in allObjectsInScene)
+            foreach (var go in allObjectsInScene)
             {
-                var allMonoBehavioursInScene = gameObject.GetComponents<MonoBehaviour>();
+                var allMonoBehavioursInScene = go.GetComponents<MonoBehaviour>();
 
                 foreach (var monoBehaviour in allMonoBehavioursInScene)
                 {
                     if (monoBehaviour != null)
                     {
                         continue;
+                        
                     }
 
-                    Debug.LogError(nameof(MissingMonoBehaviourDetector) + "Missing MonoBehaviour found on child of " + gameObject.transform.root.name); // Somehow the direct GO of the missing MB didn't want to print their name
-                    count++;
-                }
-            }
+                    string location = null;
 
-            if (count > 0)
-            {
-                Debug.LogError(nameof(MissingMonoBehaviourDetector) + " Found " + count + " GameObjects with missing MonoBehaviours.");
-            }
+                    if (!string.IsNullOrEmpty(AssetDatabase.GetAssetPath(go)))
+                    {
+                        location = $"(Prefab: {AssetDatabase.GetAssetPath(go)}) ";
+                    }
+
+                    if (!GetFullPath(go.transform.parent).Equals("(Missing Transform)"))
+                    {
+                        location += $" / (Hierarchy: {GetFullPath(go.transform.parent)})";
+                    }
+
+                    Debug.LogError($"Missing MonoBehaviour found on GameObject '{go.name}' {location}");
+                }
+            } 
         }
 
 
-        [MenuItem("SOSXR/DANGER/Remove Missing Scripts")]
+        [MenuItem("SOSXR/DANGER/Remove Missing Scripts From Selected GameObjects")]
         public static void RemoveMissingScripts()
         {
             var gameObjects = Selection.gameObjects;
@@ -48,10 +54,12 @@ namespace SOSXR.EditorTools
 
             foreach (var gameObject in gameObjects)
             {
-                if (RemoveMissingScripts(gameObject))
+                if (!RemoveMissingScripts(gameObject))
                 {
-                    count++;
+                    continue;
                 }
+
+                count++;
             }
 
             Debug.Log($"Removed missing scripts from {count} GameObject(s).");
@@ -67,23 +75,44 @@ namespace SOSXR.EditorTools
 
             for (var j = 0; j < components.Length; j++)
             {
-                if (components[j] == null)
+                if (components[j] != null)
                 {
-                    prop.DeleteArrayElementAtIndex(j - r);
-                    r++;
+                    continue;
                 }
+
+                prop.DeleteArrayElementAtIndex(j - r);
+                r++;
             }
 
-            if (r > 0)
+            if (r <= 0)
             {
-                serializedObject.ApplyModifiedProperties();
-                serializedObject.Update();
-
-                return true;
+                return false;
             }
 
-            return false;
+            serializedObject.ApplyModifiedProperties();
+            serializedObject.Update();
+
+            return true;
         }
+
+
+        private static bool IsPartOfPrefab(GameObject gameObject)
+        {
+            return AssetDatabase.Contains(gameObject);
+        }
+
+
+        private static string GetFullPath(Transform transform)
+        {
+            if (transform == null)
+            {
+                return "(Missing Transform)";
+            }
+
+            return transform.parent == null ? transform.name : GetFullPath(transform.parent) + "/" + transform.name;
+        }
+
+
         #endif
     }
 }
