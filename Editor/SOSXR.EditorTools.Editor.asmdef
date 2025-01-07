@@ -1,20 +1,20 @@
 {
-  "name": "SOSXR.EditorTools.Editor",
-  "rootNamespace": "SOSXR.EditorTools",
-  "references": [
-    "GUID:7dbfc0c0f47f74b9780a4e8bbf532ae8",
-    "GUID:190979c3ed6e41c448f5e9925429edf9",
-    "GUID:fe685ec1767f73d42b749ea8045bfe43"
-  ],
-  "includePlatforms": [
-    "Editor"
-  ],
-  "excludePlatforms": [],
-  "allowUnsafeCode": false,
-  "overrideReferences": false,
-  "precompiledReferences": [],
-  "autoReferenced": true,
-  "defineConstraints": [],
-  "versionDefines": [],
-  "noEngineReferences": false
+    "name": "SOSXR.EditorTools.Editor",
+    "rootNamespace": "SOSXR.EditorTools",
+    "references": [
+        "GUID:7dbfc0c0f47f74b9780a4e8bbf532ae8",
+        "GUID:190979c3ed6e41c448f5e9925429edf9",
+        "GUID:fe685ec1767f73d42b749ea8045bfe43"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

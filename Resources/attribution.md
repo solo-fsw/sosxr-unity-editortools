@@ -1,0 +1,1 @@
+[Cube Icon](https://www.flaticon.com/free-icons/3d-cube)

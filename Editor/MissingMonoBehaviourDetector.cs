@@ -25,7 +25,6 @@ namespace SOSXR.EditorTools
                     if (monoBehaviour != null)
                     {
                         continue;
-                        
                     }
 
                     string location = null;
@@ -40,9 +39,9 @@ namespace SOSXR.EditorTools
                         location += $" / (Hierarchy: {GetFullPath(go.transform.parent)})";
                     }
 
-                    Debug.LogError($"Missing MonoBehaviour found on GameObject '{go.name}' {location}");
+                    Debug.LogWarning($"SOSXR: Missing MonoBehaviour found on GameObject '{go.name}' {location}");
                 }
-            } 
+            }
         }
 
 
@@ -62,7 +61,7 @@ namespace SOSXR.EditorTools
                 count++;
             }
 
-            Debug.Log($"Removed missing scripts from {count} GameObject(s).");
+            Debug.Log($"SOSXR: Removed missing scripts from {count} GameObject(s).");
         }
 
 
