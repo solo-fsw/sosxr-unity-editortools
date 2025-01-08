@@ -1,15 +1,12 @@
 using UnityEditor;
-using UnityEditor.Callbacks;
 using UnityEngine;
 
 
 namespace SOSXR.EditorTools
 {
-    [ExecuteAlways]
     public class MissingMonoBehaviourDetector : MonoBehaviour
     {
-        #if UNITY_EDITOR
-        [DidReloadScripts]
+        // Optional: [UnityEditor.Callbacks.DidReloadScripts]
         [MenuItem("SOSXR/Find GameObjects with Missing Scripts")]
         [ContextMenu(nameof(FindGameObjectsWithMissingScripts))]
         private static void FindGameObjectsWithMissingScripts()
@@ -110,8 +107,5 @@ namespace SOSXR.EditorTools
 
             return transform.parent == null ? transform.name : GetFullPath(transform.parent) + "/" + transform.name;
         }
-
-
-        #endif
     }
 }

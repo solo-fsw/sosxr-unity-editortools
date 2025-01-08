@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Playables;
 
 
 namespace SOSXR.EditorTools
@@ -8,23 +9,24 @@ namespace SOSXR.EditorTools
     ///     Based on: Warped Imagination
     ///     https://www.youtube.com/watch?v=iqbUbtwiiz0
     /// </summary>
-    [CustomEditor(typeof(AudioSource))]
-    public class AudioSourceExtendedEditor : EditorGUIHelpers
+    [CustomEditor(typeof(PlayableDirector))]
+    public class PlayableDirectorExtendedEditor : EditorGUIHelpers
     {
         private bool _isPaused;
         private Color _originalColor;
+        private bool _isPlaying;
 
 
         private void OnEnable()
         {
             _originalColor = GUI.backgroundColor;
-            GetInternalEditor("AudioSourceInspector");
+            GetInternalEditor("DirectorEditor");
         }
 
 
         protected override void CustomInspectorContent()
         {
-            var targetObject = (AudioSource) target;
+            var targetObject = (PlayableDirector) target;
 
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
@@ -52,71 +54,58 @@ namespace SOSXR.EditorTools
         }
 
 
-        private bool DrawPlayButton(AudioSource editorTarget)
+        private bool DrawPlayButton(PlayableDirector editorTarget)
         {
-            GUI.backgroundColor = editorTarget.isPlaying && !_isPaused ? Color.green : _originalColor;
+            GUI.backgroundColor = _isPlaying && !_isPaused ? Color.green : _originalColor;
 
             if (GUILayout.Button("Play", GUILayout.Width(ButtonWidth)))
             {
-                if (editorTarget.clip == null)
+                if (editorTarget.playableAsset == null)
                 {
-                    Debug.LogWarning("No audio clip assigned to the AudioSource.");
+                    Debug.LogWarning("No playable asset assigned to the PlayableDirector.");
 
                     return true;
                 }
 
                 editorTarget.Play();
+                 
                 _isPaused = false;
+                _isPlaying = true;
             }
 
             return false;
         }
 
 
-        private bool DrawPauseButton(AudioSource editorTarget)
+        private bool DrawPauseButton(PlayableDirector editorTarget)
         {
-            GUI.backgroundColor = _isPaused ? Color.yellow : _originalColor;
+            GUI.backgroundColor = _isPaused && !_isPlaying ? Color.yellow : _originalColor;
 
             if (GUILayout.Button("Pause", GUILayout.Width(ButtonWidth)))
             {
-                if (!editorTarget.isPlaying)
-                {
-                    Debug.LogWarning("AudioSource is not playing.");
-
-                    return true;
-                }
-
                 editorTarget.Pause();
+                
                 _isPaused = true;
+                _isPlaying = false;
             }
 
             return false;
         }
 
 
-        private bool DrawStopButton(AudioSource editorTarget)
+        private bool DrawStopButton(PlayableDirector editorTarget)
         {
-            GUI.backgroundColor = !editorTarget.isPlaying && !_isPaused ? _originalColor : Color.red;
+            GUI.backgroundColor = !_isPlaying && !_isPaused ? _originalColor : Color.red;
 
             if (GUILayout.Button("Stop", GUILayout.Width(ButtonWidth)))
             {
-                if (!editorTarget.isPlaying && !_isPaused)
-                {
-                    Debug.LogWarning("AudioSource is not playing.");
-
-                    return true;
-                }
-
                 editorTarget.Stop();
+                
                 _isPaused = false;
+                _isPlaying = false;
             }
 
             return false;
         }
     }
-}
-
-
-namespace SOSXR.EditorTools
-{
 }
