@@ -115,8 +115,3 @@ namespace SOSXR.EditorTools
         }
     }
 }
-
-
-namespace SOSXR.EditorTools
-{
-}
