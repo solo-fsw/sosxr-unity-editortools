@@ -56,7 +56,7 @@ public class AudioEditor : EditorWindow
     }
 
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         CleanupAudioPreview();
     }
