@@ -24,4 +24,10 @@ Attribute icon [FlatIcon](https://www.flaticon.com/free-icons/attribute)
 
 Collider icon [FlatIcon](https://www.flaticon.com/free-icons/collide)
 
-Assembly icn [FlatIcon](https://www.flaticon.com/free-icons/assembly)
+Assembly icon [FlatIcon](https://www.flaticon.com/free-icons/assembly)
+
+Null icon [FlatIcon](https://www.flaticon.com/free-icons/null)
+
+Director icon [FlatIcon](https://www.flaticon.com/free-icons/actor)
+
+Video icon [FlatIcon](https://www.flaticon.com/free-icons/recording)

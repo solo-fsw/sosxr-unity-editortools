@@ -179,7 +179,7 @@ public class AudioEditor : EditorWindow
         }
 
         DrawWaveformPreview();
-        DrawTimeControls();
+        DrawTimeInformation();
     }
 
 
@@ -369,7 +369,7 @@ public class AudioEditor : EditorWindow
     }
 
 
-    private void DrawTimeControls()
+    private void DrawTimeInformation()
     {
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("", GUILayout.Width(200)); // Empty space for alignment
