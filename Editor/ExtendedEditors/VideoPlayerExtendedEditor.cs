@@ -175,6 +175,11 @@ namespace SOSXR.EditorTools
 
         private void MonitorPlaybackTime()
         {
+            if (_targetObject == null)
+            {
+                return;
+            }
+            
             if (!_targetObject.isPlaying)
             {
                 return;
