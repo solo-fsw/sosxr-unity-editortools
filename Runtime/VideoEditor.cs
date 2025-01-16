@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using UnityEditor;
 using UnityEditor.Recorder;
@@ -9,12 +10,9 @@ using UnityEngine.Video;
 
 public class VideoEditor : MonoBehaviour
 {
-
-
-
-    [SerializeField] private RenderTexture renderTexture;
-    [SerializeField] private float aspectRatio;
     private static readonly int BaseMapProperty = Shader.PropertyToID("_BaseMap");
+    private RenderTexture renderTexture;
+    private Vector2 aspectRatio = new(1, 1);
     private VideoPlayer videoPlayer;
     private Camera previewCamera;
     private GameObject quad;
@@ -33,8 +31,6 @@ public class VideoEditor : MonoBehaviour
         recorderController = new RecorderController(recorderControllerSettings);
 
         movieRecorderSettings = ScriptableObject.CreateInstance<MovieRecorderSettings>();
-        movieRecorderSettings.name = "MovieRecorderSettings";
-
 
         movieRecorderSettings.EncoderSettings = new CoreEncoderSettings
         {
@@ -43,9 +39,6 @@ public class VideoEditor : MonoBehaviour
         };
 
         movieRecorderSettings.RecordMode = RecordMode.Manual;
-
-        imageInputSettings = new RenderTextureInputSettings();
-        movieRecorderSettings.ImageInputSettings = imageInputSettings;
 
         recorderControllerSettings.AddRecorderSettings(movieRecorderSettings);
 
@@ -56,7 +49,7 @@ public class VideoEditor : MonoBehaviour
         videoPlayer.playOnAwake = false;
         videoPlayer.isLooping = false;
         videoPlayer.aspectRatio = VideoAspectRatio.FitVertically;
-        videoPlayer.audioOutputMode = VideoAudioOutputMode.None;
+        videoPlayer.audioOutputMode = VideoAudioOutputMode.Direct;
 
         var cameraObj = new GameObject("VideoPreviewCamera");
         cameraObj.transform.SetParent(gameObject.transform);
@@ -87,23 +80,38 @@ public class VideoEditor : MonoBehaviour
         var videoPath = AssetDatabase.GetAssetPath(videoPlayer.clip);
         var videoName = Path.GetFileNameWithoutExtension(videoPath);
         var videoDirectory = Path.GetDirectoryName(videoPath);
+        var videoOutputPath = $"{videoDirectory}/{videoName}_Trimmed";
         var videoExtension = ".mp4";
-        var videoOutputPath = $"{videoDirectory}/{videoName}_Trimmed{videoExtension}";
+        var pathWithExtension = videoOutputPath + videoExtension;
+        Debug.Log("PathWithExtension: " + pathWithExtension);
+
+        if (File.Exists(pathWithExtension))
+        {
+            Debug.LogWarning("Video already exists.");
+            videoOutputPath = $"{videoDirectory}/{videoName}_Trimmed_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}";
+            Debug.Log("New path: " + videoOutputPath);
+        }
+
         movieRecorderSettings.OutputFile = videoOutputPath;
 
-        aspectRatio = (float) videoPlayer.clip.width / videoPlayer.clip.height;
-        quad.transform.localScale = new Vector3(aspectRatio, 1, 1);
+        Debug.Log(videoPlayer.clip.width + "x" + videoPlayer.clip.height);
+        aspectRatio.x = (float) Math.Round((float) videoPlayer.clip.width / videoPlayer.clip.height, 3);
+        aspectRatio.y = 1;
+        Debug.Log(aspectRatio.x + "x" + aspectRatio.y);
+        quad.transform.localScale = new Vector3(aspectRatio.x, aspectRatio.y, 1);
 
         recorderControllerSettings.FrameRate = (float) videoPlayer.clip.frameRate;
 
-        ResetRenderTexture(new Vector2(aspectRatio, 1));
+        ResetRenderTexture();
 
         _storedClip = videoPlayer.clip;
         videoPlayer.Prepare();
+
+        Debug.Log("Video clip changed.");
     }
 
 
-    private void ResetRenderTexture(Vector2 size)
+    private void ResetRenderTexture()
     {
         DestroyExistingTexture();
 
@@ -118,69 +126,34 @@ public class VideoEditor : MonoBehaviour
 
         imageInputSettings = new RenderTextureInputSettings
         {
-            OutputWidth = (int) size.x,
-            OutputHeight = (int) size.y,
+            OutputWidth = (int) videoPlayer.clip.width,
+            OutputHeight = (int) videoPlayer.clip.height,
             RenderTexture = renderTexture
         };
 
         movieRecorderSettings.ImageInputSettings = imageInputSettings;
+
+        Debug.Log("Render texture reset.");
     }
 
 
     private void Update()
     {
         VideoClipChanged();
-
-        MonitorPlaybackTime();
-
-        if (videoPlayer.clip == null)
-        {
-            return;
-        }
-
-        Debug.Log($"Video Width: {videoPlayer.clip.width}, Height: {videoPlayer.clip.height}");
-        Debug.Log($"RenderTexture Width: {renderTexture.width}, Height: {renderTexture.height}");
-    }
-
-
-    private string FormatTime(float timeInSeconds)
-    {
-        var minutes = Mathf.FloorToInt(timeInSeconds / 60);
-        var seconds = Mathf.FloorToInt(timeInSeconds % 60);
-        var milliseconds = Mathf.FloorToInt(timeInSeconds * 1000 % 1000);
-
-        return timeInSeconds >= 60 ? $"{minutes:00}:{seconds:00}.{milliseconds:00}" : $"{seconds:00}.{milliseconds:000}";
     }
 
 
     private void StopRecording()
     {
-        if (recorderController.IsRecording())
-        {
-            recorderController.StopRecording();
-            Debug.Log($"Recording stopped. Video saved to: {movieRecorderSettings.OutputFile}");
-        }
-        else
+        if (!recorderController.IsRecording())
         {
             Debug.LogWarning("Recorder is not currently recording.");
-        }
-    }
 
-
-    private void MonitorPlaybackTime()
-    {
-        if (!videoPlayer.isPlaying)
-        {
             return;
         }
 
-        // if (videoPlayer.time >= endTrim)
-        {
-            //  videoPlayer.Stop();
-            Debug.Log("Playback stopped as endTrim was reached.");
-            //   StopRecording();
-            //    GoToStart();
-        }
+        recorderController.StopRecording();
+        Debug.Log($"Recording stopped. Video saved to: {movieRecorderSettings.OutputFile}.mp4");
     }
 
 
@@ -201,24 +174,23 @@ public class VideoEditor : MonoBehaviour
 
             return false;
         }
-
-        //videoPlayer.time = startTrim;
+        
+        recorderController.PrepareRecording();
+        recorderController.StartRecording();
+        Debug.Log("Recording started.");
 
         if (!videoPlayer.isPrepared)
         {
             videoPlayer.Prepare();
             videoPlayer.prepareCompleted += _ => { videoPlayer.Play(); };
+            Debug.LogWarning("We were not prepared.");
         }
         else
         {
             videoPlayer.Play();
+            Debug.Log("We were prepared to start playing.");
         }
-
-
-        recorderController.PrepareRecording();
-        recorderController.StartRecording();
-
-
+        
         return true;
     }
 
@@ -233,9 +205,17 @@ public class VideoEditor : MonoBehaviour
             return false;
         }
 
-        // videoPlayer.time = startTrim;
-        videoPlayer.Play();
-
+        if (!videoPlayer.isPrepared)
+        {
+            videoPlayer.Prepare();
+            videoPlayer.prepareCompleted += _ => { videoPlayer.Play(); };
+            Debug.LogWarning("We were not prepared.");
+        }
+        else
+        {
+            videoPlayer.Play();
+            Debug.Log("We were prepared.");
+        }
 
         return true;
     }
@@ -244,8 +224,14 @@ public class VideoEditor : MonoBehaviour
     [ContextMenu(nameof(Pause))]
     private bool Pause()
     {
-        videoPlayer.Pause();
+        if (!videoPlayer.isPlaying)
+        {
+            Debug.LogWarning("VideoPlayer is not playing.");
 
+            return false;
+        }
+
+        videoPlayer.Pause();
 
         return true;
     }
@@ -254,11 +240,19 @@ public class VideoEditor : MonoBehaviour
     [ContextMenu(nameof(Stop))]
     private bool Stop()
     {
-        videoPlayer.Stop();
+        if (!videoPlayer.isPlaying)
+        {
+            Debug.LogWarning("VideoPlayer is not playing.");
 
+            return false;
+        }
+
+        videoPlayer.Stop();
 
         if (recorderController.IsRecording())
         {
+            Debug.Log("Recording stopped.");
+
             StopRecording();
         }
 
