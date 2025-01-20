@@ -63,7 +63,18 @@ namespace SOSXR.EditorTools
                 return;
             }
 
-            var component = components.Length > 1 ? components[1] : components[0]; // components[0] is the Transform. This does mean that the 'most interesting / important' component should be the first one that is not the Transform component
+
+            GUIContent content;
+            Component component = null; // components[0] is the Transform. This does mean that the 'most interesting / important' component should be the first one that is not the Transform component
+
+            if (components.Length > 1)
+            {
+                component = components[1];
+            }
+            else
+            {
+                component = components[0];
+            }
 
             if (component == null)
             {
@@ -72,9 +83,12 @@ namespace SOSXR.EditorTools
 
             var type = component.GetType();
 
-            GUIContent content;
-
-            if (!IncludeScripts)
+            var gameObjectIcon = EditorGUIUtility.GetIconForObject(gameObject);
+            if (components.Length == 1 && gameObjectIcon != null)
+            {
+                content = new GUIContent(gameObjectIcon) {tooltip = "GameObject Icon"};
+            }
+            else if (!IncludeScripts)
             {
                 content = EditorGUIUtility.ObjectContent(null, type); // Gimme the icon for the particular content. 
             }
@@ -94,7 +108,6 @@ namespace SOSXR.EditorTools
 
             var isSelected = Selection.instanceIDs.Contains(instanceID);
             var isHovering = selectionRect.Contains(Event.current.mousePosition);
-
 
             var color = UnityEditorBackgroundColor.Get(isSelected, isHovering, _hierarchyHasFocus);
             var backgroundRect = selectionRect;
