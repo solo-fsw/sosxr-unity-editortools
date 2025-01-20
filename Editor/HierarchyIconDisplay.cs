@@ -16,16 +16,10 @@ namespace SOSXR.EditorTools
     {
         static HierarchyIconDisplay()
         {
-            //if (PackageIsInstalled.PackageInstalled("com.browar.editor-toolbox"))
-            //{
-            //    return;
-            //}
-
-            // Only add the toggle button if the EditorPackage is not installed
             EditorApplication.hierarchyWindowItemOnGUI += OnHierarchyWindowItemOnGUI;
             EditorApplication.update += OnEditorUpdate;
         }
-        
+
 
         private static readonly bool IncludeScripts = true;
         private static readonly bool KeepIconsForPrefabs = false;
@@ -48,9 +42,9 @@ namespace SOSXR.EditorTools
         }
 
 
-        private static void OnHierarchyWindowItemOnGUI(int instanceid, Rect selectionrect)
+        private static void OnHierarchyWindowItemOnGUI(int instanceID, Rect selectionRect)
         {
-            var gameObject = EditorUtility.InstanceIDToObject(instanceid) as GameObject;
+            var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
 
             if (gameObject == null)
             {
@@ -98,16 +92,16 @@ namespace SOSXR.EditorTools
                 return;
             }
 
-            var isSelected = Selection.instanceIDs.Contains(instanceid);
-            var isHovering = selectionrect.Contains(Event.current.mousePosition);
+            var isSelected = Selection.instanceIDs.Contains(instanceID);
+            var isHovering = selectionRect.Contains(Event.current.mousePosition);
 
 
             var color = UnityEditorBackgroundColor.Get(isSelected, isHovering, _hierarchyHasFocus);
-            var backgroundRect = selectionrect;
+            var backgroundRect = selectionRect;
             backgroundRect.width = 18.5f; // 18.5f is given by Warped Imagination
             EditorGUI.DrawRect(backgroundRect, color);
 
-            EditorGUI.LabelField(selectionrect, content);
+            EditorGUI.LabelField(selectionRect, content);
         }
     }
 }

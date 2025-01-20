@@ -10,6 +10,8 @@ using UnityEngine.Video;
 
 public class VideoEditor : MonoBehaviour
 {
+    public Vector2 Trim;
+
     private static readonly int BaseMapProperty = Shader.PropertyToID("_BaseMap");
     private RenderTexture renderTexture;
     private Vector2 aspectRatio = new(1, 1);
@@ -22,6 +24,7 @@ public class VideoEditor : MonoBehaviour
     private RenderTextureInputSettings imageInputSettings;
     private RecorderController recorderController;
     private VideoClip _storedClip;
+    private Vector2 _storedTrim;
 
 
     [ContextMenu(nameof(Awake))]
@@ -83,31 +86,67 @@ public class VideoEditor : MonoBehaviour
         var videoOutputPath = $"{videoDirectory}/{videoName}_Trimmed";
         var videoExtension = ".mp4";
         var pathWithExtension = videoOutputPath + videoExtension;
-        Debug.Log("PathWithExtension: " + pathWithExtension);
 
         if (File.Exists(pathWithExtension))
         {
-            Debug.LogWarning("Video already exists.");
             videoOutputPath = $"{videoDirectory}/{videoName}_Trimmed_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}";
-            Debug.Log("New path: " + videoOutputPath);
+            Debug.Log("File already existed at simple path. Adding date+time. New path: " + videoOutputPath);
         }
 
         movieRecorderSettings.OutputFile = videoOutputPath;
 
-        Debug.Log(videoPlayer.clip.width + "x" + videoPlayer.clip.height);
         aspectRatio.x = (float) Math.Round((float) videoPlayer.clip.width / videoPlayer.clip.height, 3);
         aspectRatio.y = 1;
-        Debug.Log(aspectRatio.x + "x" + aspectRatio.y);
         quad.transform.localScale = new Vector3(aspectRatio.x, aspectRatio.y, 1);
 
         recorderControllerSettings.FrameRate = (float) videoPlayer.clip.frameRate;
 
         ResetRenderTexture();
 
+        Trim = new Vector2(0, (float) videoPlayer.clip.length);
+
         _storedClip = videoPlayer.clip;
         videoPlayer.Prepare();
+    }
 
-        Debug.Log("Video clip changed.");
+
+    private void ResetTrimXSettings()
+    {
+        if (Mathf.Approximately(Trim.x, _storedTrim.x))
+        {
+            return;
+        }
+
+        movieRecorderSettings.FrameRate = (float) videoPlayer.clip.frameRate;
+        movieRecorderSettings.StartFrame = (int) (Trim.x * movieRecorderSettings.FrameRate);
+        // movieRecorderSettings.EndFrame = (int) (Trim.y * movieRecorderSettings.FrameRate);
+
+        videoPlayer.time = Trim.x;
+        videoPlayer.Play();
+        videoPlayer.Pause();
+
+        _storedTrim = Trim;
+        Debug.Log("Trim set to 0-" + Trim.y + " seconds. StartFrame: " + movieRecorderSettings.StartFrame + " EndFrame: " + movieRecorderSettings.EndFrame);
+    }
+
+
+    private void ResetTrimYSettings()
+    {
+        if (Mathf.Approximately(Trim.y, _storedTrim.y))
+        {
+            return;
+        }
+
+        movieRecorderSettings.FrameRate = (float) videoPlayer.clip.frameRate;
+        // movieRecorderSettings.StartFrame = (int) (Trim.x * movieRecorderSettings.FrameRate);
+        movieRecorderSettings.EndFrame = (int) (Trim.y * movieRecorderSettings.FrameRate);
+
+        videoPlayer.time = Trim.y;
+        videoPlayer.Play();
+        videoPlayer.Pause();
+
+        _storedTrim = Trim;
+        Debug.Log("Trim set to 0-" + Trim.y + " seconds. StartFrame: " + movieRecorderSettings.StartFrame + " EndFrame: " + movieRecorderSettings.EndFrame);
     }
 
 
@@ -132,14 +171,14 @@ public class VideoEditor : MonoBehaviour
         };
 
         movieRecorderSettings.ImageInputSettings = imageInputSettings;
-
-        Debug.Log("Render texture reset.");
     }
 
 
     private void Update()
     {
         VideoClipChanged();
+        ResetTrimXSettings();
+        ResetTrimYSettings();
     }
 
 
@@ -174,7 +213,7 @@ public class VideoEditor : MonoBehaviour
 
             return false;
         }
-        
+
         recorderController.PrepareRecording();
         recorderController.StartRecording();
         Debug.Log("Recording started.");
@@ -190,8 +229,14 @@ public class VideoEditor : MonoBehaviour
             videoPlayer.Play();
             Debug.Log("We were prepared to start playing.");
         }
-        
+
         return true;
+    }
+
+
+    public void Testes()
+    {
+        Debug.Log("Testes");
     }
 
 
