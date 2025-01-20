@@ -6,17 +6,30 @@ namespace SOSXR.EditorTools
 {
     public class CreateCustomGameObject : Editor
     {
-        [MenuItem("GameObject/Create Empty _%Y", false, 0)]
+        [MenuItem("GameObject/Create Empty Better _%Y", false, 0)]
         private static void CreateCustomGameObjectFunction()
         {
-            var parent = new GameObject("CustomGameObject");
-            // parent.icon = EditorGUIUtility.IconContent("GameObject Icon").image as Texture2D;
-            var modelGameObject = new GameObject("Model");
-            modelGameObject.transform.parent = parent.transform;
-            var audioGameObject = new GameObject("Audio");
-            audioGameObject.transform.parent = parent.transform;
-            var logicGameObject = new GameObject("Logic");
-            logicGameObject.transform.parent = parent.transform;
+            var parent = CreateGameObject("CustomGameObject", "SOSXR_Logo");
+
+            CreateGameObject("Model", "Model_icon", parent);
+
+            CreateGameObject("Audio", "Audio_icon", parent);
+
+            CreateGameObject("Logic", "Logic_icon", parent);
+        }
+
+
+        private static GameObject CreateGameObject(string goName, string iconName, GameObject parentTo = null)
+        {
+            var go = new GameObject(goName);
+            go.transform.parent = parentTo?.transform;
+            go.transform.position = Vector3.zero;
+            go.transform.rotation = Quaternion.identity;
+            
+            var icon = Resources.Load<Texture2D>(iconName);
+            EditorGUIUtility.SetIconForObject(go, icon);
+
+            return go;
         }
     }
 }
