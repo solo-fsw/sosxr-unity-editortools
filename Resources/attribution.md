@@ -2,4 +2,10 @@
 
 [Model](https://www.flaticon.com/free-icons/shapes)
 
-[Logic](https://www.flaticon.com/free-icons/logic)
+[Animation](https://www.flaticon.com/free-icons/keyframe)
+
+[Lamp](https://www.flaticon.com/free-icons/lamp)
+
+[Eye](https://www.flaticon.com/free-icons/visualization)
+
+[Code](https://www.flaticon.com/free-icons/code)

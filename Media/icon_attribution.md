@@ -31,3 +31,7 @@ Null icon [FlatIcon](https://www.flaticon.com/free-icons/null)
 Director icon [FlatIcon](https://www.flaticon.com/free-icons/actor)
 
 Video icon [FlatIcon](https://www.flaticon.com/free-icons/recording)
+
+[Logic](https://www.flaticon.com/free-icons/logic)
+
+[Light](https://www.flaticon.com/free-icons/christmas)
