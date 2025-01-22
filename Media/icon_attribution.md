@@ -35,3 +35,9 @@ Video icon [FlatIcon](https://www.flaticon.com/free-icons/recording)
 [Logic](https://www.flaticon.com/free-icons/logic)
 
 [Light](https://www.flaticon.com/free-icons/christmas)
+
+[3D Cube](https://www.flaticon.com/free-icons/hologram)
+ 
+[Matrix Grid](https://www.flaticon.com/free-icons/virtual-reality-glasses)
+
+[HMD](https://www.flaticon.com/free-icons/headset)
