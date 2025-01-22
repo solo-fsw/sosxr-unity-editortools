@@ -163,6 +163,29 @@ namespace SOSXR.EditorTools
     }
 
 
+    [CustomPropertyDrawer(typeof(UnityEvent<bool>), true)]
+    public class UnityEventDrawerBoolWithButton : UnityEventButtonBase
+    {
+        protected override void SOSXROnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            var currentValue = GetStoredValue(property, false);
+            var newValue = EditorGUI.Toggle(FieldRect(position), currentValue);
+
+            if (newValue != currentValue)
+            {
+                SetStoredValue(property, newValue);
+            }
+
+            if (GUI.Button(ButtonRect(position), ButtonLabel))
+            {
+                var targetObject = property.serializedObject.targetObject;
+                var unityEvent = fieldInfo.GetValue(targetObject) as UnityEvent<bool>;
+                unityEvent?.Invoke(newValue);
+            }
+        }
+    }
+
+
     [CustomPropertyDrawer(typeof(UnityEvent<Vector2>), true)]
     public class UnityEventDrawerVector2WithButton : UnityEventButtonBase
     {

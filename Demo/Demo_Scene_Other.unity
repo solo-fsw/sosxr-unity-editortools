@@ -378,22 +378,118 @@ MonoBehaviour:
         m_CallState: 2
   OnEventInt:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1094601786}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: set_layer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnEventFloat:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1094601787}
+        m_TargetAssemblyTypeName: UnityEngine.Light, UnityEngine
+        m_MethodName: set_intensity
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnEventBool:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1160531928}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnEventVector2:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740400004}
+        m_TargetAssemblyTypeName: UnityEngine.Camera, UnityEngine
+        m_MethodName: set_lensShift
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnEventVector2Int:
     m_PersistentCalls:
       m_Calls: []
   OnEventVector3:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740400005}
+        m_TargetAssemblyTypeName: UnityEngine.Transform, UnityEngine
+        m_MethodName: set_position
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnEventVector3Int:
+    m_PersistentCalls:
       m_Calls: []
+  OnEventQuaternion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1094601788}
+        m_TargetAssemblyTypeName: UnityEngine.Transform, UnityEngine
+        m_MethodName: set_localRotation
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnEventGameObject:
     m_PersistentCalls:
       m_Calls: []
   OnEventTransform:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1740400005}
+        m_TargetAssemblyTypeName: UnityEngine.Transform, UnityEngine
+        m_MethodName: LookAt
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &934649115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,7 +1306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_type: 0
   m_end: {fileID: 0}
-  m_color: {r: 0.051953103, g: 0.26467136, b: 0.16042668, a: 1}
+  m_color: {r: 0.3478813, g: 0.13242209, b: 0.3810808, a: 1}
   m_size: 1.5
   m_direction: 0
 --- !u!4 &1918620988
@@ -1236,8 +1332,8 @@ SceneRoots:
   - {fileID: 1094601788}
   - {fileID: 1160531930}
   - {fileID: 298783726}
-  - {fileID: 499923768}
   - {fileID: 1918620988}
+  - {fileID: 499923768}
   - {fileID: 1060021378}
   - {fileID: 1524091379}
   - {fileID: 427671143}
