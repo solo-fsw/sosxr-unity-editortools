@@ -41,3 +41,5 @@ Video icon [FlatIcon](https://www.flaticon.com/free-icons/recording)
 [Matrix Grid](https://www.flaticon.com/free-icons/virtual-reality-glasses)
 
 [HMD](https://www.flaticon.com/free-icons/headset)
+
+[Price tag](https://www.flaticon.com/free-icons/price)
