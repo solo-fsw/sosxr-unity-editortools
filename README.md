@@ -41,27 +41,22 @@ The ReadOnlyDrawer, BeginReadOnlyGroupDrawer, and EndReadOnlyGroupDrawer are cus
 The TagSelectorPropertyDrawer is a custom property drawer for Unity that allows you to select tags from a dropdown menu for fields marked with `[TagSelector]`. If the UseDefaultTagFieldDrawer option is enabled, it uses Unity's default tag selector. Otherwise, it generates a custom tag list, including a "<NoTag>" option, allowing the user to assign or clear tags from the property. This drawer simplifies tag selection by offering a dropdown of all available tags, ensuring that string properties can only be assigned valid tag values, which is especially useful in managing tagging systems within Unity projects.
 
 ## TimeDrawerAttribute
-
 The TimeDrawer is a custom property drawer for Unity that formats an integer value representing time (in seconds) into a human-readable format, such as hours, minutes, and seconds, for fields marked with the TimeAttribute. If the DisplayHours option in the TimeAttribute is enabled, the time is shown in a hh:mm:ss format; otherwise, it is displayed in a mm:ss format. It displays both the raw integer input field and the formatted time underneath it. If the property is not an integer, it displays an error message. This drawer is useful for managing and visualizing time-based properties in the Unity Inspector.
 
 
 ## Tools - Others
 ### AddToggleButtonInHierarchy
-
 The AddToggleButtonInHierarchy class adds a custom toggle button to the Unity Hierarchy window, allowing you to enable or disable GameObjects directly from the Hierarchy view. The toggle button appears next to each GameObject, letting you quickly change its active state. When the toggle state is changed, the script records the change using Unity's undo system and marks the scene as dirty to ensure that the change is saved. This functionality, based on a solution from Warped Imagination, streamlines the process of managing GameObject states without having to access their properties through the Inspector.
 
 ### ContextProperties
-
 The ContextProperties class enhances Unity's Inspector by adding custom context menu options for Vector3 properties. When you right-click on a Vector3 property in the Inspector, two additional menu items appear: "Zero Out" and "One". Selecting "Zero Out" sets the Vector3 property to Vector3.zero, while "One" sets it to Vector3.one. This functionality, inspired by a solution from Warped Imagination, provides a quick way to reset or set Vector3 properties to common values directly from the context menu, streamlining the process of adjusting these properties.
 
 
 ### CreateMaterialsForTextures
-
 The CreateMaterialsForTextures class is a Unity ScriptableWizard that facilitates the creation of materials for selected textures. When invoked from the Unity menu, it opens a wizard allowing users to create materials using a specified shader (defaulting to "SimpleLit"). The wizard processes selected textures in the Unity Editor's Project view, creating a new material for each texture if a material does not already exist at the same path. The script ensures that asset editing is handled properly, logging warnings if materials already exist and saving all changes at the end of the operation. This tool simplifies the batch creation of materials, streamlining the workflow for applying textures to materials.
 
 
 ### EditorGUIHelpers
-
 The EditorGUIHelpers class is an abstract base class for creating custom Unity editor windows and inspectors with improved styling and functionality. It provides methods for setting up various GUI styles, creating common editor controls like buttons, sliders, and fields, and managing inspector layouts. Key features include:
 
 - Custom Inspector Toggles: Methods for switching between default and custom inspector views.
@@ -73,7 +68,6 @@ This class is designed to streamline the creation of custom inspectors and edito
 
 
 ### GameObjectUtilityExtensions
-
 The GameObjectUtilityExtension class provides a utility function to remove missing scripts from selected GameObjects in Unity. It includes:
 
 - RemoveMissingScripts() Method: This method, accessible from the Unity editor menu under "SOSXR/DANGER/Remove Missing Scripts", iterates over the selected GameObjects and removes any components that are missing from their respective GameObjects. It logs the number of GameObjects processed.
@@ -101,3 +95,13 @@ The ReadmeShower class is a Unity editor script that displays a README file in t
 
 ### SetIconWindow
 The SetIconWindow class is a Unity editor window that allows you to set custom icons for selected GameObjects in the scene. When opened, it displays a grid of icons that can be assigned to GameObjects, allowing you to visually differentiate objects in the scene hierarchy. The window provides a simple interface for selecting and applying icons to GameObjects, enhancing the organization and visual representation of the scene contents. This tool is useful for customizing the appearance of GameObjects in the Unity Editor, making it easier to identify and manage objects within the scene. Icons need to be tagged with 'scriptIcon' to be displayed in the grid. Select all scripts you want to change the icon of, and hit Cmd+I to open the window.
+
+
+### VideoEditor
+
+
+### AudioEditor
+
+
+
+### Extended Inspectors

@@ -205,7 +205,7 @@ public class VideoEditor : MonoBehaviour
 
 
     [ContextMenu(nameof(Record))]
-    private bool Record()
+    public bool Record()
     {
         if (videoPlayer.clip == null)
         {
@@ -241,7 +241,7 @@ public class VideoEditor : MonoBehaviour
 
 
     [ContextMenu(nameof(Play))]
-    private bool Play()
+    public bool Play()
     {
         if (videoPlayer.clip == null)
         {
@@ -267,7 +267,7 @@ public class VideoEditor : MonoBehaviour
 
 
     [ContextMenu(nameof(Pause))]
-    private bool Pause()
+    public bool Pause()
     {
         if (!videoPlayer.isPlaying)
         {
@@ -283,7 +283,7 @@ public class VideoEditor : MonoBehaviour
 
 
     [ContextMenu(nameof(Stop))]
-    private bool Stop()
+    public bool Stop()
     {
         if (!videoPlayer.isPlaying)
         {
