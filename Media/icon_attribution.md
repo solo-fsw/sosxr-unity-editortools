@@ -43,3 +43,5 @@ Video icon [FlatIcon](https://www.flaticon.com/free-icons/recording)
 [HMD](https://www.flaticon.com/free-icons/headset)
 
 [Price tag](https://www.flaticon.com/free-icons/price)
+
+[Demo](https://www.flaticon.com/free-icons/demo)

@@ -17,11 +17,6 @@ namespace SOSXR.EditorTools
             // {
             //     return;
             // }
-            
-            
-            
-            
-            
 
             EditorApplication.hierarchyWindowItemOnGUI += HandleHierarchyWindowItemOnGUI;
         }
