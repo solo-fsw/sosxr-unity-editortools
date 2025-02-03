@@ -68,7 +68,7 @@ namespace SOSXR.EditorTools
                 }
 
                 editorTarget.Play();
-                 
+
                 _isPaused = false;
                 _isPlaying = true;
             }
@@ -84,7 +84,7 @@ namespace SOSXR.EditorTools
             if (GUILayout.Button("Pause", GUILayout.Width(ButtonWidth)))
             {
                 editorTarget.Pause();
-                
+
                 _isPaused = true;
                 _isPlaying = false;
             }
@@ -100,7 +100,7 @@ namespace SOSXR.EditorTools
             if (GUILayout.Button("Stop", GUILayout.Width(ButtonWidth)))
             {
                 editorTarget.Stop();
-                
+
                 _isPaused = false;
                 _isPlaying = false;
             }

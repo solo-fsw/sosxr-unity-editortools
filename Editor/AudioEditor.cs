@@ -72,7 +72,7 @@ public class AudioEditor : EditorWindow
 
             return;
         }
-        
+
         scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
 
         DrawWaveformSection();
@@ -374,7 +374,7 @@ public class AudioEditor : EditorWindow
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("", GUILayout.Width(200)); // Empty space for alignment
         EditorGUILayout.EndHorizontal();
-        
+
         EditorGUILayout.BeginHorizontal();
 
         var totalLength = FormatTime(sourceClip.length);
@@ -399,7 +399,7 @@ public class AudioEditor : EditorWindow
         EditorGUILayout.MinMaxSlider("Fade", ref fadeInDuration, ref fadeOutDuration, 0f, endTrim);
 
         loopPreview = EditorGUILayout.Toggle("Loop Preview", loopPreview);
-        
+
         if (GUI.changed)
         {
             RegenerateWaveform();

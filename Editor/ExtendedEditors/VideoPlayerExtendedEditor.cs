@@ -179,7 +179,7 @@ namespace SOSXR.EditorTools
             {
                 return;
             }
-            
+
             if (!_targetObject.isPlaying)
             {
                 return;

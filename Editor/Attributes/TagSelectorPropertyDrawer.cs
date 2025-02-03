@@ -10,7 +10,6 @@ namespace SOSXR.EditorTools
     ///     Original by DYLAN ENGELMAN http://jupiterlighthousestudio.com/custom-inspectors-unity/
     ///     Altered by Brecht Lecluyse https://www.brechtos.com
     ///     From: https://www.brechtos.com/tagselectorattribute/
-    /// 
     ///     Use the #if SOSXR_EDITORTOOLS_INSTALLED directive to enable this code in classes where it is used, but where it is
     ///     unsure if this code is included in the project.
     /// </summary>

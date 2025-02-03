@@ -389,12 +389,14 @@ namespace SOSXR.EditorTools
             serializedProperty.stringValue = EditorGUILayout.TextField(new GUIContent(serializedProperty.name, toolTip), serializedProperty.stringValue);
         }
 
+
         protected void CreateEnumField(string propertyName, Type enumType, string toolTip = "")
         {
             var serializedProperty = serializedObject.FindProperty(propertyName);
 
             serializedProperty.enumValueIndex = EditorGUILayout.Popup(new GUIContent(serializedProperty.name, toolTip), serializedProperty.enumValueIndex, Enum.GetNames(enumType));
         }
+
 
         protected void OnDisable()
         {

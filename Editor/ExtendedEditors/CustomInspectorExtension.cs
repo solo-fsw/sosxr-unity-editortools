@@ -29,7 +29,7 @@ namespace SOSXR.EditorTools
             }
 
             _moveToChildren = GUILayout.Toggle(_moveToChildren, "Move Components to Children");
-            
+
             if (ComponentCount() <= 1) // Only the Transform component is present
             {
                 return;

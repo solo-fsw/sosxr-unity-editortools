@@ -20,12 +20,12 @@ public class VideoEditorEditor : Editor
         {
             videoEditor.Play();
         }
-        
+
         if (GUILayout.Button(nameof(videoEditor.Pause)))
         {
             videoEditor.Pause();
         }
-        
+
         if (GUILayout.Button(nameof(videoEditor.Stop)))
         {
             videoEditor.Stop();

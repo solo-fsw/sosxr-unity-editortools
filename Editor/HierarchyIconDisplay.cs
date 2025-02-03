@@ -84,6 +84,7 @@ namespace SOSXR.EditorTools
             var type = component.GetType();
 
             var gameObjectIcon = EditorGUIUtility.GetIconForObject(gameObject);
+
             if (components.Length == 1 && gameObjectIcon != null)
             {
                 content = new GUIContent(gameObjectIcon) {tooltip = "GameObject Icon"};

@@ -33,9 +33,6 @@ namespace SOSXR.EditorTools
             return Cache.ContainsKey(packageName) && Cache[packageName];
         }
 
-        
-        
-        
 
         private static void OnPackagesChanged(PackageRegistrationEventArgs args)
         {
