@@ -9,14 +9,14 @@ namespace SOSXR.EditorTools
     ///     From Warped Imagination @ https://youtu.be/Rdg0PQS5OiU?si=sRTkgurRIXPfq_rv
     /// </summary>
     [InitializeOnLoad]
-    public static class AddToggleButtonInHierarchy
+    public static class HierarchyToggleButton
     {
-        static AddToggleButtonInHierarchy()
+        static HierarchyToggleButton()
         {
-            // if (PackageIsInstalled.PackageInstalled("com.browar.editor-toolbox"))
-            // {
-            //     return;
-            // }
+            if (PackageIsInstalled.PackageInstalled("com.browar.editor-toolbox"))
+            {
+                return;
+            }
 
             EditorApplication.hierarchyWindowItemOnGUI += HandleHierarchyWindowItemOnGUI;
         }

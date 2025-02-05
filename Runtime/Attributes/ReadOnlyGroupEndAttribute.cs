@@ -4,12 +4,12 @@ using UnityEngine;
 namespace SOSXR.EditorTools
 {
     /// <summary>
-    ///     Use with <see cref="BeginReadOnlyGroupAttribute" />.
+    ///     Use with <see cref="ReadOnlyGroupBeginAttribute" />.
     ///     Close the read-only group and resume editable fields.
     /// </summary>
-    /// <seealso cref="BeginReadOnlyGroupAttribute" />
+    /// <seealso cref="ReadOnlyGroupBeginAttribute" />
     /// <seealso cref="ReadOnlyAttribute" />
-    public class EndReadOnlyGroupAttribute : PropertyAttribute
+    public class ReadOnlyGroupEndAttribute : PropertyAttribute
     {
     }
 }

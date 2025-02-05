@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace SOSXR.EditorTools.Attributes
 {
-    [CustomPropertyDrawer(typeof(EndReadOnlyGroupAttribute))]
-    public class EndReadOnlyGroupDrawer : DecoratorDrawer
+    [CustomPropertyDrawer(typeof(ReadOnlyGroupEndAttribute))]
+    public class ReadOnlyGroupEndDrawer : DecoratorDrawer
     {
         public override float GetHeight()
         {
