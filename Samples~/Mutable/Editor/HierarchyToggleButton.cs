@@ -13,10 +13,12 @@ namespace SOSXR.EditorTools
     {
         static HierarchyToggleButton()
         {
+            /*
             if (PackageIsInstalled.PackageInstalled("com.browar.editor-toolbox"))
             {
                 return;
             }
+            */
 
             EditorApplication.hierarchyWindowItemOnGUI += HandleHierarchyWindowItemOnGUI;
         }

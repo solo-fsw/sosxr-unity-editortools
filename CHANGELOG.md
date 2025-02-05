@@ -7,6 +7,8 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 ### Changed
 - Names
 - Detecting that BroWar collective might be installed
+- New samples with some 'Mutable' files
+
 
 ## [2.1.0] - 2025-01-31
 ### Added
