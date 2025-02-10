@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
+## [2.2.0] - 2025-02-10
+### Added
+- [Tarodev's AutoSave](https://www.youtube.com/watch?v=q0ZDlhPs8mU)
+
+
 ## [2.1.1] - 2025-02-05
 ### Changed
 - Names

@@ -12,7 +12,7 @@ This is a collection of Editor Tools that I've found useful in my day-to-day wor
 1. Open the Unity project you want to install this package in.
 2. Open the Package Manager window.
 3. Click on the `+` button and select `Add package from git URL...`.
-4. Paste the URL of this repo into the text field and press `Add`.
+4. Paste the URL of this repo into the text field and press `Add`. Make sure it ends with `.git`.
 
 ## Tools - Attributes
 ### BoxRangeAttribute
@@ -105,3 +105,6 @@ The SetIconWindow class is a Unity editor window that allows you to set custom i
 
 
 ### Extended Inspectors
+
+
+### Tarodev's AutoSave
