@@ -6,11 +6,6 @@ namespace Tarodev
     [CreateAssetMenu(fileName = "AutoSaveConfig", menuName = "SOSXR/AutoSaveConfig")]
     public class AutoSaveConfig : ScriptableObject
     {
-        private void Awake()
-        {
-            Debug.Log("Only one of these is needed");
-        }
-
         [Tooltip("Enable auto save functionality")]
         public bool Enabled;
 
