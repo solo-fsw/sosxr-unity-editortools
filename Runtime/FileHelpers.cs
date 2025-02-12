@@ -8,7 +8,8 @@ public static class FileHelpers
 {
     /// <summary>
     ///     Returns the home directory path based on the platform.
-    ///     - Android (Runtime, not Editor): Application's external files directory (e.g., "/storage/emulated/0/Android/data/{packageName}/files")
+    ///     - Android (Runtime, not Editor): Application's external files directory (e.g.,
+    ///     "/storage/emulated/0/Android/data/{packageName}/files")
     ///     - macOS (Editor & Standalone): "/Users/{username}"
     ///     - Windows (Editor & Standalone): "C:\Users\{username}"
     ///     - Other platforms: Unsupported message.

@@ -36,7 +36,7 @@ namespace SOSXR.BuildHelpers
 
                 return;
             }
-            
+
             var lastLine = ReadLastLineOfFile(_buildInfoTextAsset.text);
 
             if (lastLine != null)

@@ -12,7 +12,7 @@ namespace SOSXR.BuildHelpers
         public string DevelopmentBuildIndicator = "d";
         public string ProductionBuildIndicator = "p";
 
-        
+
         [Header("Don't change these values")]
         public string OldSemVer;
         public string NewSemVer;

@@ -1,18 +1,12 @@
 #if UNITY_EDITOR
 using System;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using UnityEditor;
-using UnityEditor.SceneManagement;
-using UnityEditorInternal;
-using UnityEngine;
+
 
 namespace SOSXR.BuildHelpers
 {
@@ -21,14 +15,13 @@ namespace SOSXR.BuildHelpers
     /// </summary>
     public class BuildInfoManager : IPreprocessBuildWithReport
     {
+        private static BuildInfoDetails _buildInfoDetails;
         public int callbackOrder => 0;
 
-        private static BuildInfoDetails _buildInfoDetails;
-        
+
         public void OnPreprocessBuild(BuildReport report)
         {
             GetBuildInfoDetails();
-            
             ChangeVersion(true);
 
             if (report.summary.platform == BuildTarget.Android)
@@ -41,34 +34,37 @@ namespace SOSXR.BuildHelpers
         }
 
 
-
         private static void GetBuildInfoDetails()
         {
-          
-                if (_buildInfoDetails != null)
-                {
-                    return;
-                }
-
-                var path = GetAssetPath();
-
-                if (path == null)
-                {
-                    AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<BuildInfoDetails>(), $"Assets/_SOSXR/{nameof(BuildHelpers.BuildInfoDetails)}.asset");
-                    Debug.Log("A config file has been created at the root of your project.<b> You can move this anywhere you'd like.</b>");
-
-                    return;
-                }
-
-                _buildInfoDetails = AssetDatabase.LoadAssetAtPath<BuildInfoDetails>(path);
-
-             
+            if (_buildInfoDetails != null)
+            {
+                return;
             }
-        
+
+            var path = GetAssetPath();
+
+            if (path == null)
+            {
+                _buildInfoDetails = ScriptableObject.CreateInstance<BuildInfoDetails>();
+                var assetPath = "Assets/_SOSXR/BuildInfoDetails.asset";
+                AssetDatabase.CreateAsset(_buildInfoDetails, assetPath);
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+                Debug.Log($"A config file has been created at {assetPath}. You can move this anywhere you'd like.");
+            }
+            else
+            {
+                _buildInfoDetails = AssetDatabase.LoadAssetAtPath<BuildInfoDetails>(path);
+            }
+        }
+
 
         private static string GetAssetPath()
         {
-            var paths = AssetDatabase.FindAssets(nameof(_buildInfoDetails)).Select(AssetDatabase.GUIDToAssetPath).Where(c => c.EndsWith(".asset")).ToList();
+            var paths = AssetDatabase.FindAssets(nameof(BuildInfoDetails))
+                                     .Select(AssetDatabase.GUIDToAssetPath)
+                                     .Where(c => c.EndsWith(".asset"))
+                                     .ToList();
 
             if (paths.Count > 1)
             {
@@ -77,7 +73,7 @@ namespace SOSXR.BuildHelpers
 
             return paths.FirstOrDefault();
         }
-        
+
 
         public static void ChangeVersion(bool increment)
         {
