@@ -8,24 +8,23 @@ public static class FileHelpers
 {
     /// <summary>
     ///     Returns the home directory path based on the platform.
-    ///     - Android (Runtime, not Editor): Application's external files directory (e.g.,
-    ///     "/storage/emulated/0/Android/data/{packageName}/files")
+    ///     - Android (Runtime, not Editor): External storage root (incorrect implementation, missing argument)
     ///     - macOS (Editor & Standalone): "/Users/{username}"
-    ///     - Windows (Editor & Standalone): "C:\Users\{username}"
-    ///     - Other platforms: Unsupported message.
+    ///     - Windows (Editor & Standalone): "C:\\Users\\{username}"
+    ///     - Other platforms: Unsupported message
     /// </summary>
     public static string GetHomePath()
     {
         var path = "";
 
         #if UNITY_ANDROID && !UNITY_EDITOR
-        using var unityPlayer = new UnityEngine.AndroidJavaClass("com.unity3d.player.UnityPlayer");
-        using var activity = unityPlayer.GetStatic<UnityEngine.AndroidJavaObject>("currentActivity");
-        path = activity.Call<UnityEngine.AndroidJavaObject>("getExternalFilesDir", null).Call<string>("getAbsolutePath");
+        using var envClass = new UnityEngine.AndroidJavaClass("android.os.Environment");
+        using var dir = envClass.CallStatic<UnityEngine.AndroidJavaObject>("getExternalStoragePublicDirectory");
+        path = dir.Call<string>("getAbsolutePath");
         #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
-        path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+        path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
         #elif UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
-        path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+        path = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Home));
         #else
         path = "Home directory path is not supported on this platform.";
         #endif
@@ -47,8 +46,8 @@ public static class FileHelpers
 
         #if UNITY_ANDROID && !UNITY_EDITOR
         using var envClass = new UnityEngine.AndroidJavaClass("android.os.Environment");
-        using var moviesDir = envClass.CallStatic<UnityEngine.AndroidJavaObject>("getExternalStoragePublicDirectory", "Movies");
-        path = moviesDir.Call<string>("getAbsolutePath");
+        using var dir = envClass.CallStatic<UnityEngine.AndroidJavaObject>("getExternalStoragePublicDirectory", "Movies");
+        path = dir.Call<string>("getAbsolutePath");
         #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
         path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Movies");
         #elif UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
@@ -74,8 +73,8 @@ public static class FileHelpers
 
         #if UNITY_ANDROID && !UNITY_EDITOR
         using var envClass = new UnityEngine.AndroidJavaClass("android.os.Environment");
-        using var moviesDir = envClass.CallStatic<UnityEngine.AndroidJavaObject>("getExternalStoragePublicDirectory", arborVideoFolder);
-        path = moviesDir.Call<string>("getAbsolutePath");
+        using var dir = envClass.CallStatic<UnityEngine.AndroidJavaObject>("getExternalStoragePublicDirectory", arborVideoFolder);
+        path = dir.Call<string>("getAbsolutePath");
         #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
         path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), arborVideoFolder);
         #else
@@ -99,8 +98,8 @@ public static class FileHelpers
 
         #if UNITY_ANDROID && !UNITY_EDITOR
         using var envClass = new UnityEngine.AndroidJavaClass("android.os.Environment");
-        using var moviesDir = envClass.CallStatic<UnityEngine.AndroidJavaObject>("getExternalStoragePublicDirectory", "Documents");
-        path = moviesDir.Call<string>("getAbsolutePath");
+        using var dir = envClass.CallStatic<UnityEngine.AndroidJavaObject>("getExternalStoragePublicDirectory", "Documents");
+        path = dir.Call<string>("getAbsolutePath");
         #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
         path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Documents");
         #elif UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
