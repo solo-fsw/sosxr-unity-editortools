@@ -47,3 +47,5 @@ Video icon [FlatIcon](https://www.flaticon.com/free-icons/recording)
 [Demo](https://www.flaticon.com/free-icons/demo)
 
 [Very Icon](https://www.veryicon.com/icons/application/application-and-product-feature-icons/autosave.html
+
+[Build](https://www.flaticon.com/free-icons/code)

@@ -6,6 +6,7 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 ## [2.2.0] - 2025-02-10
 ### Added
 - [Tarodev's AutoSave](https://www.youtube.com/watch?v=q0ZDlhPs8mU)
+- Build Helpers 
 
 
 ## [2.1.1] - 2025-02-05

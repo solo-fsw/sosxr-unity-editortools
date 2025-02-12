@@ -7,21 +7,25 @@ using UnityEngine;
 public static class FileHelpers
 {
     /// <summary>
-    ///     NO IDEA IF THIS WORKS.
+    ///     Returns the home directory path based on the platform.
+    ///     - Android (Runtime, not Editor): Application's external files directory (e.g., "/storage/emulated/0/Android/data/{packageName}/files")
+    ///     - macOS (Editor & Standalone): "/Users/{username}"
+    ///     - Windows (Editor & Standalone): "C:\Users\{username}"
+    ///     - Other platforms: Unsupported message.
     /// </summary>
-    /// <returns></returns>
     public static string GetHomePath()
     {
         var path = "";
 
         #if UNITY_ANDROID && !UNITY_EDITOR
-        using var envClass = new UnityEngine.AndroidJavaClass("android.os.Environment");
-        using var moviesDir = envClass.CallStatic<UnityEngine.AndroidJavaObject>("getExternalStoragePublicDirectory");
-        path = moviesDir.Call<string>("getAbsolutePath");
+        using var unityPlayer = new UnityEngine.AndroidJavaClass("com.unity3d.player.UnityPlayer");
+        using var activity = unityPlayer.GetStatic<UnityEngine.AndroidJavaObject>("currentActivity");
+        path = activity.Call<UnityEngine.AndroidJavaObject>("getExternalFilesDir", null)
+                   .Call<string>("getAbsolutePath");
         #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
-        path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
+        path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
         #elif UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
-        path = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Home));
+        path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
         #else
         path = "Home directory path is not supported on this platform.";
         #endif
@@ -30,6 +34,13 @@ public static class FileHelpers
     }
 
 
+    /// <summary>
+    ///     Returns the Movies directory path based on the platform.
+    ///     - Android: "/storage/emulated/0/Movies"
+    ///     - macOS: "/Users/{username}/Movies"
+    ///     - Windows: "C:\\Users\\{username}\\Videos"
+    ///     - Other platforms: Unsupported message
+    /// </summary>
     public static string GetMoviesPath()
     {
         var path = "";
@@ -50,6 +61,12 @@ public static class FileHelpers
     }
 
 
+    /// <summary>
+    ///     Returns the ArborXR videos directory path based on the platform.
+    ///     - Android: Attempting to access "/storage/emulated/0/ArborXR/videos"
+    ///     - macOS: "/Users/{username}/ArborXR/videos"
+    ///     - Other platforms: Unsupported message
+    /// </summary>
     public static string GetArborXRPath()
     {
         var path = "";
@@ -69,6 +86,13 @@ public static class FileHelpers
     }
 
 
+    /// <summary>
+    ///     Returns the Documents directory path based on the platform.
+    ///     - Android: "/storage/emulated/0/Documents"
+    ///     - macOS: "/Users/{username}/Documents"
+    ///     - Windows: "C:\\Users\\{username}\\Documents"
+    ///     - Other platforms: Unsupported message
+    /// </summary>
     public static string GetDocumentsPath()
     {
         var path = "";
