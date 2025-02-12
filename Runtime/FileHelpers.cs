@@ -21,8 +21,7 @@ public static class FileHelpers
         #if UNITY_ANDROID && !UNITY_EDITOR
         using var unityPlayer = new UnityEngine.AndroidJavaClass("com.unity3d.player.UnityPlayer");
         using var activity = unityPlayer.GetStatic<UnityEngine.AndroidJavaObject>("currentActivity");
-        path = activity.Call<UnityEngine.AndroidJavaObject>("getExternalFilesDir", null)
-                   .Call<string>("getAbsolutePath");
+        path = activity.Call<UnityEngine.AndroidJavaObject>("getExternalFilesDir", null).Call<string>("getAbsolutePath");
         #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
         path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
         #elif UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
