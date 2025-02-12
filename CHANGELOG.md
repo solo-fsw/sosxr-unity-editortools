@@ -6,9 +6,11 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 ## [2.2.1] --- in progress
 ### Added
 - Build Info Details editorscript that shows the build info in the editor
+- PackageName to build info
 
 ### Fixed
 - Directory structure from the FileHelpers
+- BuildInfoToUI wasn't showing the correct information
 - 
 
 

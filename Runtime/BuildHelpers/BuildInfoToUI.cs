@@ -69,14 +69,15 @@ namespace SOSXR.BuildHelpers
         {
             var parts = line.Split(',');
 
-            // Assuming the format is "BuildDate,BuildTime,DevBuild,SemVer,BundleCode"
-            if (parts.Length >= 5)
+            if (parts.Length >= 7)
             {
-                var buildDate = parts[0];
-                var buildTime = parts[1];
-                var devBuild = parts[2];
-                var semVer = parts[3];
-                var bundleCode = parts[4];
+                var packageName = parts[0].Trim();
+                var unityVersion = parts[1].Trim();
+                var devBuild = parts[2].Trim();
+                var semVer = parts[3].Trim();
+                var bundleCode = parts[4].Trim();
+                var buildDate = parts[5].Trim();
+                var buildTime = parts[6].Trim();
 
                 var buildDateTime = DateTime.ParseExact($"{buildDate} {buildTime}", "yyyy-MM-dd HH:mm", null);
                 var now = DateTime.Now;
@@ -84,7 +85,9 @@ namespace SOSXR.BuildHelpers
 
                 var daysAgo = GetRelativeDateDescription(buildDateTime.Date, now.Date);
 
-                return $"DevBuild: {devBuild}\n" +
+                return $"Name: {packageName}\n" +
+                       $"Unity: {unityVersion}\n" +
+                       $"DevBuild: {devBuild}\n" +
                        $"SemVer: {semVer}\n" +
                        $"BundleCode: {bundleCode}\n" +
                        $"Build Date: {daysAgo} at {buildTime}\n" +

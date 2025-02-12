@@ -121,7 +121,7 @@ namespace SOSXR.BuildHelpers
         public static void WriteBuildInfoToFile()
         {
             var directoryPath = Path.GetDirectoryName(_buildInfoDetails.FilePath) ?? string.Empty;
-            
+
             EnsureDirectoryExists(directoryPath);
 
             if (!File.Exists(_buildInfoDetails.FilePath))
@@ -130,7 +130,7 @@ namespace SOSXR.BuildHelpers
             }
 
             AppendBuildInfoToFile();
-            
+
             Debug.Log($"SemanticVersion: Appended build information to {_buildInfoDetails.FilePath}");
         }
 
@@ -149,7 +149,7 @@ namespace SOSXR.BuildHelpers
         public static void WriteHeadersToFile()
         {
             using var sw = File.CreateText(_buildInfoDetails.FilePath);
-            sw.WriteLine("UnityVersion, ProductionBuild, SemVer, BundleCode, BuildDate, BuildTime");
+            sw.WriteLine("PackageName, UnityVersion, ProductionBuild, SemVer, BundleCode, BuildDate, BuildTime");
         }
 
 
@@ -157,6 +157,7 @@ namespace SOSXR.BuildHelpers
         {
             var buildInfo = new[]
             {
+                PlayerSettings.applicationIdentifier,
                 Application.unityVersion,
                 (!EditorUserBuildSettings.development).ToString(),
                 PlayerSettings.bundleVersion,
