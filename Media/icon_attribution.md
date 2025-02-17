@@ -49,3 +49,5 @@ Video icon [FlatIcon](https://www.flaticon.com/free-icons/recording)
 [Very Icon](https://www.veryicon.com/icons/application/application-and-product-feature-icons/autosave.html
 
 [Build](https://www.flaticon.com/free-icons/code)
+
+[Readme Icon](https://www.iconfinder.com/icons/4375055/logo_readme_icon)
