@@ -9,6 +9,7 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 - Build Info Details editorscript that shows the build info in the editor
 - PackageName to build info
 - [ReadMeHelpers v2.0.0](https://github.com/solo-fsw/sosxr-unity-readmehelpers)
+- [Markdown Viewer v1.2.1](https://github.com/solo-fsw/sosxr-unity-markdownviewer), which is a fork of [gwaredd's work](https://github.com/gwaredd/UnityMarkdownViewer)
 
 
 ### Fixed

@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2025 SOSXR
+Copyright (c) 2025 SOSXR (except for the third-party assets, see their own license files)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

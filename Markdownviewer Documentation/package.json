@@ -1,0 +1,24 @@
+{
+  "name": "com.mischief.markdownviewer",
+  "version": "1.2.1",
+  "displayName": "Unity Markdown Viewer",
+  "description": "Editor inspector for markdown files",
+  "unity": "2018.4",
+  "author": {
+    "name": "Gwaredd",
+    "email": "gwaredd@hotmail.com",
+    "url": "https://github.com/gwaredd/UnityMarkdownViewer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gwaredd/UnityMarkdownViewer.git"
+  },
+  "samples": [
+    {
+      "displayName": "Samples",
+      "description": "Contains samples of this package",
+      "path": "Samples~/Samples"
+    }
+  ],
+  "changelogUrl": "https://github.com/solo-fsw/sosxr-unity-markdownviewer/blob/main/CHANGELOG.md"
+}
