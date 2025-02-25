@@ -4,13 +4,17 @@ All notable changes to this project will be documented in this file.
 The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 
-## [2.3.0] --- in progress
+## [3.0.0] --- in progress
 ### Added
 - Build Info Details editorscript that shows the build info in the editor
 - PackageName to build info
 - [ReadMeHelpers v2.0.0](https://github.com/solo-fsw/sosxr-unity-readmehelpers)
 - [Markdown Viewer v1.2.1](https://github.com/solo-fsw/sosxr-unity-markdownviewer), which is a fork of [gwaredd's work](https://github.com/gwaredd/UnityMarkdownViewer)
 
+### Removed
+- IValidate
+- Moved Attributes to [SeaShark](https://github.com/solo-fsw/sosxr-unity-seashark)
+- Moved DrawGizmo to [SeaShark](https://github.com/solo-fsw/sosxr-unity-seashark)
 
 ### Fixed
 - Directory structure from the FileHelpers
