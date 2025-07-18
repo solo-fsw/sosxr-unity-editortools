@@ -24,6 +24,11 @@
       "displayName": "Mutable",
       "description": "Contains Spice that require some changes depending on the situation",
       "path": "Samples~/Mutable"
+    },
+    {
+      "displayName": "Unity Event Visualizer",
+      "description": "A tool to visualize UnityEvents in the editor.",
+      "path": "Samples~/UnityEventVisualizer"
     }
   ],
   "author": {

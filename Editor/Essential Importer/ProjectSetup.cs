@@ -29,10 +29,10 @@ namespace SOSXR.Setup
             Assets.ImportAsset("DOTween HOTween v2.unitypackage", "FlyingWorm/Editor ExtensionsSystem");
             Assets.ImportAsset("Missing Script Checker.unitypackage", "LLS/Editor ExtensionsSystem");
             Assets.ImportAsset("Play Mode Saver.unitypackage", "Clarky/Editor ExtensionsSystem");
-            Assets.ImportAsset("Script Inspector 3.unitypackage", "Flipbook Games/Editor ExtensionsVisual Scripting");
             Assets.ImportAsset("Colourful Hierarchy Category GameObject.unitypackage", "M STUDIO HUB/Editor ExtensionsUtilities");
             Assets.ImportAsset("Smart Editor Selection.unitypackage", "Overfort Games/Editor ExtensionsDesign");
             Assets.ImportAsset("UMotion Pro - Animation Editor.unitypackage", "Soxware Interactive/Editor ExtensionsAnimation");
+            Assets.ImportAsset("Bro Audio.unitypackage", "Ami Production/Editor ExtensionsAudio");
         }
 
 
@@ -49,19 +49,10 @@ namespace SOSXR.Setup
                 "com.unity.memoryprofiler",
                 "git+https://github.com/KyleBanks/scene-ref-attribute.git",
                 "git+https://github.com/solo-fsw/sosxr-unity-enhancedlogger.git",
-                "git+https://github.com/solo-fsw/sosxr-unity-swatchr.git",
-                "git+https://github.com/solo-fsw/sosxr-unity-additionalunityevents.git",
-                "git+https://github.com/solo-fsw/sosxr-unity-additionalgizmos.git",
-                "git+https://github.com/solo-fsw/sosxr-unity-editortools.git",
-                "git+https://github.com/solo-fsw/sosxr-unity-autosave.git",
-                "git+https://github.com/solo-fsw/sosxr-unity-buildhelpers.git",
-                "git+https://github.com/solo-fsw/sosxr-unity-extensionmethods.git",
+                "git+https://github.com/solo-fsw/sosxr-unity-plet.git",
+                "git+https://github.com/solo-fsw/sosxr-unity-editorspice.git",
                 "git+https://github.com/solo-fsw/sosxr-unity-scriptableobjectarchitecture.git",
                 "git+https://github.com/solo-fsw/sosxr-unity-timelineextensions.git",
-                "git+https://github.com/solo-fsw/sosxr-unity-readmehelpers.git",
-                "git+https://github.com/solo-fsw/sosxr-unity-markdownviewer.git",
-                "git+https://github.com/solo-fsw/sosxr-unity-ingamedebugconsole.git",
-                "git+https://github.com/solo-fsw/sosxr-unity-assetdependency.git",
                 "git+https://github.com/arimger/Unity-Editor-Toolbox.git#upm",
                 "git+https://github.com/XCharts-Team/XCharts.git",
                 "com.unity.inputsystem" // If necessary, import new Input System last as it requires a Unity Editor restart

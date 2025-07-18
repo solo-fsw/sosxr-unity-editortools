@@ -35,12 +35,17 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 - Essential Importer
 - Video Player
 - Roadmap file
+- [UnityEvent Visualizer](https://github.com/MephestoKhaan/UnityEventVisualizer?tab=readme-ov-file)
+- [Pivot Utilities](https://gist.github.com/talecrafter/519e260d93dbf236484acfe625faa1dc)
+- [Missing References finder](https://github.com/liortal53/MissingReferencesUnity)
+- 
 
 ### Removed
 
 - IValidate
 - Moved Attributes to [SeaShark](https://github.com/solo-fsw/sosxr-unity-seashark)
 - Moved DrawGizmo to [SeaShark](https://github.com/solo-fsw/sosxr-unity-seashark)
+- ASMDF of Tarodev, Markdownviewer and others
 
 ### Fixed
 
