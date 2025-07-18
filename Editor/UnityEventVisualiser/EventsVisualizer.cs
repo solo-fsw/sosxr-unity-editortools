@@ -55,7 +55,7 @@ namespace EventVisualizer.Base
                 }
                 else
                 {
-                    selectedComponents = new HashSet<Object>(GameObject.FindObjectsOfType(type));
+                    selectedComponents = new HashSet<Object>(GameObject.FindObjectsByType(type, FindObjectsInactive.Exclude, FindObjectsSortMode.None));
                 }
 
                 foreach (var caller in selectedComponents)
@@ -172,7 +172,7 @@ namespace EventVisualizer.Base
 
             TmpSearchedTypes.Clear();
 
-            Log.Static("UnityEventVisualizer Updated Components that can have UnityEvents (" + ComponentsThatCanHaveUnityEvent.Count + "). Milliseconds: " + sw.Elapsed.TotalMilliseconds, LogLevel.Verbose);
+            // Log.Static("UnityEventVisualizer Updated Components that can have UnityEvents (" + ComponentsThatCanHaveUnityEvent.Count + "). Milliseconds: " + sw.Elapsed.TotalMilliseconds, LogLevel.Verbose);
         }
 
 

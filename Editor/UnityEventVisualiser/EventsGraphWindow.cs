@@ -19,6 +19,9 @@ namespace EventVisualizer.Base
 
         private static readonly string[] toolbarStrings = {"Rebuild on selected Hierarchy", "Rebuild JUST selected", "Update connections"};
 
+        private readonly Dictionary<EventCall, Bezier> beziersToDraw = new();
+        private readonly List<EventBox> boxesToDraw = new();
+
         private Rect _zoomArea = new(0.0f, 75.0f, 600.0f, 300.0f - 100.0f);
         private float _zoom = 1f;
         private Vector2 _zoomCoordsOrigin = Vector2.zero;
@@ -31,9 +34,6 @@ namespace EventVisualizer.Base
         public SavedPrefBool showComponentName = new("EventVisualizer_showComponentName", true);
         public SavedPrefBool showTimesExecuted = new("EventVisualizer_showTimesExecuted", true);
         public SavedPrefBool eventFullName = new("EventVisualizer_eventFullName", true);
-
-        private readonly Dictionary<EventCall, Bezier> beziersToDraw = new();
-        private readonly List<EventBox> boxesToDraw = new();
 
         private const float kZoomMin = 0.1f;
         private const float kZoomMax = 1.0f;
@@ -208,14 +208,14 @@ namespace EventVisualizer.Base
 
         private void AddCallbacks()
         {
-            SceneView.onSceneGUIDelegate += OnSceneGUI;
+            SceneView.duringSceneGui += OnSceneGUI;
             EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
         }
 
 
         private void RemoveCallbacks()
         {
-            SceneView.onSceneGUIDelegate -= OnSceneGUI;
+            SceneView.duringSceneGui -= OnSceneGUI;
             EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
         }
 
