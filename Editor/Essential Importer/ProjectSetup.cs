@@ -21,23 +21,36 @@ namespace SOSXR.Setup
         [MenuItem("SOSXR/Setup/Import Essential Assets")]
         public static void ImportEssentials()
         {
-            if (!Assets.ImportAsset("DOTween Pro.unitypackage", "Demigiant/Editor ExtensionsVisual Scripting"))
+            Assets.ImportAsset("DOTween HOTween v2.unitypackage", "FlyingWorm/Editor ExtensionsSystem");
+
+            if (!Assets.ImportAsset("Mantis LOD Editor - Professional Edition.unitypackage", "Mesh Online/Editor ExtensionsModeling"))
             {
-                Assets.ImportAsset("Editor Console Pro.unitypackage", "Demigiant/Editor ExtensionsAnimation");
+                Assets.ImportAsset("Ultimate LOD System MT - Automatic LOD Generator Mesh Simplifier More.unitypackage", "MT Assets/Editor ExtensionsGame Toolkits");
             }
 
-            Assets.ImportAsset("DOTween HOTween v2.unitypackage", "FlyingWorm/Editor ExtensionsSystem");
-            Assets.ImportAsset("Missing Script Checker.unitypackage", "LLS/Editor ExtensionsSystem");
+            Assets.ImportAsset("Gridbox Prototype Materials.unitypackage", "Ciathyza/Textures Materials");
             Assets.ImportAsset("Play Mode Saver.unitypackage", "Clarky/Editor ExtensionsSystem");
+            Assets.ImportAsset("3D Measurements.unitypackage", "Energise/Editor ExtensionsSystem");
+            Assets.ImportAsset("F Texture Tools.unitypackage", "FImpossible Creations/Editor ExtensionsSystem");
+            Assets.ImportAsset("Editor Console Pro.unitypackage", "HeurekaGames/Editor ExtensionsUtilities");
+            Assets.ImportAsset("Asset Hunter PRO.unitypackage", "Demigiant/Editor ExtensionsAnimation");
+            Assets.ImportAsset("Mesh Baker.unitypackage", "Ian Deane/ScriptingModeling");
             Assets.ImportAsset("Colourful Hierarchy Category GameObject.unitypackage", "M STUDIO HUB/Editor ExtensionsUtilities");
             Assets.ImportAsset("Smart Editor Selection.unitypackage", "Overfort Games/Editor ExtensionsDesign");
             Assets.ImportAsset("UMotion Pro - Animation Editor.unitypackage", "Soxware Interactive/Editor ExtensionsAnimation");
-            Assets.ImportAsset("Bro Audio.unitypackage", "Ami Production/Editor ExtensionsAudio");
+            Assets.ImportAsset("Better Transform - Size Notes Global-Local workspace child parent transform.unitypackage", "Tiny Giant Studio/Editor ExtensionsUtilities");
+
+            #if !UNITY_MAC
+            Assets.ImportAsset("Bakery - GPU Lightmapper.unitypackage", "Mr F/Editor ExtensionsDesign");
+            #endif
         }
 
 
-        [MenuItem("SOSXR/Setup/Install Essential Packages")]
-        public static void InstallPackages()
+        /// <summary>
+        ///     Gets the latest stable packages from the SOSXR repositories, and other essential packages.
+        /// </summary>
+        [MenuItem("SOSXR/Setup/Install Essential Packages - Stable")]
+        public static void InstallStablePackages()
         {
             Packages.InstallPackages(new[]
             {
@@ -53,6 +66,33 @@ namespace SOSXR.Setup
                 "git+https://github.com/solo-fsw/sosxr-unity-editorspice.git",
                 "git+https://github.com/solo-fsw/sosxr-unity-scriptableobjectarchitecture.git",
                 "git+https://github.com/solo-fsw/sosxr-unity-timelineextensions.git",
+                "git+https://github.com/arimger/Unity-Editor-Toolbox.git#upm",
+                "git+https://github.com/XCharts-Team/XCharts.git",
+                "com.unity.inputsystem" // If necessary, import new Input System last as it requires a Unity Editor restart
+            });
+        }
+
+
+        /// <summary>
+        ///     Pulls from dev branches of SOSXR packages, and other essential packages.
+        /// </summary>
+        [MenuItem("SOSXR/Setup/Install Essential Packages - Beta")]
+        public static void InstallBetaPackages()
+        {
+            Packages.InstallPackages(new[]
+            {
+                "com.unity.ide.rider",
+                "com.unity.mobile.android-logcat",
+                "com.unity.nuget.newtonsoft-json",
+                "com.unity.cloud.gltfast",
+                "com.unity.modules.imageconversion",
+                "com.unity.memoryprofiler",
+                "git+https://github.com/KyleBanks/scene-ref-attribute.git",
+                "git+https://github.com/solo-fsw/sosxr-unity-enhancedlogger.git#dev",
+                "git+https://github.com/solo-fsw/sosxr-unity-plet.git#dev",
+                "git+https://github.com/solo-fsw/sosxr-unity-editorspice.git#dev",
+                "git+https://github.com/solo-fsw/sosxr-unity-scriptableobjectarchitecture.git#dev",
+                "git+https://github.com/solo-fsw/sosxr-unity-timelineextensions.git#dev",
                 "git+https://github.com/arimger/Unity-Editor-Toolbox.git#upm",
                 "git+https://github.com/XCharts-Team/XCharts.git",
                 "com.unity.inputsystem" // If necessary, import new Input System last as it requires a Unity Editor restart
