@@ -199,7 +199,7 @@ namespace SOSXR.Setup
 
 
         /// <summary>
-        ///     Based on Warped Imagination: https://www.youtube.com/watch?v=KFmP1Q8NySo
+        ///     Based on Warped Imagination: https://www.youtube.com/watch?v=KFmP1Q8NySod
         /// </summary>
         [MenuItem("SOSXR/Setup/Setup Default Presets")]
         private static void SetupDefaultPresetsMenuOption()

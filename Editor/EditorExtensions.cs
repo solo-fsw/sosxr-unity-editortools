@@ -1,4 +1,5 @@
 using System.IO;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
@@ -11,6 +12,17 @@ namespace SOSXR.EditorSpice
     /// </summary>
     public static class EditorExtensions
     {
+        /// <summary>
+        ///     Returns a string with spaces instead of camel case.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string ConvertCamelCaseToSpace(string input)
+        {
+            return Regex.Replace(input, "([a-z])([A-Z])", "$1 $2");
+        }
+
+
         /// <summary>
         ///     Checks if a file exists at the specified path and prompts the user for confirmation to overwrite it.
         ///     From: https://github.com/adammyhre/Unity-Utils
