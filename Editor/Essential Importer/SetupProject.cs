@@ -11,12 +11,12 @@ using static System.IO.Path;
 using static UnityEditor.AssetDatabase;
 
 
-namespace SOSXR.Setup
+namespace SOSXR.EditorSpice
 {
     /// <summary>
     ///     Based on git-amend: https://www.youtube.com/watch?v=0_ZRHT2faQw&t=77s
     /// </summary>
-    public static class ProjectSetup
+    public static class SetupProject
     {
         [MenuItem("SOSXR/Setup/Import Essential Assets")]
         public static void ImportEssentials()

@@ -7,7 +7,7 @@ using UnityEditor.Presets;
 using UnityEngine;
 
 
-namespace SOSXR.Setup
+namespace SOSXR.EditorSpice
 {
     public static class SetupPresets
     {
