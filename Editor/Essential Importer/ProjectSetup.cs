@@ -70,7 +70,7 @@ namespace SOSXR.EditorSpice
         [MenuItem("SOSXR/Setup/Create Folders", priority = 1)]
         public static void CreateFolders()
         {
-            Folders.Create("_SOSXR", "Textures & Materials", "Models", "Animation", "Prefabs", "Swatches", "Rendering", "XR", "Input", "Collected Data", "Resources");
+            Folders.Create("_SOSXR", "Textures & Materials", "Models", "Animation", "Prefabs", "Swatches", "Rendering", "XR", "Input", "Collected Data", "Resources", "Media");
 
             Refresh();
             Folders.Move("_SOSXR", "Scenes");

@@ -1,18 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenuAttribute(menuName = "UnityEventVisualizer/Scriptable Object Test")]
+
+[CreateAssetMenu(menuName = "SOSXR/UnityEventVisualizer/Scriptable Object Test")]
 public class ScriptableObjectEventTest : ScriptableObject
 {
-	public UnityEvent OnTest;
+    public UnityEvent OnTest;
 
-	public void DoTest()
-	{
-		if(OnTest != null)
-		{
-			OnTest.Invoke();
-		}
-	}
+
+    [ContextMenu(nameof(DoTest))]
+    public void DoTest()
+    {
+        OnTest?.Invoke();
+    }
 }

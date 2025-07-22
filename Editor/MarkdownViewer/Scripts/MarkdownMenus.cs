@@ -24,30 +24,5 @@ namespace MG.MDV
 
             return AssetDatabase.GenerateUniqueAssetPath(path + "/" + filename);
         }
-
-
-        [MenuItem("Assets/Create/Markdown")]
-        private static void CreateMarkdown()
-        {
-            var filepath = GetFilePath("NewMarkdown.md");
-            var writer = File.CreateText(filepath);
-
-            var template = EditorGUIUtility.Load("MarkdownTemplate.md") as TextAsset;
-
-            if (template != null)
-            {
-                writer.Write(template.text);
-            }
-            else
-            {
-                writer.Write("# Markdown\n");
-            }
-
-            writer.Close();
-
-            AssetDatabase.ImportAsset(filepath);
-
-            Selection.activeObject = AssetDatabase.LoadAssetAtPath<TextAsset>(filepath);
-        }
     }
 }
