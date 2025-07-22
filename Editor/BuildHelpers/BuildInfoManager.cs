@@ -27,7 +27,6 @@ namespace SOSXR.BuildHelpers
             if (report.summary.platform == BuildTarget.Android)
             {
                 ChangeAndroidVersion(true);
-                Debug.Log("SemanticVersion: Incremented Android Bundle Version Code");
             }
 
             WriteBuildInfoToFile();

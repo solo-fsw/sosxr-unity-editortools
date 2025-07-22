@@ -3,12 +3,20 @@
 All notable changes to this project will be documented in this file.
 The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
-## [0.3.2] In Progress
-## Fixed
-- Path in demo video 
+## [0.3.2] 22-07-2025
 
+### Added 
+- SettingsProvider
+- FlatIcon to markdown attribution fixer
 
-## [0.3.1] 02-04-2025 
+### Changed
+- Links to Essential Packages is in Project Settings now. Choose between Dev or Stable.
+
+### Fixed
+- Path in demo video
+- Unity Version "6000.0"
+
+## [0.3.1] 02-04-2025
 
 > ### Package Numbering Change
 > #### Package will now be numbered starting with 0, to better reflect the current status in development (see the official semver information [here](https://semver.org/#spec-item-4)).
@@ -33,12 +41,17 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 - Essential Importer
 - Video Player
 - Roadmap file
+- [UnityEvent Visualizer](https://github.com/MephestoKhaan/UnityEventVisualizer?tab=readme-ov-file)
+- [Pivot Utilities](https://gist.github.com/talecrafter/519e260d93dbf236484acfe625faa1dc)
+- [Missing References finder](https://github.com/liortal53/MissingReferencesUnity)
+- 
 
 ### Removed
 
 - IValidate
 - Moved Attributes to [SeaShark](https://github.com/solo-fsw/sosxr-unity-seashark)
 - Moved DrawGizmo to [SeaShark](https://github.com/solo-fsw/sosxr-unity-seashark)
+- ASMDF of Tarodev, Markdownviewer and others
 
 ### Fixed
 

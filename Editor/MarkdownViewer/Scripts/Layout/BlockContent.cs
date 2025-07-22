@@ -112,10 +112,7 @@ namespace MG.MDV
         {
             mContent.ForEach(c => c.Draw(context));
 
-            if (mPrefix != null)
-            {
-                mPrefix.Draw(context);
-            }
+            mPrefix?.Draw(context);
         }
     }
 }

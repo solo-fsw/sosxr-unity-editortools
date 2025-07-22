@@ -50,11 +50,22 @@ game.
 
 # Tools
 
+## Attribution Helper
+Paste FlatIcon HTML directly to Markdown. Right-click on a markdown file, to paste in the HTML attribution you get from FlatIcon like:
+```html
+<a href="https://www.flaticon.com/free-icons/bored" title="bored icons">Bored icons created by abdanbagus - Flaticon</a>
+```
+It is then amended at the end of the markdown file like so:
+```markdown
+- [Bored icons created by abdanbagus - Flaticon](https://www.flaticon.com/free-icons/bored "bored icons")
+```
+
 ## AudioEditor
 
 ## AudioPreview (by Warped Imagination)
 
 ## AutoSave (by Tarodev)
+Check the Project Settings to adjust the frequency of the auto save. 
 
 ## Build Helpers
 
