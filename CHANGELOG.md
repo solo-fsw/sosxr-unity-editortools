@@ -9,7 +9,6 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 - SettingsProvider
 - FlatIcon to markdown attribution fixer
 
-
 ### Fixed
 
 - Path in demo video
