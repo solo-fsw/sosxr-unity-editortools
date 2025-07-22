@@ -5,7 +5,11 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 
 ## [0.3.2] In Progress
 
-## Fixed
+### Added 
+- SettingsProvider
+
+
+### Fixed
 
 - Path in demo video
 - Unity Version "6000.0"

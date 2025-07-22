@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace SOSXR.EditorSpice
 {
-    public static class SetupPresets
+    public static class ProjectPresets
     {
         private static string[] _foldersToSearch
         {
