@@ -50,9 +50,13 @@ game.
 
 # Tools
 
+## Attribution Helper
+Paste FlatIcon HTML directly to Markdown. 
+
 ## AudioEditor
 
 ## AudioPreview (by Warped Imagination)
+
 
 ## AutoSave (by Tarodev)
 

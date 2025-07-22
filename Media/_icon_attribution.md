@@ -105,3 +105,7 @@ Quit icon [FlatIcon](https://www.flaticon.com/free-icons/logout)
 [Brain Network](https://www.flaticon.com/free-icons/brain)
 
 [Speech Bubbles](https://www.flaticon.com/free-icons/communication)
+
+- [Rebranding icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/rebranding "rebranding icons")
+
+- [Bored icons created by abdanbagus - Flaticon](https://www.flaticon.com/free-icons/bored "bored icons")
