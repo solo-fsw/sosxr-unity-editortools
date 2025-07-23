@@ -5,7 +5,7 @@ using UnityEditor.AnimatedValues;
 using UnityEngine;
 
 
-namespace SOSXR.EditorSpice
+namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
     ///     Provides extension methods for various editor functionalities.

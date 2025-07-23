@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-namespace SOSXR.EditorSpice
+namespace SOSXR.EditorSpice.EditorScripts
 {
     public static class MenuItems
     {
@@ -23,6 +23,7 @@ namespace SOSXR.EditorSpice
 
             OpenFolder(fullPath);
         }
+
 
         public static void OpenFolder(string path)
         {

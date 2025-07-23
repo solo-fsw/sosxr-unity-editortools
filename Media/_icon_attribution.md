@@ -97,8 +97,8 @@ Quit icon [FlatIcon](https://www.flaticon.com/free-icons/logout)
 [Human Icon](https://www.flaticon.com/free-icon/language_484633)
 
 [360 degree icon](https://www.flaticon.com/free-icons/vr-glasses)
- 
-[Arduino / SBC](https://www.flaticon.com/free-icons/hardware) 
+
+[Arduino / SBC](https://www.flaticon.com/free-icons/hardware)
 
 [Raspberry Pi](https://www.flaticon.com/free-icons/raspberry-pi)
 

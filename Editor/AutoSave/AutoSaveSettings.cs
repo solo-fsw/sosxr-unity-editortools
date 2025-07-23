@@ -1,4 +1,4 @@
-using SOSXR.EditorSpice;
+using SOSXR.EditorSpice.EditorScripts;
 using UnityEditor;
 using UnityEngine;
 

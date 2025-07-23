@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-namespace SOSXR.EditorSpice
+namespace SOSXR.EditorSpice.EditorScripts
 {
     // [CustomEditor(typeof(Transform), true)]
     public class CustomInspectorExtension : Editor

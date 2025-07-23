@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-namespace SOSXR.EditorSpice
+namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
     ///     Create a custom GameObject with icons for better organization. It promotes separating out different types of

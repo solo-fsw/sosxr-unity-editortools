@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using SOSXR.EnhancedLogger;
@@ -81,9 +80,15 @@ namespace Tarodev
                     continue;
                 }
 
-                EditorSceneManager.SaveOpenScenes();
-                Log.Static($"Auto-saved at {DateTime.Now:h:mm:ss tt}", LogLevel.Verbose);
+                SaveOpenScenes();
             }
+        }
+
+
+        private static void SaveOpenScenes()
+        {
+            EditorSceneManager.SaveOpenScenes();
+            Log.Static("Auto-saved the open scene(s)", LogLevel.Verbose);
         }
     }
 }

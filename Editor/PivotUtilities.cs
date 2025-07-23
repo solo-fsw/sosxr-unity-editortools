@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 // From: [talecrafter](https://gist.github.com/talecrafter/519e260d93dbf236484acfe625faa1dc)
-namespace SOSXR.EditorSpice
+namespace SOSXR.EditorSpice.EditorScripts
 {
     public static class PivotUtilities
     {

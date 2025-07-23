@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using EventVisualizer.Puppy;
-using SOSXR.EnhancedLogger;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;

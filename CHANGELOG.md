@@ -4,21 +4,28 @@ All notable changes to this project will be documented in this file.
 The changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [0.4.0] In Progress
+
 ### Added
+
 ### Changed
+
 ### Fixed
+
 ### Removed
 
 ## [0.3.2] 22-07-2025
 
-### Added 
+### Added
+
 - SettingsProvider
 - FlatIcon to markdown attribution fixer
 
 ### Changed
+
 - Links to Essential Packages is in Project Settings now. Choose between Dev or Stable.
 
 ### Fixed
+
 - Path in demo video
 - Unity Version "6000.0"
 
@@ -50,7 +57,7 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 - [UnityEvent Visualizer](https://github.com/MephestoKhaan/UnityEventVisualizer?tab=readme-ov-file)
 - [Pivot Utilities](https://gist.github.com/talecrafter/519e260d93dbf236484acfe625faa1dc)
 - [Missing References finder](https://github.com/liortal53/MissingReferencesUnity)
-- 
+-
 
 ### Removed
 

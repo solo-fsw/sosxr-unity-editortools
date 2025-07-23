@@ -4,7 +4,7 @@ using UnityEditor.PackageManager;
 using Debug = UnityEngine.Debug;
 
 
-namespace SOSXR.EditorSpice
+namespace SOSXR.EditorSpice.EditorScripts
 {
     [InitializeOnLoad]
     public static class PackageIsInstalled

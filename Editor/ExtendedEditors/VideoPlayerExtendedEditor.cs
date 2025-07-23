@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Video;
 
 
-namespace SOSXR.EditorSpice
+namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
     ///     Based on: Warped Imagination

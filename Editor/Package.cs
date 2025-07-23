@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEditor.PackageManager;
 
 
-namespace SOSXR.EditorSpice
+namespace SOSXR.EditorSpice.EditorScripts
 {
     #if UNITY_EDITOR
 

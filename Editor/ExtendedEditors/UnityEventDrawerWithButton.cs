@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-namespace SOSXR.EditorSpice
+namespace SOSXR.EditorSpice.EditorScripts
 {
     public abstract class UnityEventButtonBase : PropertyDrawer
     {

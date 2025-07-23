@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace SOSXR.EditorSpice.Samples
+namespace SOSXR.EditorSpice.EditorScripts.Samples
 {
     public class FadeBoolDemo : MonoBehaviour
     {

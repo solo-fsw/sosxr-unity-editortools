@@ -4,7 +4,7 @@ using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
 
 
-namespace SOSXR.EditorSpice
+namespace SOSXR.EditorSpice.EditorScripts
 {
     public static class MarkdownHelper
     {

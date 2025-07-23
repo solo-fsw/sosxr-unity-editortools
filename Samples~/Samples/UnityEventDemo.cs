@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-namespace SOSXR.EditorSpice.Samples
+namespace SOSXR.EditorSpice.EditorScripts.Samples
 {
     public class UnityEventDemo : MonoBehaviour
     {

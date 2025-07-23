@@ -1,11 +1,10 @@
 using System;
 using System.Linq;
-using SOSXR.EditorSpice.Helpers;
 using UnityEditor;
 using UnityEngine;
 
 
-namespace SOSXR.EditorSpice
+namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
     ///     This needs to be in an Editor folder

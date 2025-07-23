@@ -29,8 +29,8 @@ namespace EventVisualizer.Base
 
         public EventCall(Object sender, Object receiver, string eventShortName, string eventFullName, string methodName, UnityEventBase unityEvent)
         {
-            this.sender = sender as Component ? (sender as Component).gameObject : sender;
-            this.receiver = receiver as Component ? (receiver as Component).gameObject : receiver;
+            this.sender = (Component) sender ? ((Component) sender).gameObject : sender;
+            this.receiver = (Component) receiver ? ((Component) receiver).gameObject : receiver;
             this.eventShortName = eventShortName;
             this.eventFullName = eventFullName;
             method = methodName;

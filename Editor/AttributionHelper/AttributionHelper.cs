@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-namespace SOSXR.EditorSpice
+namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
     ///     This allows you to copy the HTML attribution from FlatIcon and append it to a Markdown file, in Markdown format, without losing the original data.

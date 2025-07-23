@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEditor.PackageManager;
@@ -12,7 +11,7 @@ using static System.IO.Path;
 using static UnityEditor.AssetDatabase;
 
 
-namespace SOSXR.EditorSpice
+namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
     ///     Based on git-amend: https://www.youtube.com/watch?v=0_ZRHT2faQw&t=77s
