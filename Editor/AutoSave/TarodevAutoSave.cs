@@ -1,6 +1,7 @@
+using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using SOSXR.EnhancedLogger;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEditorInternal;
@@ -9,52 +10,80 @@ using UnityEngine;
 
 namespace Tarodev
 {
-    [InitializeOnLoad]
-    public class TarodevAutoSave
+    /// <summary>
+    ///     Unity has probably discussed an auto-save feature countless times over the years
+    ///     and decided not to implement... so take that information as you'd like. I personally
+    ///     like the idea and it's worked well for me during my limited testing. If you find any bugs
+    ///     please report them on the repo: https://github.com/Matthew-J-Spencer/Unity-AutoSave
+    ///     Love your friendly neighborhood Tarodev
+    /// </summary>
+    [CustomEditor(typeof(AutoSaveConfig))]
+    public class TarodevAutoSave : Editor
     {
-        static TarodevAutoSave()
-        {
-            AssemblyReloadEvents.beforeAssemblyReload += CancelTask;
-            EditorApplication.playModeStateChanged += OnPlayModeChanged;
-            EditorApplication.update += EnsureRunning;
-        }
-
-
+        private static AutoSaveConfig _config;
         private static CancellationTokenSource _tokenSource;
         private static Task _task;
 
 
-        private static void EnsureRunning()
+        [InitializeOnLoadMethod]
+        private static void OnInitialize()
         {
-            EditorApplication.update -= EnsureRunning;
+            FetchConfig();
+            CancelTask();
 
-            if (_tokenSource == null || _tokenSource.IsCancellationRequested)
+            _tokenSource = new CancellationTokenSource();
+            _task = SaveInterval(_tokenSource.Token);
+        }
+
+
+        private static void FetchConfig()
+        {
+            while (true)
             {
-                _tokenSource = new CancellationTokenSource();
-                _task = SaveInterval(_tokenSource.Token);
+                if (_config != null)
+                {
+                    return;
+                }
+
+                var path = GetConfigPath();
+
+                if (path == null)
+                {
+                    AssetDatabase.CreateAsset(CreateInstance<AutoSaveConfig>(), $"Assets/{nameof(AutoSaveConfig)}.asset");
+                    Debug.Log("A config file has been created at the root of your project.<b> You can move this anywhere you'd like.</b>");
+
+                    continue;
+                }
+
+                _config = AssetDatabase.LoadAssetAtPath<AutoSaveConfig>(path);
+
+                break;
             }
+        }
+
+
+        private static string GetConfigPath()
+        {
+            var paths = AssetDatabase.FindAssets(nameof(AutoSaveConfig)).Select(AssetDatabase.GUIDToAssetPath).Where(c => c.EndsWith(".asset")).ToList();
+
+            if (paths.Count > 1)
+            {
+                Debug.LogWarning("Multiple auto save config assets found. Delete until you have only one.");
+            }
+
+            return paths.FirstOrDefault();
         }
 
 
         private static void CancelTask()
         {
-            _tokenSource?.Cancel();
-            _tokenSource = null;
-            _task = null;
-        }
-
-
-        private static void OnPlayModeChanged(PlayModeStateChange state)
-        {
-            if (state == PlayModeStateChange.ExitingEditMode)
+            if (_task == null)
             {
-                CancelTask();
+                return;
             }
 
-            if (state == PlayModeStateChange.EnteredEditMode)
-            {
-                EnsureRunning();
-            }
+            _tokenSource.Cancel();
+            _task.Wait();
         }
 
 
@@ -62,33 +91,48 @@ namespace Tarodev
         {
             while (!token.IsCancellationRequested)
             {
-                try
+                await Task.Delay(_config.Frequency * 1000 * 60, token);
+
+                if (_config == null)
                 {
-                    await Task.Delay(AutoSaveSettings.Frequency * 60_000, token);
-                }
-                catch (TaskCanceledException)
-                {
-                    return;
+                    FetchConfig();
                 }
 
-                if (!AutoSaveSettings.Enabled
-                    || Application.isPlaying
-                    || BuildPipeline.isBuildingPlayer
-                    || EditorApplication.isCompiling
-                    || !InternalEditorUtility.isApplicationActive)
+                if (!_config.Enabled || Application.isPlaying || BuildPipeline.isBuildingPlayer || EditorApplication.isCompiling)
                 {
                     continue;
                 }
 
-                SaveOpenScenes();
+                if (!InternalEditorUtility.isApplicationActive)
+                {
+                    continue;
+                }
+
+                EditorSceneManager.SaveOpenScenes();
+
+                if (_config.Logging)
+                {
+                    Debug.Log($"Auto-saved at {DateTime.Now:h:mm:ss tt}");
+                }
             }
         }
 
 
-        private static void SaveOpenScenes()
+        [MenuItem("SOSXR/AutoSave/Find config")]
+        public static void ShowConfig()
         {
-            EditorSceneManager.SaveOpenScenes();
-            Log.Static("Auto-saved the open scene(s)", LogLevel.Verbose);
+            FetchConfig();
+
+            var path = GetConfigPath();
+            EditorGUIUtility.PingObject(AssetDatabase.LoadAssetAtPath<AutoSaveConfig>(path).GetInstanceID());
+        }
+
+
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+            EditorGUILayout.Space();
+            EditorGUILayout.HelpBox("You can move this asset where ever you'd like.\nWith ❤, Tarodev.", MessageType.Info);
         }
     }
 }

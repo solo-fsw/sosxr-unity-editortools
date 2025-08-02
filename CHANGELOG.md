@@ -12,6 +12,7 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 ### Fixed
 
 ### Removed
+- SettingsProvider. This now has it's own package
 
 ## [0.3.2] 22-07-2025
 

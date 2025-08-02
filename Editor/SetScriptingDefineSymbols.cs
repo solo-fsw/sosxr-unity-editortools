@@ -20,7 +20,7 @@ namespace SOSXR.EditorSpice.EditorScripts
                 return;
             }
 
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, _defineSymbol);
+            PlayerSettings.SetScriptingDefineSymbols(currentBuildTarget, _defineSymbol);
 
             Log.Static($"Scripting define symbols set for {_defineSymbol}.", LogLevel.Info);
         }

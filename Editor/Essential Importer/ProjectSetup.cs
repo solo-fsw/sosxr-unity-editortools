@@ -11,7 +11,7 @@ using static System.IO.Path;
 using static UnityEditor.AssetDatabase;
 
 
-namespace SOSXR.EditorSpice.EditorScripts
+namespace SOSXR.Setup
 {
     /// <summary>
     ///     Based on git-amend: https://www.youtube.com/watch?v=0_ZRHT2faQw&t=77s
@@ -52,7 +52,24 @@ namespace SOSXR.EditorSpice.EditorScripts
         [MenuItem("SOSXR/Setup/Install Essential Packages - Stable")]
         public static void InstallStablePackages()
         {
-            Packages.InstallPackages(SetupSettings.StableRepositories);
+            Packages.InstallPackages(new[]
+            {
+                "com.unity.ide.rider",
+                "com.unity.mobile.android-logcat",
+                "com.unity.nuget.newtonsoft-json",
+                "com.unity.cloud.gltfast",
+                "com.unity.modules.imageconversion",
+                "com.unity.memoryprofiler",
+                "git+https://github.com/KyleBanks/scene-ref-attribute.git",
+                "git+https://github.com/solo-fsw/sosxr-unity-enhancedlogger.git",
+                "git+https://github.com/solo-fsw/sosxr-unity-plet.git",
+                "git+https://github.com/solo-fsw/sosxr-unity-editorspice.git",
+                "git+https://github.com/solo-fsw/sosxr-unity-scriptableobjectarchitecture.git",
+                "git+https://github.com/solo-fsw/sosxr-unity-timelineextensions.git",
+                "git+https://github.com/arimger/Unity-Editor-Toolbox.git#upm",
+                "git+https://github.com/XCharts-Team/XCharts.git",
+                "com.unity.inputsystem" // If necessary, import new Input System last as it requires a Unity Editor restart
+            });
         }
 
 
@@ -62,14 +79,31 @@ namespace SOSXR.EditorSpice.EditorScripts
         [MenuItem("SOSXR/Setup/Install Essential Packages - Beta")]
         public static void InstallBetaPackages()
         {
-            Packages.InstallPackages(SetupSettings.DevRepositories);
+            Packages.InstallPackages(new[]
+            {
+                "com.unity.ide.rider",
+                "com.unity.mobile.android-logcat",
+                "com.unity.nuget.newtonsoft-json",
+                "com.unity.cloud.gltfast",
+                "com.unity.modules.imageconversion",
+                "com.unity.memoryprofiler",
+                "git+https://github.com/KyleBanks/scene-ref-attribute.git",
+                "git+https://github.com/solo-fsw/sosxr-unity-enhancedlogger.git#dev",
+                "git+https://github.com/solo-fsw/sosxr-unity-plet.git#dev",
+                "git+https://github.com/solo-fsw/sosxr-unity-editorspice.git#dev",
+                "git+https://github.com/solo-fsw/sosxr-unity-scriptableobjectarchitecture.git#dev",
+                "git+https://github.com/solo-fsw/sosxr-unity-timelineextensions.git#dev",
+                "git+https://github.com/arimger/Unity-Editor-Toolbox.git#upm",
+                "git+https://github.com/XCharts-Team/XCharts.git",
+                "com.unity.inputsystem" // If necessary, import new Input System last as it requires a Unity Editor restart
+            });
         }
 
 
         [MenuItem("SOSXR/Setup/Create Folders", priority = 1)]
         public static void CreateFolders()
         {
-            Folders.Create("_SOSXR", "Textures & Materials", "Models", "Animation", "Prefabs", "Swatches", "Rendering", "XR", "Input", "Collected Data", "Resources", "Media");
+            Folders.Create("_SOSXR", "Textures & Materials", "Models", "Animation", "Prefabs", "Swatches", "Rendering", "XR", "Input", "Collected Data", "Resources");
 
             Refresh();
             Folders.Move("_SOSXR", "Scenes");
@@ -139,13 +173,6 @@ namespace SOSXR.EditorSpice.EditorScripts
             {
                 foreach (var package in packages)
                 {
-                    if (package.StartsWith("/"))
-                    {
-                        packagesToInstall.Enqueue("git+https://github.com" + package);
-
-                        continue;
-                    }
-
                     packagesToInstall.Enqueue(package);
                 }
 

@@ -1,57 +1,18 @@
-using SOSXR.EditorSpice.EditorScripts;
-using UnityEditor;
 using UnityEngine;
 
 
 namespace Tarodev
 {
-    [InitializeOnLoad]
-    public class AutoSaveSettings
+    [CreateAssetMenu(fileName = "AutoSaveConfig", menuName = "SOSXR/AutoSaveConfig")]
+    public class AutoSaveConfig : ScriptableObject
     {
-        static AutoSaveSettings()
-        {
-            if (_subscribed)
-            {
-                return;
-            }
+        [Tooltip("Enable auto save functionality")]
+        public bool Enabled;
 
-            ProjectSettingsProvider.OnGUIEvent += OnGUI;
-            _subscribed = true;
-        }
+        [Tooltip("The frequency in minutes auto save will activate")] [Min(1)]
+        public int Frequency = 1;
 
-
-        public static bool Enabled
-        {
-            get => EditorPrefs.GetBool(EnabledKey, true);
-            set => EditorPrefs.SetBool(EnabledKey, value);
-        }
-
-        public static int Frequency
-        {
-            get => EditorPrefs.GetInt(FrequencyKey, 1);
-            set => EditorPrefs.SetInt(FrequencyKey, Mathf.Clamp(value, 1, 60));
-        }
-
-        private const string EnabledKey = "AutoSave_Enabled";
-        private const string FrequencyKey = "AutoSave_Frequency";
-
-        private static readonly bool _subscribed;
-
-
-        private static void OnGUI()
-        {
-            GUILayout.Space(20);
-            GUILayout.Label("Tarodev's Auto Save Settings", EditorStyles.boldLabel);
-
-            Enabled = EditorGUILayout.Toggle("Enabled", Enabled);
-
-            if (Enabled)
-            {
-                GUILayout.BeginHorizontal();
-                Frequency = EditorGUILayout.IntSlider("Frequency", Frequency, 1, 60, GUILayout.Width(300));
-                GUILayout.Label("minutes", GUILayout.Width(60));
-                GUILayout.EndHorizontal();
-            }
-        }
+        [Tooltip("Log a message every time the scene is auto saved")]
+        public bool Logging;
     }
 }
