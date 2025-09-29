@@ -3,7 +3,6 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
@@ -15,7 +14,7 @@ namespace SOSXR.EditorSpice.EditorScripts
         private List<GUIContent> _cachedIconContents;
         private int _selectedIconIndex;
         private GUIStyle _iconButtonStyle;
-        private Vector2 _scrollPos = default;
+        private Vector2 _scrollPos;
         private int _iconsPerRow;
 
         private const string MENU_PATH = "SOSXR/Set Icon... _%i"; // Shortcut: Ctrl/Cmd + I
@@ -27,7 +26,7 @@ namespace SOSXR.EditorSpice.EditorScripts
         [MenuItem(MENU_PATH, priority = 0)]
         public static void ShowMenuItem()
         {
-            var window = (SetIconWindow) GetWindow(typeof(SetIconWindow));
+            var window = (SetIconWindow)GetWindow(typeof(SetIconWindow));
             window.titleContent = new GUIContent($"Icons with Label: {ICON_LABEL}");
             window.Show();
         }
@@ -71,13 +70,13 @@ namespace SOSXR.EditorSpice.EditorScripts
             }
 
             _iconTextures = AssetDatabase.FindAssets($"t:texture2D, l:{ICON_LABEL}")
-                                         .Select(AssetDatabase.GUIDToAssetPath)
-                                         .Select(AssetDatabase.LoadAssetAtPath<Texture2D>)
-                                         .ToList();
+                .Select(AssetDatabase.GUIDToAssetPath)
+                .Select(AssetDatabase.LoadAssetAtPath<Texture2D>)
+                .ToList();
 
             _cachedIconContents = _iconTextures
-                                  .Select(tex => new GUIContent(ScaleTexture(tex, ICON_WIDTH, ICON_HEIGHT)))
-                                  .ToList();
+                .Select(tex => new GUIContent(ScaleTexture(tex, ICON_WIDTH, ICON_HEIGHT)))
+                .ToList();
         }
 
 

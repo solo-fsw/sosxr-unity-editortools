@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace MG.MDV
 {
     public class BlockContent : Block
     {
-        private Content mPrefix = null;
+        private Content mPrefix;
         private readonly List<Content> mContent = new();
 
 

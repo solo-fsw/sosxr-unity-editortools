@@ -3,7 +3,6 @@ using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>

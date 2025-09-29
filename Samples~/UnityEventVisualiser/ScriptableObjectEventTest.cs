@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-
 [CreateAssetMenu(menuName = "SOSXR/UnityEventVisualizer/Scriptable Object Test")]
 public class ScriptableObjectEventTest : ScriptableObject
 {

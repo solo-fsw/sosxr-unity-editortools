@@ -29,8 +29,8 @@ namespace EventVisualizer.Base
 
         public EventCall(Object sender, Object receiver, string eventShortName, string eventFullName, string methodName, UnityEventBase unityEvent)
         {
-            this.sender = (Component) sender ? ((Component) sender).gameObject : sender;
-            this.receiver = (Component) receiver ? ((Component) receiver).gameObject : receiver;
+            this.sender = (Component)sender ? ((Component)sender).gameObject : sender;
+            this.receiver = (Component)receiver ? ((Component)receiver).gameObject : receiver;
             this.eventShortName = eventShortName;
             this.eventFullName = eventFullName;
             method = methodName;
@@ -83,8 +83,8 @@ namespace EventVisualizer.Base
                     var t0 = eventParameters[0].ParameterType;
 
                     var methodInfo = GetType()
-                                     .GetMethod("TriggerOneArg", BindingFlags.Public | BindingFlags.Instance)
-                                     .MakeGenericMethod(t0);
+                        .GetMethod("TriggerOneArg", BindingFlags.Public | BindingFlags.Instance)
+                        .MakeGenericMethod(t0);
 
                     var actionT = typeof(UnityAction<>).MakeGenericType(t0);
                     var triggerAction = Delegate.CreateDelegate(actionT, this, methodInfo);
@@ -100,8 +100,8 @@ namespace EventVisualizer.Base
                     var t1 = eventParameters[1].ParameterType;
 
                     var methodInfo = GetType()
-                                     .GetMethod("TriggerTwoArgs", BindingFlags.Public | BindingFlags.Instance)
-                                     .MakeGenericMethod(t0, t1);
+                        .GetMethod("TriggerTwoArgs", BindingFlags.Public | BindingFlags.Instance)
+                        .MakeGenericMethod(t0, t1);
 
                     var actionT = typeof(UnityAction<,>).MakeGenericType(t0, t1);
                     var triggerAction = Delegate.CreateDelegate(actionT, this, methodInfo);
@@ -118,8 +118,8 @@ namespace EventVisualizer.Base
                     var t2 = eventParameters[2].ParameterType;
 
                     var methodInfo = GetType()
-                                     .GetMethod("TriggerThreeArgs", BindingFlags.Public | BindingFlags.Instance)
-                                     .MakeGenericMethod(t0, t1, t2);
+                        .GetMethod("TriggerThreeArgs", BindingFlags.Public | BindingFlags.Instance)
+                        .MakeGenericMethod(t0, t1, t2);
 
                     var actionT = typeof(UnityAction<,,>).MakeGenericType(t0, t1, t2);
                     var triggerAction = Delegate.CreateDelegate(actionT, this, methodInfo);
@@ -137,8 +137,8 @@ namespace EventVisualizer.Base
                     var t3 = eventParameters[3].ParameterType;
 
                     var methodInfo = GetType()
-                                     .GetMethod("TriggerFourArgs", BindingFlags.Public | BindingFlags.Instance)
-                                     .MakeGenericMethod(t0, t1, t2, t3);
+                        .GetMethod("TriggerFourArgs", BindingFlags.Public | BindingFlags.Instance)
+                        .MakeGenericMethod(t0, t1, t2, t3);
 
                     var actionT = typeof(UnityAction<,,,>).MakeGenericType(t0, t1, t2, t3);
                     var triggerAction = Delegate.CreateDelegate(actionT, this, methodInfo);
@@ -171,7 +171,7 @@ namespace EventVisualizer.Base
 
         public override bool Equals(object obj)
         {
-            var ec = (EventCall) obj;
+            var ec = (EventCall)obj;
 
             return null != ec && ec.unityEvent == unityEvent && receiver == ec.receiver && method == ec.method;
         }

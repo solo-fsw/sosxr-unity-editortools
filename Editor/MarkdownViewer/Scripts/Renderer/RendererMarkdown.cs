@@ -4,7 +4,6 @@ using Markdig.Renderers;
 using Markdig.Syntax;
 using Markdig.Syntax.Inlines;
 
-
 namespace MG.MDV
 {
     ////////////////////////////////////////////////////////////////////////////////
@@ -13,13 +12,13 @@ namespace MG.MDV
     public class RendererMarkdown : RendererBase
     {
         internal LayoutBuilder Layout;
-        internal Style Style = new();
+        internal Style Style;
         internal string ToolTip = null;
 
         public bool ConsumeSpace = false;
         public bool ConsumeNewLine = false;
 
-        private string mLink = null;
+        private string mLink;
 
 
         public RendererMarkdown(LayoutBuilder doc)

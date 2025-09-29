@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace MG.MDV
 {
     public static class Utils
@@ -12,7 +11,7 @@ namespace MG.MDV
         //------------------------------------------------------------------------------
         // path combine with basic normalization (reduces '.' and '..' relative paths)
 
-        private static readonly char[] separators = {'/', '\\'};
+        private static readonly char[] separators = { '/', '\\' };
 
 
         public static string PathCombine(string _a, string _b, string separator = "/")

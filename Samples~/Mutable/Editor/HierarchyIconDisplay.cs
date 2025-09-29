@@ -3,14 +3,13 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
     ///     This needs to be in an Editor folder
     ///     From Warped Imagination: https://www.youtube.com/watch?v=EFh7tniBqkk&t=33s
     /// </summary>
-    [InitializeOnLoad] // This will call the constructor of the class when Unity starts
+    // [InitializeOnLoad] // This will call the constructor of the class when Unity starts
     public static class HierarchyIconDisplay
     {
         static HierarchyIconDisplay()
@@ -23,7 +22,7 @@ namespace SOSXR.EditorSpice.EditorScripts
         private static readonly bool IncludeScripts = true;
         private static readonly bool KeepIconsForPrefabs = false;
 
-        private static bool _hierarchyHasFocus = false;
+        private static bool _hierarchyHasFocus;
         private static EditorWindow _hierarchyEditorWindow;
 
 
@@ -86,7 +85,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
             if (components.Length == 1 && gameObjectIcon != null)
             {
-                content = new GUIContent(gameObjectIcon) {tooltip = "GameObject Icon"};
+                content = new GUIContent(gameObjectIcon) { tooltip = "GameObject Icon" };
             }
             else if (!IncludeScripts)
             {

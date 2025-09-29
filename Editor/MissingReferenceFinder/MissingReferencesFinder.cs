@@ -5,7 +5,6 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
@@ -92,7 +91,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
                             if (objRefValueMethod != null)
                             {
-                                objectReferenceStringValue = (string) objRefValueMethod.GetGetMethod(true).Invoke(sp, new object[] { });
+                                objectReferenceStringValue = (string)objRefValueMethod.GetGetMethod(true).Invoke(sp, new object[] { });
                             }
 
                             if (sp.objectReferenceValue == null
@@ -111,8 +110,8 @@ namespace SOSXR.EditorSpice.EditorScripts
         {
             // Use this method since GameObject.FindObjectsOfType will not return disabled objects.
             return Resources.FindObjectsOfTypeAll<GameObject>()
-                            .Where(go => string.IsNullOrEmpty(AssetDatabase.GetAssetPath(go))
-                                         && go.hideFlags == HideFlags.None).ToArray();
+                .Where(go => string.IsNullOrEmpty(AssetDatabase.GetAssetPath(go))
+                             && go.hideFlags == HideFlags.None).ToArray();
         }
 
 

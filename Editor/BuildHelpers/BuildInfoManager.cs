@@ -7,7 +7,6 @@ using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
 
-
 namespace SOSXR.BuildHelpers
 {
     /// <summary>
@@ -61,9 +60,9 @@ namespace SOSXR.BuildHelpers
         private static string GetAssetPath()
         {
             var paths = AssetDatabase.FindAssets(nameof(BuildInfoDetails))
-                                     .Select(AssetDatabase.GUIDToAssetPath)
-                                     .Where(c => c.EndsWith(".asset"))
-                                     .ToList();
+                .Select(AssetDatabase.GUIDToAssetPath)
+                .Where(c => c.EndsWith(".asset"))
+                .ToList();
 
             if (paths.Count > 1)
             {

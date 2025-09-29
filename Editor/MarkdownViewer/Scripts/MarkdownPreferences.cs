@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-
 namespace MG.MDV
 {
     public static class Preferences
@@ -19,7 +18,7 @@ namespace MG.MDV
         private static bool mPipedTables = true;
         private static bool mPipedTablesRequireHeaderSeparator = true;
         private static bool mStripHTML = true;
-        private static bool mPrefsLoaded = false;
+        private static bool mPrefsLoaded;
         private static bool mDarkSkin = EditorGUIUtility.isProSkin;
 
         public static string JIRA
@@ -87,7 +86,7 @@ namespace MG.MDV
         }
 
 
-        #if UNITY_2019_1_OR_NEWER
+#if UNITY_2019_1_OR_NEWER
 
 
         public class MarkownSettings : SettingsProvider
@@ -110,9 +109,9 @@ namespace MG.MDV
         {
             return new MarkownSettings("Preferences/Markdown");
         }
-        #else
+#else
         [PreferenceItem( "Markdown" )]
-        #endif
+#endif
         private static void DrawPreferences()
         {
             LoadPrefs();

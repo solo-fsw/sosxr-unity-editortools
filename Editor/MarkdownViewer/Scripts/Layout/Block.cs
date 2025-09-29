@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 
-
 namespace MG.MDV
 {
     public abstract class Block
@@ -9,7 +8,7 @@ namespace MG.MDV
         public string ID = null;
         public Rect Rect = new();
         public Block Parent = null;
-        public float Indent = 0.0f;
+        public float Indent;
 
 
         public Block(float indent)

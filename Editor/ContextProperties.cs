@@ -1,7 +1,6 @@
 using UnityEditor;
 using UnityEngine;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
@@ -9,7 +8,7 @@ namespace SOSXR.EditorSpice.EditorScripts
     /// </summary>
     public static class ContextProperties
     {
-        [InitializeOnLoadMethod]
+        // [InitializeOnLoadMethod]
         private static void Init()
         {
             EditorApplication.contextualPropertyMenu += OnPropertyContextMenu;

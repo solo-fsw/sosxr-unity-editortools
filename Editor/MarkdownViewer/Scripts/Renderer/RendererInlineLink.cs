@@ -3,7 +3,6 @@
 using Markdig.Renderers;
 using Markdig.Syntax.Inlines;
 
-
 namespace MG.MDV
 {
     ////////////////////////////////////////////////////////////////////////////////
@@ -23,7 +22,7 @@ namespace MG.MDV
             {
                 renderer.Link = url;
 
-                if (string.IsNullOrEmpty(node.Title) == false)
+                if (!string.IsNullOrEmpty(node.Title))
                 {
                     renderer.ToolTip = node.Title;
                 }

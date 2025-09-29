@@ -2,7 +2,6 @@ using UnityEditor;
 using UnityEditor.XR.Interaction.Toolkit.Interactors;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
     [CustomEditor(typeof(XRGazeInteractor))]
@@ -16,7 +15,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
         protected override void CustomInspectorContent()
         {
-            var interactor = (XRGazeInteractor) target;
+            var interactor = (XRGazeInteractor)target;
 
             XRInteractButtons.CreateHoverButtons(interactor);
 

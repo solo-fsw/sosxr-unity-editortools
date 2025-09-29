@@ -1,14 +1,13 @@
 using UnityEditor;
 using UnityEngine;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
     ///     Click the icon in the hierarchy to toggle the active state of the object
     ///     From Warped Imagination: https://youtu.be/0Wu_vz5WVck?si=GSavz27kLZC3PKzU
     /// </summary>
-    [InitializeOnLoad]
+    // [InitializeOnLoad]
     public class ToggleUsingHierarchyIcon
     {
         static ToggleUsingHierarchyIcon()

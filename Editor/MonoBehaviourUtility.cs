@@ -1,12 +1,11 @@
 using UnityEditor;
 using UnityEngine;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
     public static class MonoBehaviourUtility
     {
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         public static int GetMonoBehavioursWithMissingScriptCount(MonoBehaviour behaviour)
         {
             var serializedObject = new SerializedObject(behaviour);
@@ -19,6 +18,6 @@ namespace SOSXR.EditorSpice.EditorScripts
 
             return 0;
         }
-        #endif
+#endif
     }
 }

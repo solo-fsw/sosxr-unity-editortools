@@ -7,7 +7,6 @@ using UnityEditor.SceneManagement;
 using UnityEditorInternal;
 using UnityEngine;
 
-
 namespace Tarodev
 {
     /// <summary>
@@ -25,7 +24,7 @@ namespace Tarodev
         private static Task _task;
 
 
-        [InitializeOnLoadMethod]
+        // [InitializeOnLoadMethod]
         private static void OnInitialize()
         {
             FetchConfig();

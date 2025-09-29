@@ -3,7 +3,6 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 
-
 /// <summary>
 ///     From Simblend: https://github.com/SimblendGames/Simblend-Editor
 /// </summary>
@@ -37,7 +36,7 @@ public static class WavUtility
 
         for (var i = 0; i < data.Length; i++)
         {
-            intData[i] = (short) (data[i] * rescaleFactor);
+            intData[i] = (short)(data[i] * rescaleFactor);
             BitConverter.GetBytes(intData[i]).CopyTo(bytesData, i * sizeof(short));
         }
 
@@ -61,12 +60,12 @@ public static class WavUtility
         stream.Write(Encoding.UTF8.GetBytes("WAVE"), 0, 4);
         stream.Write(Encoding.UTF8.GetBytes("fmt "), 0, 4);
         stream.Write(BitConverter.GetBytes(16), 0, 4);
-        stream.Write(BitConverter.GetBytes((short) 1), 0, 2);
-        stream.Write(BitConverter.GetBytes((short) channels), 0, 2);
+        stream.Write(BitConverter.GetBytes((short)1), 0, 2);
+        stream.Write(BitConverter.GetBytes((short)channels), 0, 2);
         stream.Write(BitConverter.GetBytes(hz), 0, 4);
         stream.Write(BitConverter.GetBytes(hz * channels * 2), 0, 4);
-        stream.Write(BitConverter.GetBytes((short) (channels * 2)), 0, 2);
-        stream.Write(BitConverter.GetBytes((short) 16), 0, 2);
+        stream.Write(BitConverter.GetBytes((short)(channels * 2)), 0, 2);
+        stream.Write(BitConverter.GetBytes((short)16), 0, 2);
         stream.Write(Encoding.UTF8.GetBytes("data"), 0, 4);
         stream.Write(BitConverter.GetBytes(length), 0, 4);
 

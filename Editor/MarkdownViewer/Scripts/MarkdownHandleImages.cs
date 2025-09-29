@@ -7,14 +7,13 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
 
-
 namespace MG.MDV
 {
     public class HandlerImages
     {
         public string CurrentPath;
 
-        private Texture mPlaceholder = null;
+        private Texture mPlaceholder;
         private readonly List<ImageRequest> mActiveRequests = new();
         private readonly Dictionary<string, Texture> mTextureCache = new();
         private readonly List<AnimatedTexture> mAnimatedTextures = new();
@@ -82,20 +81,20 @@ namespace MG.MDV
                 return false;
             }
 
-            #if UNITY_2020_2_OR_NEWER
+#if UNITY_2020_2_OR_NEWER
             if (req.Request.result == UnityWebRequest.Result.ProtocolError)
-                #else
+#else
             if( req.Request.isHttpError )
-                #endif
+#endif
             {
                 Debug.LogError(string.Format("HTTP Error: {0} - {1} {2}", req.URL, req.Request.responseCode, req.Request.error));
                 mTextureCache[req.URL] = null;
             }
-            #if UNITY_2020_2_OR_NEWER
+#if UNITY_2020_2_OR_NEWER
             else if (req.Request.result == UnityWebRequest.Result.ConnectionError)
-                #else
+#else
             else if( req.Request.isNetworkError )
-                #endif
+#endif
             {
                 Debug.LogError(string.Format("Network Error: {0} - {1}", req.URL, req.Request.error));
                 mTextureCache[req.URL] = null;
@@ -157,8 +156,8 @@ namespace MG.MDV
         private class AnimatedTexture
         {
             public readonly string URL = string.Empty;
-            public int CurrentFrame = 0;
-            public double FrameTime = 0.0f;
+            public int CurrentFrame;
+            public double FrameTime;
             public readonly List<Texture2D> Textures = new();
             public readonly List<float> Times = new();
 

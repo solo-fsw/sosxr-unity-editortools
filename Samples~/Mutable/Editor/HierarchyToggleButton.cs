@@ -2,14 +2,13 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
     ///     From Warped Imagination @ https://youtu.be/Rdg0PQS5OiU?si=sRTkgurRIXPfq_rv
     ///     Superseded by ToggleUsingHierarchyIcon.cs, which does the same thing but with the icon instead of a toggle
     /// </summary>
-    [InitializeOnLoad]
+    // [InitializeOnLoad]
     public static class HierarchyToggleButton
     {
         static HierarchyToggleButton()

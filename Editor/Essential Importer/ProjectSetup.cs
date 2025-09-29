@@ -40,9 +40,9 @@ namespace SOSXR.Setup
             Assets.ImportAsset("UMotion Pro - Animation Editor.unitypackage", "Soxware Interactive/Editor ExtensionsAnimation");
             Assets.ImportAsset("Better Transform - Size Notes Global-Local workspace child parent transform.unitypackage", "Tiny Giant Studio/Editor ExtensionsUtilities");
 
-            #if !UNITY_MAC
+#if !UNITY_MAC
             Assets.ImportAsset("Bakery - GPU Lightmapper.unitypackage", "Mr F/Editor ExtensionsDesign");
-            #endif
+#endif
         }
 
 

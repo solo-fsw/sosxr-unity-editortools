@@ -2,13 +2,12 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
     ///     From Warped Imagination: https://www.youtube.com/watch?v=FpOAcfULmTE
     /// </summary>
-    [InitializeOnLoad]
+    // [InitializeOnLoad]
     public class HierarchyScriptDropHandler
     {
         static HierarchyScriptDropHandler()

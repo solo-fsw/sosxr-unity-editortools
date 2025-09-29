@@ -2,10 +2,9 @@ using UnityEditor;
 using UnityEditor.Build;
 using UnityEngine;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
-    [InitializeOnLoad]
+    // [InitializeOnLoad]
     public class DefineSymbolManager
     {
         static DefineSymbolManager()

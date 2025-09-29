@@ -1,7 +1,6 @@
 using System.IO;
 using UnityEngine;
 
-
 namespace SOSXR.BuildHelpers
 {
     [CreateAssetMenu(fileName = "BuildInfoDetails", menuName = "SOSXR/BuildInfoDetails")]

@@ -3,7 +3,6 @@
 using System.IO;
 using UnityEditor;
 
-
 namespace MG.MDV
 {
     public class Menus
@@ -16,7 +15,7 @@ namespace MG.MDV
             {
                 path = "Assets";
             }
-            else if (AssetDatabase.IsValidFolder(path) == false)
+            else if (!AssetDatabase.IsValidFolder(path))
             {
                 path = Path.GetDirectoryName(path);
             }

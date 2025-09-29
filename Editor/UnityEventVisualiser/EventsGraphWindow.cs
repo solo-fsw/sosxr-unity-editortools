@@ -5,19 +5,16 @@ using UnityEditor;
 using UnityEditor.Graphs;
 using UnityEngine;
 
-
 namespace EventVisualizer.Base
 {
     public class EventsGraphWindow : EditorWindow
     {
-        [SerializeField]
-        private EventsGraph _graph;
-        [SerializeField]
-        private EventsGraphGUI _graphGUI;
+        [SerializeField] private EventsGraph _graph;
+        [SerializeField] private EventsGraphGUI _graphGUI;
         public float separation = 3;
         public GUISkin guiSkin;
 
-        private static readonly string[] toolbarStrings = {"Rebuild on selected Hierarchy", "Rebuild JUST selected", "Update connections"};
+        private static readonly string[] toolbarStrings = { "Rebuild on selected Hierarchy", "Rebuild JUST selected", "Update connections" };
 
         private readonly Dictionary<EventCall, Bezier> beziersToDraw = new();
         private readonly List<EventBox> boxesToDraw = new();
@@ -27,7 +24,7 @@ namespace EventVisualizer.Base
         private Vector2 _zoomCoordsOrigin = Vector2.zero;
 
 
-        private bool initialized = false;
+        private bool initialized;
 
         public SavedPrefBool showOnlyWhenSelected = new("EventVisualizer_showOnlyWhenSelected", true);
         public SavedPrefBool showLabels = new("EventVisualizer_showLabels", true);
@@ -529,7 +526,7 @@ namespace EventVisualizer.Base
             var c = ev.color;
             var prevColor = Handles.color;
             Handles.color = c;
-            Handles.DrawBezier(p1, p2, p3, p4, c, (Texture2D) Styles.selectedConnectionTexture.image, EdgeGUI.kEdgeWidth);
+            Handles.DrawBezier(p1, p2, p3, p4, c, (Texture2D)Styles.selectedConnectionTexture.image, EdgeGUI.kEdgeWidth);
 
             foreach (var trigger in EdgeTriggersTracker.GetTimings(ev))
             {
@@ -587,7 +584,7 @@ namespace EventVisualizer.Base
             public readonly string name;
             protected readonly bool defaultValue;
             protected bool value;
-            private bool ready = false;
+            private bool ready;
 
 
             public SavedPrefBool(string name, bool defaultValue)

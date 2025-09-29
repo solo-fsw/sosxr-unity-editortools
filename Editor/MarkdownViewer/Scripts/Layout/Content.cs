@@ -2,7 +2,6 @@
 using UnityEditor;
 using UnityEngine;
 
-
 namespace MG.MDV
 {
     public abstract class Content
@@ -41,9 +40,9 @@ namespace MG.MDV
                 return;
             }
 
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             EditorGUIUtility.AddCursorRect(Location, MouseCursor.Link);
-            #endif
+#endif
 
             if (GUI.Button(Location, Payload, context.Apply(Style)))
             {

@@ -1,12 +1,11 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEditor.PackageManager;
 using Debug = UnityEngine.Debug;
 
 
 namespace SOSXR.EditorSpice.EditorScripts
 {
-    [InitializeOnLoad]
+    // [InitializeOnLoad]
     public static class PackageIsInstalled
     {
         static PackageIsInstalled()

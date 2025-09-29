@@ -3,7 +3,6 @@
 using System.Text;
 using UnityEngine;
 
-
 namespace MG.MDV
 {
     public class LayoutBuilder : IBuilder
@@ -216,7 +215,7 @@ namespace MG.MDV
         public void StartBlock(bool quoted)
         {
             Space();
-            mCurrentContainer = AddBlock(new BlockContainer(mIndent) {Highlight = true, Quoted = quoted});
+            mCurrentContainer = AddBlock(new BlockContainer(mIndent) { Highlight = true, Quoted = quoted });
             CurrentBlock = null;
         }
 
@@ -237,7 +236,7 @@ namespace MG.MDV
         public void StartTable()
         {
             Space();
-            mCurrentContainer = AddBlock(new BlockContainer(mIndent) {Quoted = false, Highlight = false});
+            mCurrentContainer = AddBlock(new BlockContainer(mIndent) { Quoted = false, Highlight = false });
             CurrentBlock = null;
         }
 
@@ -254,7 +253,7 @@ namespace MG.MDV
 
         public void StartTableRow(bool isHeader)
         {
-            mCurrentContainer = AddBlock(new BlockContainer(mIndent) {Quoted = false, Highlight = false, Horizontal = true, IsTableHeader = isHeader, IsTableRow = !isHeader});
+            mCurrentContainer = AddBlock(new BlockContainer(mIndent) { Quoted = false, Highlight = false, Horizontal = true, IsTableHeader = isHeader, IsTableRow = !isHeader });
             CurrentBlock = null;
         }
 

@@ -4,7 +4,6 @@ using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
@@ -15,7 +14,7 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         private static Assembly AudioImporterAssembly => typeof(AudioImporter).Assembly;
         private static Type AudioUtil => AudioImporterAssembly.GetType("UnityEditor.AudioUtil");
-        private static int? _lastPlayedAudioClipId = null;
+        private static int? _lastPlayedAudioClipId;
 
 
         [OnOpenAsset]
@@ -54,10 +53,10 @@ namespace SOSXR.EditorSpice.EditorScripts
                 "PlayPreviewClip",
                 BindingFlags.Static | BindingFlags.Public,
                 null,
-                new[] {typeof(AudioClip), typeof(int), typeof(bool)},
+                new[] { typeof(AudioClip), typeof(int), typeof(bool) },
                 null);
 
-            methodInfo?.Invoke(null, new object[] {audioClip, 0, false});
+            methodInfo?.Invoke(null, new object[] { audioClip, 0, false });
         }
 
 
@@ -67,7 +66,7 @@ namespace SOSXR.EditorSpice.EditorScripts
                 "IsPreviewClipPlaying",
                 BindingFlags.Static | BindingFlags.Public);
 
-            return (bool) methodInfo?.Invoke(null, null)!;
+            return (bool)methodInfo?.Invoke(null, null)!;
         }
 
 

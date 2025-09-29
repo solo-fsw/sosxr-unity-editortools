@@ -1,7 +1,6 @@
 using UnityEditor;
 using UnityEngine;
 
-
 [CustomEditor(typeof(VideoEditor))]
 public class VideoEditorEditor : Editor
 {
@@ -9,7 +8,7 @@ public class VideoEditorEditor : Editor
     {
         base.OnInspectorGUI();
 
-        var videoEditor = (VideoEditor) target;
+        var videoEditor = (VideoEditor)target;
 
         if (GUILayout.Button(nameof(videoEditor.Record)))
         {

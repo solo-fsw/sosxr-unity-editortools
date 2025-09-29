@@ -2,7 +2,6 @@ using UnityEditor;
 using UnityEditor.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
     [CustomEditor(typeof(XRGrabInteractable))]
@@ -16,7 +15,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
         protected override void CustomInspectorContent()
         {
-            var interactor = (XRBaseInteractable) target;
+            var interactor = (XRBaseInteractable)target;
 
             XRInteractButtons.CreateFirstLastHoverButtons(interactor);
 

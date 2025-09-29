@@ -36,7 +36,7 @@ namespace SOSXR.WhatUsesThis
                     dependencies[asset] = AssetDatabase.GetDependencies(asset, false);
                     i++;
 
-                    if (i % 100 == 0 && EditorUtility.DisplayCancelableProgressBar("WhatUsesThis", $"Getting Dependencies [{i}/{allAssets.Length}]", i / (float) allAssets.Length))
+                    if (i % 100 == 0 && EditorUtility.DisplayCancelableProgressBar("WhatUsesThis", $"Getting Dependencies [{i}/{allAssets.Length}]", i / (float)allAssets.Length))
                     {
                         return new Dictionary<string, List<string>>();
                     }
@@ -98,7 +98,7 @@ namespace SOSXR.WhatUsesThis
                 using var stream = new FileStream(CacheFilename, FileMode.Open);
 
                 var bin = new BinaryFormatter();
-                _dict = (Dictionary<string, List<string>>) bin.Deserialize(stream);
+                _dict = (Dictionary<string, List<string>>)bin.Deserialize(stream);
             }
             catch (Exception)
             {

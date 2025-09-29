@@ -2,7 +2,6 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
     public static class MenuItems

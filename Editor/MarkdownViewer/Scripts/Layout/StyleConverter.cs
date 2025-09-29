@@ -2,7 +2,6 @@
 
 using UnityEngine;
 
-
 namespace MG.MDV
 {
     public class StyleConverter

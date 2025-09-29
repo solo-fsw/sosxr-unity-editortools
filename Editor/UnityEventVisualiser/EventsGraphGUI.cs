@@ -3,14 +3,12 @@ using UnityEditor;
 using UnityEditor.Graphs;
 using UnityEngine;
 
-
 namespace EventVisualizer.Base
 {
     [Serializable]
     public class EventsGraphGUI : GraphGUI
     {
-        [SerializeField]
-        public int SelectionOverride;
+        [SerializeField] public int SelectionOverride;
 
         public override IEdgeGUI edgeGUI
         {
@@ -18,7 +16,7 @@ namespace EventVisualizer.Base
             {
                 if (m_EdgeGUI == null)
                 {
-                    m_EdgeGUI = new EdgeGUI {host = this};
+                    m_EdgeGUI = new EdgeGUI { host = this };
                 }
 
                 return m_EdgeGUI;
@@ -62,11 +60,11 @@ namespace EventVisualizer.Base
 
 
             // Mouse drag
-            #if UNITY_2017 || UNITY_2017_1_OR_NEWER
+#if UNITY_2017 || UNITY_2017_1_OR_NEWER
             DragSelection();
-            #else
+#else
 			DragSelection(new Rect(-5000, -5000, 10000, 10000));
-            #endif
+#endif
         }
 
 

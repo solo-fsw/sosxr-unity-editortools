@@ -2,7 +2,6 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
     // [CustomEditor(typeof(Transform), true)]
@@ -47,7 +46,7 @@ namespace SOSXR.EditorSpice.EditorScripts
                     }
 
                     var componentGameObject = new GameObject(component.GetType().Name);
-                    componentGameObject.transform.parent = ((Transform) target).transform;
+                    componentGameObject.transform.parent = ((Transform)target).transform;
 
                     // Copy the values of the component to the new GameObject
                     EditorUtility.CopySerialized(component, componentGameObject.AddComponent(component.GetType()));
@@ -62,7 +61,7 @@ namespace SOSXR.EditorSpice.EditorScripts
         private Component[] GetComponents()
         {
             // Get the components attached to the currently selected GameObject
-            return ((Transform) target).gameObject.GetComponents<Component>();
+            return ((Transform)target).gameObject.GetComponents<Component>();
         }
 
 
@@ -74,7 +73,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
         private bool IsRoot()
         {
-            return ((Transform) target).parent == null;
+            return ((Transform)target).parent == null;
         }
 
 

@@ -1,7 +1,5 @@
 fileFormatVersion: 2
-guid: 921d901304aca4511b5ba4f6f865f154
-labels:
-- ScriptIcon
+guid: 41c5ff3a446004ca9be40ebc24c1f509
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -36,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 2
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -71,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0

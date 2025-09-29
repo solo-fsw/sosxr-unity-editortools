@@ -32,7 +32,7 @@ namespace MG.GIF
             Width = img.Width;
             Height = img.Height;
             Delay = img.Delay;
-            RawImage = img.RawImage != null ? (Color32[]) img.RawImage.Clone() : null;
+            RawImage = img.RawImage != null ? (Color32[])img.RawImage.Clone() : null;
         }
 
 
@@ -60,9 +60,9 @@ namespace MG.GIF
 
     ////////////////////////////////////////////////////////////////////////////////
 
-    #if mgGIF_UNSAFE
+#if mgGIF_UNSAFE
     unsafe
-    #endif
+#endif
     public class Decoder : IDisposable
     {
         public string Version;
@@ -144,7 +144,7 @@ namespace MG.GIF
         private Color32[] Output;
         private Color32[] PreviousImage;
 
-        private readonly int[] Pow2 = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096};
+        private readonly int[] Pow2 = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096 };
 
         //------------------------------------------------------------------------------
         // ctor
@@ -188,7 +188,7 @@ namespace MG.GIF
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private ushort ReadUInt16()
         {
-            return (ushort) (Input[D++] | (Input[D++] << 8));
+            return (ushort)(Input[D++] | (Input[D++] << 8));
         }
 
 
@@ -220,7 +220,7 @@ namespace MG.GIF
             Image.Width = Width;
             Image.Height = Height;
 
-            var flags = (ImageFlag) ReadByte();
+            var flags = (ImageFlag)ReadByte();
             var bgIndex = ReadByte(); // background colour
 
             ReadByte(); // aspect ratio
@@ -250,7 +250,7 @@ namespace MG.GIF
 
             while (true)
             {
-                var block = (Block) ReadByte();
+                var block = (Block)ReadByte();
 
                 switch (block)
                 {
@@ -270,7 +270,7 @@ namespace MG.GIF
 
                     case Block.Extension:
                     {
-                        var ext = (Extension) ReadByte();
+                        var ext = (Extension)ReadByte();
 
                         if (ext == Extension.GraphicControl)
                         {
@@ -304,7 +304,7 @@ namespace MG.GIF
 
         private Color32[] ReadColourTable(Color32[] colourTable, ImageFlag flags)
         {
-            var tableSize = Pow2[(int) (flags & ImageFlag.TableSizeMask) + 1];
+            var tableSize = Pow2[(int)(flags & ImageFlag.TableSizeMask) + 1];
 
             for (var i = 0; i < tableSize; i++)
             {
@@ -343,7 +343,7 @@ namespace MG.GIF
             // read block
 
             ReadByte(); // block size (0x04)
-            var flags = (ControlFlags) ReadByte(); // flags
+            var flags = (ControlFlags)ReadByte(); // flags
             Image.Delay = ReadUInt16() * 10; // delay (1/100th -> milliseconds)
             var transparentColour = ReadByte(); // transparent colour
             ReadByte(); // terminator (0x00)
@@ -361,7 +361,7 @@ namespace MG.GIF
 
             // dispose of current image
 
-            switch ((Disposal) (flags & ControlFlags.DisposalMask))
+            switch ((Disposal)(flags & ControlFlags.DisposalMask))
             {
                 default:
                 case Disposal.None:
@@ -404,7 +404,7 @@ namespace MG.GIF
             ImageTop = ReadUInt16();
             ImageWidth = ReadUInt16();
             ImageHeight = ReadUInt16();
-            var flags = (ImageFlag) ReadByte();
+            var flags = (ImageFlag)ReadByte();
 
             // bad image if we don't have any dimensions
 
@@ -499,7 +499,7 @@ namespace MG.GIF
         //------------------------------------------------------------------------------
         // DecompressLZW()
 
-        #if mgGIF_UNSAFE
+#if mgGIF_UNSAFE
         bool        Disposed = false;
 
         int         CodesLength;
@@ -840,7 +840,7 @@ namespace MG.GIF
             }
         }
 
-        #else
+#else
 
         // dispose isn't needed for the safe implementation but keep here for interface parity
 
@@ -903,7 +903,7 @@ namespace MG.GIF
             // LZW decode loop
 
             var previousCode = NoCode; // last code processed
-            var mask = (uint) (nextSize - 1); // mask out code bits
+            var mask = (uint)(nextSize - 1); // mask out code bits
             uint shiftRegister = 0; // shift register holds the bytes coming in from the input stream, we shift down by the number of bits
 
             var bitsAvailable = 0; // number of bits available to read in the shift register
@@ -984,7 +984,7 @@ namespace MG.GIF
 
                     // clear previous code
                     previousCode = NoCode;
-                    mask = (uint) (nextSize - 1);
+                    mask = (uint)(nextSize - 1);
 
                     continue;
                 }
@@ -1081,7 +1081,7 @@ namespace MG.GIF
                     // add new code
 
                     Indices[numCodes++] = codesEnd;
-                    Codes[codesEnd++] = (ushort) (codeLength + 1);
+                    Codes[codesEnd++] = (ushort)(codeLength + 1);
 
                     // copy previous code sequence
 
@@ -1102,7 +1102,7 @@ namespace MG.GIF
                 if (numCodes >= nextSize && codeSize < 12)
                 {
                     nextSize = Pow2[++codeSize];
-                    mask = (uint) (nextSize - 1);
+                    mask = (uint)(nextSize - 1);
                 }
 
                 // remember last code processed
@@ -1112,7 +1112,7 @@ namespace MG.GIF
             // skip any remaining blocks
             SkipBlocks();
         }
-        #endif // mgGIF_UNSAFE
+#endif // mgGIF_UNSAFE
 
 
         public static string Ident()
@@ -1120,23 +1120,23 @@ namespace MG.GIF
             var v = "1.1";
             var e = BitConverter.IsLittleEndian ? "L" : "B";
 
-            #if ENABLE_IL2CPP
+#if ENABLE_IL2CPP
             var b = "N";
-            #else
+#else
             var b = "M";
-            #endif
+#endif
 
-            #if mgGIF_UNSAFE
+#if mgGIF_UNSAFE
             var s = "U";
-            #else
+#else
             var s = "S";
-            #endif
+#endif
 
-            #if NET_4_6
+#if NET_4_6
             var n = "4.x";
-            #else
+#else
             var n = "2.0";
-            #endif
+#endif
 
             return $"{v} {e}{s}{b} {n}";
         }

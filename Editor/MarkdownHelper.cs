@@ -3,7 +3,6 @@ using UnityEditor;
 using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
     public static class MarkdownHelper

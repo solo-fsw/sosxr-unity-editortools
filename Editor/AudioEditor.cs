@@ -3,7 +3,6 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
@@ -135,7 +134,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
             var previewObject = new GameObject("AudioPreview");
             previewSource = previewObject.AddComponent<AudioSource>();
-            previewSource.hideFlags = HideFlags.HideAndDontSave;
+            previewSource.hideFlags = HideFlags.HideInInspector;
         }
 
 
@@ -157,7 +156,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
             EditorGUILayout.BeginHorizontal();
             EditorGUI.BeginChangeCheck();
-            var newClip = (AudioClip) EditorGUILayout.ObjectField("Audio Clip", sourceClip, typeof(AudioClip), false);
+            var newClip = (AudioClip)EditorGUILayout.ObjectField("Audio Clip", sourceClip, typeof(AudioClip), false);
 
             if (EditorGUI.EndChangeCheck())
             {
@@ -244,7 +243,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
                 var style = new GUIStyle(EditorStyles.miniLabel)
                 {
-                    normal = {textColor = TimelineColor}
+                    normal = { textColor = TimelineColor }
                 };
 
                 GUI.Label(new Rect(x - 20, timelineRect.y + 5, 40, 15), timeStr, style);
@@ -518,11 +517,11 @@ namespace SOSXR.EditorSpice.EditorScripts
 
                 if (currentPosition < fadeInSamples)
                 {
-                    peakValue *= (float) currentPosition / fadeInSamples;
+                    peakValue *= (float)currentPosition / fadeInSamples;
                 }
                 else if (currentPosition > endSample - startSample - fadeOutSamples)
                 {
-                    peakValue *= (float) (endSample - startSample - currentPosition) / fadeOutSamples;
+                    peakValue *= (float)(endSample - startSample - currentPosition) / fadeOutSamples;
                 }
 
                 DrawWaveformLine(colors, x, peakValue);
@@ -654,14 +653,14 @@ namespace SOSXR.EditorSpice.EditorScripts
             // Fade in
             for (var i = 0; i < fadeInSamples && i < samples.Length; i++)
             {
-                samples[i] *= (float) i / fadeInSamples;
+                samples[i] *= (float)i / fadeInSamples;
             }
 
             // Fade out
             for (var i = 0; i < fadeOutSamples && i < samples.Length; i++)
             {
                 var index = samples.Length - 1 - i;
-                samples[index] *= (float) i / fadeOutSamples;
+                samples[index] *= (float)i / fadeOutSamples;
             }
         }
     }

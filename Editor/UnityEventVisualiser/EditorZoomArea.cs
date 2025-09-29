@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-
 namespace EventVisualizer.Base
 {
     public class EditorZoomArea

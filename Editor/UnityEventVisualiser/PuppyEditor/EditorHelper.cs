@@ -7,7 +7,6 @@ using System.Linq;
 using System.Reflection;
 using UnityEditor;
 
-
 namespace EventVisualizer.Puppy
 {
     public static class EditorHelper

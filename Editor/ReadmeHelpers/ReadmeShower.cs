@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-[InitializeOnLoad]
+// [InitializeOnLoad]
 public class ReadmeShower : Editor
 {
     private static readonly string kShowedReadmeSessionStateName = "ReadmeEditor.showedReadme";

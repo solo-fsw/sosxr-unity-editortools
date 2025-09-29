@@ -5,12 +5,11 @@ using Markdig.Extensions.Tables;
 using UnityEditor;
 using UnityEngine;
 
-
 namespace MG.MDV
 {
     public class MarkdownViewer
     {
-        private readonly GUISkin mSkin = null;
+        private readonly GUISkin mSkin;
         private readonly string mText = string.Empty;
         private readonly string mCurrentPath = string.Empty;
         private readonly HandlerImages mHandlerImages = new();
@@ -18,8 +17,8 @@ namespace MG.MDV
 
         private readonly Func<float> mViewWidthProvider = () => EditorGUIUtility.currentViewWidth;
 
-        private readonly Layout mLayout = null;
-        private bool mRaw = false;
+        private readonly Layout mLayout;
+        private bool mRaw;
 
 
         public MarkdownViewer(GUISkin skin, string path, string content)
@@ -161,7 +160,7 @@ namespace MG.MDV
                 mRaw = !mRaw;
             }
 
-            if (mRaw == false)
+            if (!mRaw)
             {
                 if (mHistory.CanForward)
                 {
