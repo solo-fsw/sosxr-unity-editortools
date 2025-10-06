@@ -8,6 +8,7 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 ### Added
 
 ### Changed
+- Moved AudionSourceEditor to the Mutable Sample folder, since it can conflict with [Bro Audio](https://github.com/man572142/Bro_Audio)
 
 ### Fixed
 
