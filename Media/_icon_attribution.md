@@ -109,3 +109,21 @@ Quit icon [FlatIcon](https://www.flaticon.com/free-icons/logout)
 - [Bored icons created by abdanbagus - Flaticon](https://www.flaticon.com/free-icons/bored "bored icons")
 - [Earth grid icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/earth-grid "earth grid icons")
 
+
+- [Vr glasses icons created by Dmytro Vyshnevskyi - Flaticon](https://www.flaticon.com/free-icons/vr-glasses "vr glasses icons")
+
+- [Raspberry pi icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/raspberry-pi "raspberry pi icons")
+
+- [Raspberry pi icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/raspberry-pi "raspberry pi icons")
+
+- [Raspberry pi icons created by Hopstarter - Flaticon](https://www.flaticon.com/free-icons/raspberry-pi "raspberry pi icons")
+
+- [Coding icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/coding "coding icons")
+
+- [C sharp icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/c-sharp "c sharp icons")
+
+- [Python icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/python "python icons")
+
+- [Python file icons created by Smashicons - Flaticon](https://www.flaticon.com/free-icons/python-file "python file icons")
+
+- [Hermit crab icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/hermit-crab "hermit crab icons")
