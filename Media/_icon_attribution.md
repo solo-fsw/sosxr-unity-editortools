@@ -127,3 +127,31 @@ Quit icon [FlatIcon](https://www.flaticon.com/free-icons/logout)
 - [Python file icons created by Smashicons - Flaticon](https://www.flaticon.com/free-icons/python-file "python file icons")
 
 - [Hermit crab icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/hermit-crab "hermit crab icons")
+
+- [Musical note icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/musical-note "musical note icons")
+
+- [Headphones icons created by Iconpro86 - Flaticon](https://www.flaticon.com/free-icons/headphones "headphones icons")
+
+- [Volume icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/volume "volume icons")
+
+- [Voice message icons created by Eucalyp - Flaticon](https://www.flaticon.com/free-icons/voice-message "voice message icons")
+
+- [Psychology icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/psychology "psychology icons")
+
+- [Brain icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/brain "brain icons")
+
+- [Artificial intelligence icons created by shin_icons - Flaticon](https://www.flaticon.com/free-icons/artificial-intelligence "artificial intelligence icons")
+
+- [Android icons created by Roundicons - Flaticon](https://www.flaticon.com/free-icons/android "android icons")
+
+- [Dengue icons created by paulalee - Flaticon](https://www.flaticon.com/free-icons/dengue "dengue icons")
+
+- [Usb icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/usb "usb icons")
+
+- [Access point icons created by Good Ware - Flaticon](https://www.flaticon.com/free-icons/access-point "access point icons")
+
+- [Wireless icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/wireless "wireless icons")
+
+- [Signal icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/signal "signal icons")
+
+- [Wifi connection icons created by NX Icon - Flaticon](https://www.flaticon.com/free-icons/wifi-connection "wifi connection icons")

@@ -1,23 +1,37 @@
 using System.IO;
+using SOSXR.EditorSpice.EditorScripts;
+using UnityEditor.Build.Reporting;
 using UnityEngine;
+
 
 namespace SOSXR.BuildHelpers
 {
     [CreateAssetMenu(fileName = "BuildInfoDetails", menuName = "SOSXR/BuildInfoDetails")]
     public class BuildInfoDetails : ScriptableObject
     {
+        [Tooltip("The file path to store the build info CSV file")]
         [SerializeField] private string m_filePath = "Assets/_SOSXR/Resources/build_info.csv";
 
         [Tooltip("The initial semantic version of the project, set if the semVer is not similar to this format")]
         public string InitialSemVer = "0_0_1";
 
+        [Tooltip("The indicator to append to the semVer for development builds")]
         public string DevelopmentBuildIndicator = "d";
+        [Tooltip("The indicator to append to the semVer for production builds")]
         public string ProductionBuildIndicator = "p";
 
         [HideInInspector] public string OldSemVer;
-        [HideInInspector] public string NewSemVer;
-        [HideInInspector] public int OldBundleVersionCode; // Android only
-        [HideInInspector] public int NewBundleVersionCode; // Android only
+        [HideInInspector] public int OldBundleVersionCode;
+
+        [Header("Current Build")]
+        [DisableEditing] public string SemVer;
+        [Tooltip("Android only")]
+        [DisableEditing] public int AndroidBundleVersionCode;
+
+        [Header("Previous Builds")]
+        [DisableEditing] public int TotalAttemptedBuilds;
+        [DisableEditing] public int TotalSuccessBuilds;
+        [DisableEditing] public BuildResult LastBuildResult = BuildResult.Unknown;
 
         public string FilePath
         {
@@ -35,6 +49,20 @@ namespace SOSXR.BuildHelpers
 
                 return m_filePath;
             }
+        }
+
+
+        [ContextMenu(nameof(IncreaseAttemptedBuilds))]
+        private void IncreaseAttemptedBuilds()
+        {
+            TotalAttemptedBuilds++;
+        }
+
+
+        [ContextMenu(nameof(IncreaseSuccessfulBuilds))]
+        private void IncreaseSuccessfulBuilds()
+        {
+            TotalSuccessBuilds++;
         }
     }
 }
