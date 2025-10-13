@@ -124,6 +124,18 @@ namespace SOSXR.BuildHelpers
         }
 
 
+        [MenuItem("SOSXR/Build Info/Print Build Size")]
+        private static void TestGettingSize()
+        {
+            var buildReport = BuildReport.GetLatestReport();
+
+            var fileInfo = new FileInfo(buildReport.summary.outputPath);
+            var fileSizeMB = Math.Round(fileInfo.Length / (1000f * 1000f), 1);
+
+            Debug.Log($"Build size: {fileSizeMB} MB");
+        }
+
+
         public static void WritePostBuildInfoToFile()
         {
             var buildReport = BuildReport.GetLatestReport();
