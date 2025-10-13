@@ -107,8 +107,8 @@ Quit icon [FlatIcon](https://www.flaticon.com/free-icons/logout)
 - [Rebranding icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/rebranding "rebranding icons")
 
 - [Bored icons created by abdanbagus - Flaticon](https://www.flaticon.com/free-icons/bored "bored icons")
-- [Earth grid icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/earth-grid "earth grid icons")
 
+- [Earth grid icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/earth-grid "earth grid icons")
 
 - [Vr glasses icons created by Dmytro Vyshnevskyi - Flaticon](https://www.flaticon.com/free-icons/vr-glasses "vr glasses icons")
 
