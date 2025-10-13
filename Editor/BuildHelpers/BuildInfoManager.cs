@@ -140,8 +140,13 @@ namespace SOSXR.BuildHelpers
         {
             var buildReport = BuildReport.GetLatestReport();
 
+            double fileSizeMB = -1;
             var fileInfo = new FileInfo(buildReport.summary.outputPath);
-            var fileSizeMB = Math.Round(fileInfo.Length / (1000f * 1000f), 1);
+
+            if (fileInfo.Exists)
+            {
+                fileSizeMB = Math.Round(fileInfo.Length / (1000f * 1000f), 1);
+            }
 
             if (buildReport.summary.result == BuildResult.Succeeded)
             {
