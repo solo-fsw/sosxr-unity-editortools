@@ -155,3 +155,13 @@ Quit icon [FlatIcon](https://www.flaticon.com/free-icons/logout)
 - [Signal icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/signal "signal icons")
 
 - [Wifi connection icons created by NX Icon - Flaticon](https://www.flaticon.com/free-icons/wifi-connection "wifi connection icons")
+
+- [Enumeration icons created by Three musketeers - Flaticon](https://www.flaticon.com/free-icons/enumeration "enumeration icons")
+
+- [Coding icons created by juicy_fish - Flaticon](https://www.flaticon.com/free-icons/coding "coding icons")
+
+- [Coding icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/coding "coding icons")
+
+- [Code icons created by meaicon - Flaticon](https://www.flaticon.com/free-icons/code "code icons")
+
+- [Programming language icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/programming-language "programming language icons")
