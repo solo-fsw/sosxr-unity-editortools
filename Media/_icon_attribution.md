@@ -98,8 +98,6 @@ Quit icon [FlatIcon](https://www.flaticon.com/free-icons/logout)
 
 [360 degree icon](https://www.flaticon.com/free-icons/vr-glasses)
 
-[Arduino / SBC](https://www.flaticon.com/free-icons/hardware)
-
 [Brain Network](https://www.flaticon.com/free-icons/brain)
 
 [Speech Bubbles](https://www.flaticon.com/free-icons/communication)
@@ -112,19 +110,9 @@ Quit icon [FlatIcon](https://www.flaticon.com/free-icons/logout)
 
 - [Vr glasses icons created by Dmytro Vyshnevskyi - Flaticon](https://www.flaticon.com/free-icons/vr-glasses "vr glasses icons")
 
-- [Raspberry pi icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/raspberry-pi "raspberry pi icons")
-
-- [Raspberry pi icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/raspberry-pi "raspberry pi icons")
-
-- [Raspberry pi icons created by Hopstarter - Flaticon](https://www.flaticon.com/free-icons/raspberry-pi "raspberry pi icons")
-
 - [Coding icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/coding "coding icons")
 
 - [C sharp icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/c-sharp "c sharp icons")
-
-- [Python icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/python "python icons")
-
-- [Python file icons created by Smashicons - Flaticon](https://www.flaticon.com/free-icons/python-file "python file icons")
 
 - [Hermit crab icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/hermit-crab "hermit crab icons")
 
@@ -144,18 +132,6 @@ Quit icon [FlatIcon](https://www.flaticon.com/free-icons/logout)
 
 - [Android icons created by Roundicons - Flaticon](https://www.flaticon.com/free-icons/android "android icons")
 
-- [Dengue icons created by paulalee - Flaticon](https://www.flaticon.com/free-icons/dengue "dengue icons")
-
-- [Usb icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/usb "usb icons")
-
-- [Access point icons created by Good Ware - Flaticon](https://www.flaticon.com/free-icons/access-point "access point icons")
-
-- [Wireless icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/wireless "wireless icons")
-
-- [Signal icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/signal "signal icons")
-
-- [Wifi connection icons created by NX Icon - Flaticon](https://www.flaticon.com/free-icons/wifi-connection "wifi connection icons")
-
 - [Enumeration icons created by Three musketeers - Flaticon](https://www.flaticon.com/free-icons/enumeration "enumeration icons")
 
 - [Coding icons created by juicy_fish - Flaticon](https://www.flaticon.com/free-icons/coding "coding icons")
@@ -165,3 +141,5 @@ Quit icon [FlatIcon](https://www.flaticon.com/free-icons/logout)
 - [Code icons created by meaicon - Flaticon](https://www.flaticon.com/free-icons/code "code icons")
 
 - [Programming language icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/programming-language "programming language icons")
+
+
