@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 namespace Tarodev
 {
     [CreateAssetMenu(fileName = "AutoSaveConfig", menuName = "SOSXR/AutoSaveConfig")]

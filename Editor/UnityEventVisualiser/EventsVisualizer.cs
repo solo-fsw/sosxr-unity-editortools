@@ -110,8 +110,7 @@ namespace EventVisualizer.Base
                         hasData = RecursivelyExtractEvents(calls, caller, iterator, iterator.depth);
                     }
                 }
-            }
-            while (hasData);
+            } while (hasData);
 
             return false;
         }
@@ -153,15 +152,15 @@ namespace EventVisualizer.Base
         {
             var sw = Stopwatch.StartNew();
 
-#if NET_4_6
+            #if NET_4_6
             var objects = AppDomain.CurrentDomain.GetAssemblies().Where(a => !a.IsDynamic)
-                .SelectMany(a => a.GetTypes())
-                .Where(t => typeof(Component).IsAssignableFrom(t));
-#else
+                                   .SelectMany(a => a.GetTypes())
+                                   .Where(t => typeof(Component).IsAssignableFrom(t));
+            #else
 			var objects = AppDomain.CurrentDomain.GetAssemblies()
 				.SelectMany(a => a.GetTypes())
 				.Where(t => typeof(Component).IsAssignableFrom(t));
-#endif
+            #endif
 
             foreach (var obj in objects)
             {

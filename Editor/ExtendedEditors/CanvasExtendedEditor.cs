@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
+
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
@@ -21,7 +22,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
         protected override void CustomInspectorContent()
         {
-            var canvas = (Canvas)target;
+            var canvas = (Canvas) target;
 
             if (canvas.renderMode != RenderMode.WorldSpace)
             {

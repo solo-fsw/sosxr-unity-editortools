@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEditor.AnimatedValues;
 using UnityEngine;
 
+
 namespace SOSXR.EditorSpice.EditorScripts.Samples.Editor
 {
     [CustomEditor(typeof(FadeBoolDemo))]

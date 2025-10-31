@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.PackageManager;
 
+
 namespace SOSXR.EditorSpice.EditorScripts
 {
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
 
 
     public static class Package
@@ -64,5 +65,5 @@ namespace SOSXR.EditorSpice.EditorScripts
     }
 
 
-#endif
+    #endif
 }

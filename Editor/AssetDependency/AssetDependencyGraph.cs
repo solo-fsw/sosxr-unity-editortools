@@ -50,7 +50,7 @@ namespace SOSXR.AssetDependencyGraph
 
             var options = new VisualElement
             {
-                style = { alignContent = Align.Center }
+                style = {alignContent = Align.Center}
             };
 
             toolbar.Add(options);
@@ -117,7 +117,7 @@ namespace SOSXR.AssetDependencyGraph
                 return;
             }
 
-            var groupNode = new Group { title = obj.name };
+            var groupNode = new Group {title = obj.name};
             var mainObject = AssetDatabase.LoadMainAssetAtPath(assetPath);
 
             var dependencies = AssetDatabase.GetDependencies(assetPath, false);
@@ -202,7 +202,7 @@ namespace SOSXR.AssetDependencyGraph
 
             if (m_GUIDNodeLookup.TryGetValue(assetGUID, out resultNode))
             {
-                var currentDepth = (int)resultNode.userData;
+                var currentDepth = (int) resultNode.userData;
                 resultNode.userData = currentDepth + 1;
 
                 return resultNode;
@@ -252,7 +252,7 @@ namespace SOSXR.AssetDependencyGraph
                 {
                     text = assetPath,
 
-                    style = { whiteSpace = WhiteSpace.Normal }
+                    style = {whiteSpace = WhiteSpace.Normal}
                 });
 
                 var typeName = obj.GetType().Name;
@@ -311,11 +311,11 @@ namespace SOSXR.AssetDependencyGraph
 
                 if (hasDependencies)
                 {
-#if UNITY_2018_1
+                    #if UNITY_2018_1
                 Port port = objNode.InstantiatePort(Orientation.Horizontal, Direction.Output, typeof(Object));
-#else
+                    #else
                     var port = objNode.InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(Object));
-#endif
+                    #endif
                     port.portName = "Dependencies";
                     objNode.outputContainer.Add(port);
                     objNode.RefreshPorts();
@@ -337,7 +337,7 @@ namespace SOSXR.AssetDependencyGraph
 
         private static void AddDivider(Node objNode)
         {
-            var divider = new VisualElement { name = "divider" };
+            var divider = new VisualElement {name = "divider"};
             divider.AddToClassList("horizontal");
             objNode.extensionContainer.Add(divider);
         }
@@ -371,7 +371,7 @@ namespace SOSXR.AssetDependencyGraph
 
             foreach (var node in m_DependenciesForPlacement)
             {
-                var depth = (int)node.userData;
+                var depth = (int) node.userData;
 
                 if (!depthYOffset.ContainsKey(depth))
                 {
@@ -397,7 +397,7 @@ namespace SOSXR.AssetDependencyGraph
 
             foreach (var node in m_DependenciesForPlacement)
             {
-                var depth = (int)node.userData;
+                var depth = (int) node.userData;
                 node.SetPosition(new Rect(kNodeWidth * 1.5f * depth, depthYOffset[depth], 0, 0));
                 depthYOffset[depth] += node.layout.height;
             }

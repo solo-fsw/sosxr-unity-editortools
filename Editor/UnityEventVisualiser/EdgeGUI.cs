@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEditor.Graphs;
 using UnityEngine;
 
+
 namespace EventVisualizer.Base
 {
     // Specialized edge drawer class
@@ -103,7 +104,7 @@ namespace EventVisualizer.Base
         {
             var hash = Math.Abs(Animator.StringToHash(name));
 
-            return Color.HSVToRGB((float)(hash / (double)int.MaxValue), 1f, 1f);
+            return Color.HSVToRGB((float) (hash / (double) int.MaxValue), 1f, 1f);
         }
 
 
@@ -168,7 +169,7 @@ namespace EventVisualizer.Base
             var l = Mathf.Min(Mathf.Abs(p1.y - p2.y), 50);
             var p3 = p1 + new Vector2(l, 0);
             var p4 = p2 - new Vector2(l, 0);
-            var texture = (Texture2D)Styles.selectedConnectionTexture.image;
+            var texture = (Texture2D) Styles.selectedConnectionTexture.image;
             Handles.DrawBezier(p1, p2, p3, p4, color, texture, kEdgeWidth);
 
 

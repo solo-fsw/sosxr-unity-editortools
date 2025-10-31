@@ -6,6 +6,7 @@ using UnityEditor.ShortcutManagement;
 using UnityEditorInternal;
 using UnityEngine;
 
+
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
@@ -54,12 +55,12 @@ namespace SOSXR.EditorSpice.EditorScripts
 
             if (windowLayoutType != null)
             {
-                var tryLoadWindowLayoutMethod = windowLayoutType.GetMethod("LoadWindowLayout", BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(string), typeof(bool) }, null);
+                var tryLoadWindowLayoutMethod = windowLayoutType.GetMethod("LoadWindowLayout", BindingFlags.Public | BindingFlags.Static, null, new[] {typeof(string), typeof(bool)}, null);
 
                 if (tryLoadWindowLayoutMethod != null)
                 {
-                    object[] arguments = { path, false };
-                    var result = (bool)tryLoadWindowLayoutMethod.Invoke(null, arguments);
+                    object[] arguments = {path, false};
+                    var result = (bool) tryLoadWindowLayoutMethod.Invoke(null, arguments);
 
                     return result;
                 }

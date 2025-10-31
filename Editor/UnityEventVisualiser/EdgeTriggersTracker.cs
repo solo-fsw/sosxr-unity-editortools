@@ -2,6 +2,7 @@
 using UnityEditor.Graphs;
 using UnityEngine;
 
+
 namespace EventVisualizer.Base
 {
     public static class EdgeTriggersTracker
@@ -12,7 +13,7 @@ namespace EventVisualizer.Base
 
         public static void RegisterTrigger(Edge edge, EventCall eventCall)
         {
-            triggers.Add(new EdgeTrigger { edge = edge, eventCall = eventCall, triggeredTime = Time.unscaledTime });
+            triggers.Add(new EdgeTrigger {edge = edge, eventCall = eventCall, triggeredTime = Time.unscaledTime});
         }
 
 

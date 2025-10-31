@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
+
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
@@ -85,7 +86,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
             if (components.Length == 1 && gameObjectIcon != null)
             {
-                content = new GUIContent(gameObjectIcon) { tooltip = "GameObject Icon" };
+                content = new GUIContent(gameObjectIcon) {tooltip = "GameObject Icon"};
             }
             else if (!IncludeScripts)
             {

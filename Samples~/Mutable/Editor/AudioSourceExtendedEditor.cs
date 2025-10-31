@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
+
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
@@ -23,7 +24,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
         protected override void CustomInspectorContent()
         {
-            var targetObject = (AudioSource)target;
+            var targetObject = (AudioSource) target;
 
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();

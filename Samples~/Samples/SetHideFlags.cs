@@ -1,6 +1,7 @@
 using SOSXR.EnhancedLogger;
 using UnityEngine;
 
+
 namespace SOSXR
 {
     public class SetHideFlags : MonoBehaviour

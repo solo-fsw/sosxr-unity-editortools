@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Video;
 
+
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
@@ -36,7 +37,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
         protected override void CustomInspectorContent()
         {
-            _targetObject = (VideoPlayer)target;
+            _targetObject = (VideoPlayer) target;
 
             if (_targetObject.clip == null)
             {
@@ -48,7 +49,7 @@ namespace SOSXR.EditorSpice.EditorScripts
                 _videoClip = _targetObject.clip;
                 _startTrim = 0;
                 _currentTime = 0;
-                _endTrim = (float)_videoClip.length;
+                _endTrim = (float) _videoClip.length;
             }
 
             if (!Mathf.Approximately(_savedStartTime, _startTrim))
@@ -116,13 +117,13 @@ namespace SOSXR.EditorSpice.EditorScripts
 
             EditorGUILayout.BeginHorizontal();
 
-            var totalLength = FormatTime((float)_targetObject.clip.length);
+            var totalLength = FormatTime((float) _targetObject.clip.length);
             EditorGUILayout.LabelField($"Original Duration: {totalLength}", GUILayout.Width(200));
             EditorGUILayout.LabelField($"Trim Range: {FormatTime(_startTrim)} - {FormatTime(_endTrim)}", GUILayout.Width(200));
 
             if (_targetObject.isPlaying)
             {
-                _currentTime = (float)Math.Round(_targetObject.time - _startTrim, 2, MidpointRounding.AwayFromZero);
+                _currentTime = (float) Math.Round(_targetObject.time - _startTrim, 2, MidpointRounding.AwayFromZero);
             }
 
             EditorGUILayout.LabelField($"Current Time: {FormatTime(_currentTime)}", GUILayout.Width(200));
@@ -148,7 +149,7 @@ namespace SOSXR.EditorSpice.EditorScripts
         {
             EditorGUILayout.Space();
 
-            EditorGUILayout.MinMaxSlider("Trim", ref _startTrim, ref _endTrim, 0f, (float)_targetObject.clip.length);
+            EditorGUILayout.MinMaxSlider("Trim", ref _startTrim, ref _endTrim, 0f, (float) _targetObject.clip.length);
         }
 
 

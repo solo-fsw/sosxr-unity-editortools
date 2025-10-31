@@ -2,6 +2,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
+
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
@@ -115,7 +116,7 @@ namespace SOSXR.EditorSpice.EditorScripts
                 fontSize = 15,
                 fontStyle = FontStyle.Bold,
                 alignment = TextAnchor.MiddleCenter,
-                normal = { textColor = Color.white }
+                normal = {textColor = Color.white}
             };
 
             GUILayout.Label("SOSXR Tools", HeaderStyle);

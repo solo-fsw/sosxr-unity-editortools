@@ -4,6 +4,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
+
 namespace MG.MDV
 {
     [CustomEditor(typeof(TextAsset))]
@@ -12,7 +13,7 @@ namespace MG.MDV
         public GUISkin SkinLight;
         public GUISkin SkinDark;
 
-        private static readonly List<string> mExtensions = new() { ".md", ".markdown" };
+        private static readonly List<string> mExtensions = new() {".md", ".markdown"};
 
         private MarkdownViewer mViewer;
 
@@ -67,19 +68,19 @@ namespace MG.MDV
 
         protected override void OnHeaderGUI()
         {
-#if UNITY_2019_2_OR_NEWER && !UNITY_2020_1_OR_NEWER
+            #if UNITY_2019_2_OR_NEWER && !UNITY_2020_1_OR_NEWER
             // TODO: workaround for bug in 2019.2
             // https://forum.unity.com/threads/oninspectorgui-not-being-called-on-defaultasset-in-2019-2-0f1.724328/
             DrawEditor();
-#endif
+            #endif
         }
 
 
         public override void OnInspectorGUI()
         {
-#if !UNITY_2019_2_OR_NEWER || UNITY_2020_1_OR_NEWER
+            #if !UNITY_2019_2_OR_NEWER || UNITY_2020_1_OR_NEWER
             DrawEditor();
-#endif
+            #endif
         }
 
 

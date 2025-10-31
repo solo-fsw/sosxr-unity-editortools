@@ -2,6 +2,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
+
 namespace SOSXR.BuildHelpers
 {
     [CustomEditor(typeof(BuildInfoDetails), true)]
@@ -9,7 +10,7 @@ namespace SOSXR.BuildHelpers
     {
         public override void OnInspectorGUI()
         {
-            var buildInfoDetails = (BuildInfoDetails)target;
+            var buildInfoDetails = (BuildInfoDetails) target;
 
             base.OnInspectorGUI();
 

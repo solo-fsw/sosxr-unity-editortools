@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEditor.Graphs;
 using UnityEngine;
 
+
 namespace EventVisualizer.Base
 {
     public class EventsGraphWindow : EditorWindow
@@ -14,7 +15,7 @@ namespace EventVisualizer.Base
         public float separation = 3;
         public GUISkin guiSkin;
 
-        private static readonly string[] toolbarStrings = { "Rebuild on selected Hierarchy", "Rebuild JUST selected", "Update connections" };
+        private static readonly string[] toolbarStrings = {"Rebuild on selected Hierarchy", "Rebuild JUST selected", "Update connections"};
 
         private readonly Dictionary<EventCall, Bezier> beziersToDraw = new();
         private readonly List<EventBox> boxesToDraw = new();
@@ -526,7 +527,7 @@ namespace EventVisualizer.Base
             var c = ev.color;
             var prevColor = Handles.color;
             Handles.color = c;
-            Handles.DrawBezier(p1, p2, p3, p4, c, (Texture2D)Styles.selectedConnectionTexture.image, EdgeGUI.kEdgeWidth);
+            Handles.DrawBezier(p1, p2, p3, p4, c, (Texture2D) Styles.selectedConnectionTexture.image, EdgeGUI.kEdgeWidth);
 
             foreach (var trigger in EdgeTriggersTracker.GetTimings(ev))
             {

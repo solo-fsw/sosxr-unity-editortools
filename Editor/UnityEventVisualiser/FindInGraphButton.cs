@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 
+
 namespace EventVisualizer.Base
 {
     public static class FindInGraphButton
@@ -20,7 +21,7 @@ namespace EventVisualizer.Base
         private static void GraphSelection()
         {
             var window = EditorWindow.GetWindow<EventsGraphWindow>();
-            window.RebuildGraph(new[] { Selection.activeGameObject }, false);
+            window.RebuildGraph(new[] {Selection.activeGameObject}, false);
         }
 
 
@@ -28,7 +29,7 @@ namespace EventVisualizer.Base
         private static void GraphSelectionHierarchy()
         {
             var window = EditorWindow.GetWindow<EventsGraphWindow>();
-            window.RebuildGraph(new[] { Selection.activeGameObject }, true);
+            window.RebuildGraph(new[] {Selection.activeGameObject}, true);
         }
     }
 }

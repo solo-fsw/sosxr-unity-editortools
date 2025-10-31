@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEditor.Graphs;
 using UnityEngine;
 
+
 namespace EventVisualizer.Base
 {
     [Serializable]

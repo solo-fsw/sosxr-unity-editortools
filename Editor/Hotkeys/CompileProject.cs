@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEditor.Compilation;
 
+
 /// <summary>
 ///     From: https://github.com/adammyhre/Unity-Utils
 /// </summary>

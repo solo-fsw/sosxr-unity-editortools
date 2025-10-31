@@ -2,6 +2,7 @@
 
 using UnityEngine;
 
+
 namespace MG.MDV
 {
     public struct Style
@@ -34,7 +35,7 @@ namespace MG.MDV
 
         public override bool Equals(object a)
         {
-            return a is Style ? ((Style)a).mStyle == mStyle : false;
+            return a is Style ? ((Style) a).mStyle == mStyle : false;
         }
 
 

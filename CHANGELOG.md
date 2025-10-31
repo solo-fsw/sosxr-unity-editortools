@@ -6,10 +6,12 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 ## [0.4.0] In Progress
 
 ### Added
+
 - Dependent on 'EditorCoroutines' package
 - `[DisableEditing]` attribute for EditorSpice
 
 ### Changed
+
 - Moved AudionSourceEditor to the Mutable Sample folder, since it can conflict with [Bro Audio](https://github.com/man572142/Bro_Audio)
 - Improved the BuildInfo generator: now includes scripting backend (Mono/IL2CPP) and only updates SemVer on successful builds
 

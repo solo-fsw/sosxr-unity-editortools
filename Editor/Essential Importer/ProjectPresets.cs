@@ -6,16 +6,14 @@ using UnityEditor;
 using UnityEditor.Presets;
 using UnityEngine;
 
+
 namespace SOSXR.EditorSpice.EditorScripts
 {
     public static class ProjectPresets
     {
         private static string[] _foldersToSearch
         {
-            get
-            {
-                return new[] { "Assets/_SOSXR", "Packages" };
-            }
+            get { return new[] {"Assets/_SOSXR", "Packages"}; }
         }
 
         private static bool _initialPresetsApplied // Set it as a EditorPrefs so it persists between sessions

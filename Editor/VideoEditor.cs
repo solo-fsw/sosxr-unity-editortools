@@ -7,6 +7,7 @@ using UnityEditor.Recorder.Input;
 using UnityEngine;
 using UnityEngine.Video;
 
+
 public class VideoEditor : MonoBehaviour
 {
     public Vector2 Trim;
@@ -94,15 +95,15 @@ public class VideoEditor : MonoBehaviour
 
         movieRecorderSettings.OutputFile = videoOutputPath;
 
-        aspectRatio.x = (float)Math.Round((float)videoPlayer.clip.width / videoPlayer.clip.height, 3);
+        aspectRatio.x = (float) Math.Round((float) videoPlayer.clip.width / videoPlayer.clip.height, 3);
         aspectRatio.y = 1;
         quad.transform.localScale = new Vector3(aspectRatio.x, aspectRatio.y, 1);
 
-        recorderControllerSettings.FrameRate = (float)videoPlayer.clip.frameRate;
+        recorderControllerSettings.FrameRate = (float) videoPlayer.clip.frameRate;
 
         ResetRenderTexture();
 
-        Trim = new Vector2(0, (float)videoPlayer.clip.length);
+        Trim = new Vector2(0, (float) videoPlayer.clip.length);
 
         _storedClip = videoPlayer.clip;
         videoPlayer.Prepare();
@@ -116,8 +117,8 @@ public class VideoEditor : MonoBehaviour
             return;
         }
 
-        movieRecorderSettings.FrameRate = (float)videoPlayer.clip.frameRate;
-        movieRecorderSettings.StartFrame = (int)(Trim.x * movieRecorderSettings.FrameRate);
+        movieRecorderSettings.FrameRate = (float) videoPlayer.clip.frameRate;
+        movieRecorderSettings.StartFrame = (int) (Trim.x * movieRecorderSettings.FrameRate);
         // movieRecorderSettings.EndFrame = (int) (Trim.y * movieRecorderSettings.FrameRate);
 
         videoPlayer.time = Trim.x;
@@ -136,9 +137,9 @@ public class VideoEditor : MonoBehaviour
             return;
         }
 
-        movieRecorderSettings.FrameRate = (float)videoPlayer.clip.frameRate;
+        movieRecorderSettings.FrameRate = (float) videoPlayer.clip.frameRate;
         // movieRecorderSettings.StartFrame = (int) (Trim.x * movieRecorderSettings.FrameRate);
-        movieRecorderSettings.EndFrame = (int)(Trim.y * movieRecorderSettings.FrameRate);
+        movieRecorderSettings.EndFrame = (int) (Trim.y * movieRecorderSettings.FrameRate);
 
         videoPlayer.time = Trim.y;
         videoPlayer.Play();
@@ -153,7 +154,7 @@ public class VideoEditor : MonoBehaviour
     {
         DestroyExistingTexture();
 
-        renderTexture = new RenderTexture((int)videoPlayer.clip.width, (int)videoPlayer.clip.height, 24, RenderTextureFormat.ARGB32);
+        renderTexture = new RenderTexture((int) videoPlayer.clip.width, (int) videoPlayer.clip.height, 24, RenderTextureFormat.ARGB32);
         renderTexture.name = "VideoRenderTexture";
 
         renderTexture.Create();
@@ -164,8 +165,8 @@ public class VideoEditor : MonoBehaviour
 
         imageInputSettings = new RenderTextureInputSettings
         {
-            OutputWidth = (int)videoPlayer.clip.width,
-            OutputHeight = (int)videoPlayer.clip.height,
+            OutputWidth = (int) videoPlayer.clip.width,
+            OutputHeight = (int) videoPlayer.clip.height,
             RenderTexture = renderTexture
         };
 

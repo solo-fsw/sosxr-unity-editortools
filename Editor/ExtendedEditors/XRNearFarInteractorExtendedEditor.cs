@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEditor.XR.Interaction.Toolkit.Interactors;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
+
 namespace SOSXR.EditorSpice.EditorScripts
 {
     [CustomEditor(typeof(NearFarInteractor))]
@@ -15,7 +16,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
         protected override void CustomInspectorContent()
         {
-            var interactor = (NearFarInteractor)target;
+            var interactor = (NearFarInteractor) target;
 
             XRInteractButtons.CreateHoverButtons(interactor);
 

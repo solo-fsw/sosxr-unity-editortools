@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEditor.Graphs;
 using UnityEngine;
 
+
 namespace EventVisualizer.Base
 {
     public class NodeGUI : Node
@@ -17,7 +18,7 @@ namespace EventVisualizer.Base
             var node = CreateInstance<NodeGUI>();
             node.Initialize(dataInstance);
             node.name = dataInstance.Entity.GetInstanceID().ToString();
-            node.icon = (Texture2D)EditorGUIUtility.IconContent(isGameObject ? "Gameobject Icon" : "ScriptableObject Icon").image;
+            node.icon = (Texture2D) EditorGUIUtility.IconContent(isGameObject ? "Gameobject Icon" : "ScriptableObject Icon").image;
 
             return node;
         }

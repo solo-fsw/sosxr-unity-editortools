@@ -4,6 +4,7 @@ using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 namespace SOSXR.EditorSpice.EditorScripts
 {
     public abstract class UnityEventButtonBase : PropertyDrawer
@@ -30,7 +31,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
             StoredValues.TryAdd(key, defaultValue);
 
-            return (T)StoredValues[key];
+            return (T) StoredValues[key];
         }
 
 
