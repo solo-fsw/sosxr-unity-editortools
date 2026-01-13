@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using SOSXR.EnhancedLogger;
 using UnityEditor;
 using UnityEngine;
 
@@ -35,6 +36,8 @@ namespace SOSXR.EditorSpice.EditorScripts
         private float fadeOutDuration;
         private float newDuration;
         private float _startTime;
+        private bool waveformDirty;
+        private GUIStyle timelineLabelStyle;
 
         // Time display format
         private const int WAVEFORM_WIDTH = 500;
@@ -196,7 +199,6 @@ namespace SOSXR.EditorSpice.EditorScripts
             if (previewSource.isPlaying)
             {
                 DrawPlayhead(rect, previewSource.time + startTrim);
-                Repaint();
             }
             else
             {
@@ -310,8 +312,6 @@ namespace SOSXR.EditorSpice.EditorScripts
             {
                 StopPreview();
             }
-
-            Repaint();
         }
 
 
@@ -330,8 +330,6 @@ namespace SOSXR.EditorSpice.EditorScripts
                     previewSource.Pause();
                 }
             }
-
-            Repaint();
         }
 
 
@@ -404,8 +402,40 @@ namespace SOSXR.EditorSpice.EditorScripts
 
             if (GUI.changed)
             {
-                RegenerateWaveform();
+                waveformDirty = true;
             }
+        }
+
+
+        private void Update()
+        {
+            if (!waveformDirty)
+            {
+                return;
+            }
+
+            if (Event.current.type == EventType.MouseDown)
+            {
+                this.Info("Maybe not draw on every mouse down?");
+
+                return;
+            }
+
+            RegenerateWaveform();
+            waveformDirty = false;
+            Repaint();
+        }
+
+
+        private void EnsureStyles()
+        {
+            if (timelineLabelStyle != null)
+            {
+                return;
+            }
+
+            timelineLabelStyle = new GUIStyle(EditorStyles.miniLabel);
+            timelineLabelStyle.normal.textColor = TimelineColor;
         }
 
 
@@ -615,7 +645,6 @@ namespace SOSXR.EditorSpice.EditorScripts
 
             isPlaying = false;
             currentPlayTime = _startTime;
-            Repaint();
         }
 
 
