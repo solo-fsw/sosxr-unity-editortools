@@ -1,3 +1,4 @@
+/*
 using System;
 using System.IO;
 using SOSXR.EnhancedLogger;
@@ -695,3 +696,5 @@ namespace SOSXR.EditorSpice.EditorScripts
         }
     }
 }
+
+*/

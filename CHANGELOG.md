@@ -20,6 +20,7 @@ The changelog format is based on [Keep a Changelog](https://keepachangelog.com/e
 ### Removed
 
 - SettingsProvider. This now has it's own package
+- Moved some classes that were not ready yet into a Work In Progress (WIP) folder.
 
 ## [0.3.2] 22-07-2025
 
