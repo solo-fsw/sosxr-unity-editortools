@@ -5,8 +5,15 @@ using UnityEngine;
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
-    ///     Click the icon in the hierarchy to toggle the active state of the object
-    ///     From Warped Imagination: https://youtu.be/0Wu_vz5WVck?si=GSavz27kLZC3PKzU
+    /// Purpose: Toggle a GameObject's active state by clicking a hierarchy icon.
+    /// 
+    /// Use Case: Fast activation/deactivation during scene editing without opening the Inspector.
+    /// 
+    /// How It Works: Subscribes to EditorApplication.hierarchyWindowItemOnGUI and toggles active state on click;
+    /// records undo and marks the object dirty when not in Play mode.
+    /// 
+    /// Integration: Editor-spice sample demonstrating common Editor scripting patterns.
+    /// Related Classes: HierarchyIconDisplay, HierarchyToggleButton.
     /// </summary>
     // [InitializeOnLoad]
     public class ToggleUsingHierarchyIcon

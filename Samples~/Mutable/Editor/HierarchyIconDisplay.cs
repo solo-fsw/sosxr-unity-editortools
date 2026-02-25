@@ -7,8 +7,16 @@ using UnityEngine;
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
-    ///     This needs to be in an Editor folder
-    ///     From Warped Imagination: https://www.youtube.com/watch?v=EFh7tniBqkk&t=33s
+    /// Purpose: Show an editor-only icon overlay in the Hierarchy for objects based on their components.
+    /// 
+    /// Use Case: Useful during learning or debugging to quickly identify an object's primary component
+    /// without opening the Inspector.
+    /// 
+    /// How It Works: Hooks into EditorApplication.hierarchyWindowItemOnGUI to render an icon next to GameObjects
+    /// by selecting the most relevant component type.
+    /// 
+    /// Integration: Editor-only utility. Drop into an Editor folder; enabled at editor load.
+    /// Related Classes: ToggleUsingHierarchyIcon, HierarchyToggleButton, AudioSourceExtendedEditor.
     /// </summary>
     // [InitializeOnLoad] // This will call the constructor of the class when Unity starts
     public static class HierarchyIconDisplay

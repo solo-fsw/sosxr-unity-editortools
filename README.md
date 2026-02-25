@@ -66,6 +66,23 @@ It is then amended at the end of the markdown file like so:
 
 ## AudioEditor
 
+Editor tool for audio asset management and preview. This tool makes it easier to audition, configure, and inspect audio clips without leaving the Unity editor.
+
+### Features
+- Audio preview: audition audio clips directly in the editor
+- Audio import settings: adjust sample rate, channels, compression, and platform overrides
+- Audio clip inspection: view length, channels, bitrate, and asset path
+
+### How to Use
+- Open Window > EditorSpice > AudioEditor to display the panel
+- Select an AudioClip to preview or modify import settings in the Inspector
+- Use the Preview toggle to listen without triggering full import
+
+### Configuration
+- Settings live under Preferences > EditorSpice > AudioEditor (toggle previews, default presets, and panel layout)
+
+### Related Classes
+- AudioPreviewer.cs
 ## AudioPreview (by Warped Imagination)
 
 ## AutoSave (by Tarodev)
@@ -176,8 +193,42 @@ From Warped Imagination, this script enhances the hierarchy view by:
 
 ## Layout Switcher Tool (by Warped Imagination)
 
+Editor tool for quickly switching between different editor layouts.
+
+### Features
+- Save and load editor layouts
+- Keyboard shortcuts for layout switching
+
+### How to Use
+- Open Window > EditorSpice > Layout Switcher Tool to display the panel
+- Save the current layout to a named slot
+- Use Load Layout to switch, or use configured keyboard shortcuts (e.g., Ctrl/Cmd + 1..9)
+
+### Configuration
+- Preferences > EditorSpice > LayoutSwitcher (shortcuts, default layouts, and behavior)
+
+### Related Classes
+- LayoutSwitcherTool.cs (by Warped Imagination)
+
 ## Markdown Helper
 
+Utilities for working with Markdown files in the editor.
+
+### Features
+- Markdown preview: render Markdown in-editor
+- Formatting helpers: quick formatting shortcuts and templates
+
+### How to Use
+- Open Window > EditorSpice > MarkdownHelper
+- Open a Markdown asset to preview or apply formatting helpers
+
+### Configuration
+- Settings under Preferences > EditorSpice > MarkdownHelper (preview size, templates)
+
+### Related Classes
+- MarkdownViewer.cs (fork of gwaredd's work)
+
+## MonoBehavior Utility
 ## MarkdownViewer (a fork of [gwaredd's work](https://github.com/gwaredd/UnityMarkdownViewer))
 
 ## MissingMonoBehaviourDetector
@@ -190,12 +241,64 @@ missing scripts in the scene, ensuring that GameObjects are properly configured 
 
 ## MonoBehavior Utility
 
+Utilities for MonoBehaviour inspection and management.
+
+### Features
+- MonoBehaviour validation: verify required components and serialized fields
+- Missing script detection: identify and list missing or broken scripts
+
+### How to Use
+- Open Window > EditorSpice > MonoBehaviorUtility
+- Run validation to surface issues; use quick fixes to assign missing scripts
+
+### Configuration
+- Preferences > EditorSpice > MonoBehaviorUtility (validation rules and reporting)
+
+### Related Classes
+- MissingMonoBehaviourDetector.cs
+
 ## Package
 
-### Package Is Installed
+EditorSpice is a collection of editor-only tools organized into logical subsystems.
+
+### Subsystems
+- **AssetDependency**: Asset dependency graph visualization and analysis
+- **ExtendedEditors**: Custom inspector extensions for XR and UI components
+- **AutoSave**: Automatic project and scene saving at configurable intervals
+- **BuildHelpers**: Build-time utilities for version management and build tracking
+- **UnityEventVisualiser**: Event visualization and debugging tools
+- **MarkdownTools**: Markdown preview and editing utilities
+- **ReadmeTools**: README display and management utilities
+
+### Distinction: EditorSpice vs SeaShark
+- **EditorSpice** (this package): Editor-only tools that enhance the development workflow. Can be deleted without affecting game code.
+- **SeaShark**: Runtime library of patterns and attributes embedded in game code. Cannot be deleted without affecting the game.
+
+### How to Use
+- Access EditorSpice tools from the Window > EditorSpice menu
+- Configure tool settings in Preferences > EditorSpice
+- See individual tool sections above for specific usage instructions
+
+### Related Classes
+- See individual tool sections for specific class references
 
 ## Readme Helpers
 
+Tools for displaying and managing README files in the editor.
+
+### Features
+- README display in the Inspector or dedicated window
+- README management: update, format, and preview
+
+### How to Use
+- Open Window > EditorSpice > ReadmeShower (or ReadmeHelpers) to access README support
+- Display a README asset in the Inspector to view or edit content
+
+### Configuration
+- Preferences > EditorSpice > ReadmeHelpers (display options, formatting templates)
+
+### Related Classes
+- ReadmeShower.cs
 ### ReadmeShower
 
 The ReadmeShower class is a Unity editor script that displays a README file in the Inspector window when attached to a
@@ -247,6 +350,26 @@ item under the SOSXR menu. The `SceneBuildValidation` script performs the valida
 
 ## VideoEditor
 
+Editor tool for video asset management.
+
+### Features
+- Video preview: audition video clips in the editor
+- Video import settings: configure resolution, framerate, and encoding
+- Video clip inspection: metadata, duration, and source path
+
+### How to Use
+- Open Window > EditorSpice > VideoEditor
+- Select a VideoClip to preview and adjust import settings in the Inspector
+- Inspect clip properties and export options from the panel
+
+### Configuration
+- Preferences > EditorSpice > VideoEditor (import presets and panel behavior)
+
+### Related Classes
+- VideoEditor.cs (WIP)
+
+Note: This tool is currently Work in Progress. Refer to the WIP folder for latest changes and status.
+
 # Other things
 
 ## Leiden University Logos
@@ -254,13 +377,6 @@ item under the SOSXR menu. The `SceneBuildValidation` script performs the valida
 ## URP Quest 3 Templates
 
 ## Presets
-
-
-
-
-
-
-
 
 
 

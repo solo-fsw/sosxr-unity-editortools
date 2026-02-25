@@ -22,10 +22,7 @@ namespace SOSXR.BuildHelpers
 
 
         /// <summary>
-        ///     In theory OnProcessBuild should be called after a build-process has ended, regardless of success or failure.
-        ///     However, in practice it seems to only be called after successful builds, and then also needs a delay to ensure that the BuildReport is ready to be fetched.
-        ///     Therefore, we start a coroutine that waits a few seconds before fetching the latest BuildReport.
-        ///     This is not ideal, but seems to be the most reliable way to get the BuildReport, from which we need the BuildResult.
+        /// Called after a build completes. Triggers post-build processing to record results and update build metadata.
         /// </summary>
         /// <param name="report"></param>
         public void OnPostprocessBuild(BuildReport report)
@@ -34,9 +31,15 @@ namespace SOSXR.BuildHelpers
         }
 
 
+        /// <summary>
+        /// Ordering for when this preprocess/ postprocess runs relative to others.
+        /// </summary>
         public int callbackOrder => 0;
 
 
+        /// <summary>
+        /// Called before a build starts. Captures pre-build state and increments attempted builds.
+        /// </summary>
         public void OnPreprocessBuild(BuildReport report)
         {
             GetBuildInfoDetailsFile();
@@ -136,6 +139,9 @@ namespace SOSXR.BuildHelpers
         }
 
 
+        /// <summary>
+        /// Writes the post-build information to the CSV and updates the last build result.
+        /// </summary>
         public static void WritePostBuildInfoToFile()
         {
             var buildReport = BuildReport.GetLatestReport();
@@ -185,6 +191,9 @@ namespace SOSXR.BuildHelpers
         }
 
 
+        /// <summary>
+        /// Adjusts the semantic version string. If increment is true, increments the patch number; otherwise decrements.
+        /// </summary>
         public static void ChangeSemVer(bool increment)
         {
             _buildInfoDetails.OldSemVer = PlayerSettings.bundleVersion;
@@ -239,6 +248,9 @@ namespace SOSXR.BuildHelpers
         ///     It is used by the Google Play Store to determine if an update is available, and by ArborXR to manage versions.
         /// </summary>
         /// <param name="increment"></param>
+        /// <summary>
+        /// Adjusts the Android bundle version code. Increments or decrements based on the flag.
+        /// </summary>
         public static void ChangeAndroidVersion(bool increment)
         {
             _buildInfoDetails.OldBundleVersionCode = PlayerSettings.Android.bundleVersionCode;
@@ -282,6 +294,9 @@ namespace SOSXR.BuildHelpers
         }
 
 
+        /// <summary>
+        /// Writes CSV headers to the build info file if needed.
+        /// </summary>
         public static void WriteHeadersToFile()
         {
             using var sw = File.CreateText(_buildInfoDetails.FilePath);

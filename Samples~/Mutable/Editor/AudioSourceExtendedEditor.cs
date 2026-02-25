@@ -5,8 +5,15 @@ using UnityEngine;
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
-    ///     Based on: Warped Imagination
-    ///     https://www.youtube.com/watch?v=iqbUbtwiiz0
+    /// Purpose: Editor extension that provides quick playback controls for AudioSource components.
+    /// 
+    /// Use Case: Quickly test and audition audio clips from the inspector during development.
+    /// 
+    /// How It Works: Replaces/augments the default AudioSource inspector by drawing Play/Pause/Stop
+    /// buttons and invoking corresponding AudioSource methods.
+    /// 
+    /// Integration: Demonstrates Editor scripting patterns that integrate with EditorSpice samples.
+    /// Related Classes: FadeBoolDemoEditor, UnityEventDemo, and other Editor samples.
     /// </summary>
     [CustomEditor(typeof(AudioSource))]
     public class AudioSourceExtendedEditor : EditorGUIHelpers
