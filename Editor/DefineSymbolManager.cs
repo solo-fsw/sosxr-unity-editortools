@@ -10,12 +10,10 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         static DefineSymbolManager()
         {
-            // Add the define symbol when the script is loaded
             AddDefineSymbol("SOSXR_EDITORTOOLS_INSTALLED");
         }
 
 
-        // Add the define symbol to the current build target
         public static void AddDefineSymbol(string defineSymbol)
         {
             var namedBuildTarget = GetCurrentNamedBuildTarget();
@@ -31,7 +29,6 @@ namespace SOSXR.EditorSpice.EditorScripts
         }
 
 
-        // Remove the define symbol from the current build target
         public static void RemoveDefineSymbol(string defineSymbol)
         {
             var namedBuildTarget = GetCurrentNamedBuildTarget();
@@ -51,7 +48,6 @@ namespace SOSXR.EditorSpice.EditorScripts
         }
 
 
-        // Helper method to get the current NamedBuildTarget
         private static NamedBuildTarget GetCurrentNamedBuildTarget()
         {
             var buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
@@ -64,10 +60,8 @@ namespace SOSXR.EditorSpice.EditorScripts
     // This class is used to handle asset changes, such as when a script or package is removed
     public class AssetPostprocessorHandler : AssetPostprocessor
     {
-        // Called when assets are imported, deleted, or moved
         private static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
         {
-            // Check if any assets related to the package (or script) have been deleted
             foreach (var deletedAsset in deletedAssets)
             {
                 // Debug.LogFormat("Deleted asset: {0}", deletedAsset);

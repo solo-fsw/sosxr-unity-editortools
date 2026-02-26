@@ -15,8 +15,6 @@ namespace SOSXR.EditorSpice.EditorScripts
         /// <summary>
         ///     Returns a string with spaces instead of camel case.
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
         public static string ConvertCamelCaseToSpace(string input)
         {
             return Regex.Replace(input, "([a-z])([A-Z])", "$1 $2");
@@ -51,7 +49,6 @@ namespace SOSXR.EditorSpice.EditorScripts
         ///     From: https://github.com/adammyhre/Unity-Utils
         /// </summary>
         /// <param name="defaultPath">The default path to open the folder browser at.</param>
-        /// <returns>The selected folder path.</returns>
         public static string BrowseForFolder(this string defaultPath)
         {
             return EditorUtility.SaveFolderPanel
@@ -80,8 +77,6 @@ namespace SOSXR.EditorSpice.EditorScripts
         ///     Make sure to wrap it in a EditorGUILayout.BeginFadeGroup(animBool.faded) and EditorGUILayout.EndFadeGroup().
         ///     Inspired by Warped Imagination: https://www.youtube.com/watch?v=VRp-34qvOP8&t=43s
         /// </summary>
-        /// <param name="animBool"></param>
-        /// <param name="labelName"></param>
         public static void AnimBoolDropdown(this AnimBool animBool, string labelName = "SOSXR")
         {
             var current = animBool.target;
