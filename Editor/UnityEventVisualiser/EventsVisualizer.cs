@@ -172,7 +172,7 @@ namespace EventVisualizer.Base
 
             TmpSearchedTypes.Clear();
 
-            // Log.Static("UnityEventVisualizer Updated Components that can have UnityEvents (" + ComponentsThatCanHaveUnityEvent.Count + "). Milliseconds: " + sw.Elapsed.TotalMilliseconds, LogLevel.Verbose);
+            // Debug.Log("UnityEventVisualizer Updated Components that can have UnityEvents (" + ComponentsThatCanHaveUnityEvent.Count + "). Milliseconds: " + sw.Elapsed.TotalMilliseconds);
         }
 
 

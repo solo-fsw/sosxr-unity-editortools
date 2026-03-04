@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Reflection;
-using SOSXR.EnhancedLogger;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -72,7 +71,7 @@ namespace SOSXR.EditorSpice.EditorScripts
                     if (!component)
                     {
                         var errorMessage = $"Missing Component {component.GetType().FullName} in GameObject: {GetFullPath(go)}";
-                        Log.Static(errorMessage, LogLevel.Error);
+                        Debug.LogError(errorMessage);
 
                         continue;
                     }
@@ -121,7 +120,7 @@ namespace SOSXR.EditorSpice.EditorScripts
             var ERROR_TEMPLATE = "Missing Ref in: [{3}]{0}. Component: {1}, Property: {2}";
 
             var errorMessage = string.Format(ERROR_TEMPLATE, GetFullPath(go), componentName, propertyName, context);
-            Log.Static(errorMessage, LogLevel.Error);
+            Debug.LogError(errorMessage);
         }
 
 

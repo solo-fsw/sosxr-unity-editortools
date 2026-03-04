@@ -1,4 +1,3 @@
-using SOSXR.EnhancedLogger;
 using UnityEngine;
 
 
@@ -27,7 +26,7 @@ namespace SOSXR
             {
                 obj.hideFlags = m_hideFlags;
 
-                this.Debug($"Hide-flags of {obj.name} is now {obj.hideFlags}");
+                Debug.Log($"Hide-flags of {obj.name} is now {obj.hideFlags}");
             }
         }
     }

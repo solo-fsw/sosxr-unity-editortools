@@ -1,4 +1,3 @@
-using SOSXR.EnhancedLogger;
 using UnityEditor;
 using UnityEditor.Build;
 
@@ -15,14 +14,14 @@ namespace SOSXR.EditorSpice.EditorScripts
 
             if (PlayerSettings.GetScriptingDefineSymbols(currentBuildTarget).Contains(_defineSymbol))
             {
-                Log.Static($"Scripting define symbols already set for {_defineSymbol}.", LogLevel.Verbose);
+                // Debug.Log($"Scripting define symbols already set for {_defineSymbol}.");
 
                 return;
             }
 
             PlayerSettings.SetScriptingDefineSymbols(currentBuildTarget, _defineSymbol);
 
-            Log.Static($"Scripting define symbols set for {_defineSymbol}.", LogLevel.Info);
+            Debug.Log($"Scripting define symbols set for {_defineSymbol}.");
         }
 
 

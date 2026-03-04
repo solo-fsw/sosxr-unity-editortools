@@ -1,7 +1,6 @@
 /*
 using System;
 using System.IO;
-using SOSXR.EnhancedLogger;
 using UnityEditor;
 using UnityEngine;
 
@@ -417,7 +416,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
             if (Event.current.type == EventType.MouseDown)
             {
-                this.Info("Maybe not draw on every mouse down?");
+                Debug.Log("Maybe not draw on every mouse down?");
 
                 return;
             }
