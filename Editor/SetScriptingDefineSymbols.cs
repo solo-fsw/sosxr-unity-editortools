@@ -25,7 +25,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
             PlayerSettings.SetScriptingDefineSymbols(currentBuildTarget, _defineSymbol);
 
-            Debug.Log($"Scripting define symbols set for {_defineSymbol}.");
+            // Debug.Log($"Scripting define symbols set for {_defineSymbol}.");
         }
 
         private const string _defineSymbol = "EDITORSPICE";
