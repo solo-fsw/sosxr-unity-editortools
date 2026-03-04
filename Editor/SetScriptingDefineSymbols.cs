@@ -1,6 +1,6 @@
 using UnityEditor;
 using UnityEditor.Build;
-
+using UnityEngine;
 
 namespace SOSXR.EditorSpice.EditorScripts
 {
@@ -9,10 +9,14 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         static SetScriptingDefineSymbols()
         {
-            var buildTargetGroup = BuildPipeline.GetBuildTargetGroup(EditorUserBuildSettings.activeBuildTarget);
+            var buildTargetGroup = BuildPipeline.GetBuildTargetGroup(
+                EditorUserBuildSettings.activeBuildTarget
+            );
             var currentBuildTarget = NamedBuildTarget.FromBuildTargetGroup(buildTargetGroup);
 
-            if (PlayerSettings.GetScriptingDefineSymbols(currentBuildTarget).Contains(_defineSymbol))
+            if (
+                PlayerSettings.GetScriptingDefineSymbols(currentBuildTarget).Contains(_defineSymbol)
+            )
             {
                 // Debug.Log($"Scripting define symbols already set for {_defineSymbol}.");
 
@@ -24,7 +28,7 @@ namespace SOSXR.EditorSpice.EditorScripts
             Debug.Log($"Scripting define symbols set for {_defineSymbol}.");
         }
 
-
         private const string _defineSymbol = "EDITORSPICE";
     }
 }
+
