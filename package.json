@@ -30,7 +30,7 @@
     {
       "displayName": "Unity Event Visualizer",
       "description": "A tool to visualize UnityEvents in the editor.",
-      "path": "Samples~/UnityEventVisualizer"
+      "path": "Samples~/UnityEventVisualiser"
     }
   ],
   "author": {
