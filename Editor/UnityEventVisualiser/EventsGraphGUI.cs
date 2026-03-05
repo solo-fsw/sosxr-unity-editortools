@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Graphs;
 using UnityEngine;
@@ -110,7 +111,11 @@ namespace EventVisualizer.Base
                     }
                 }
 
+#if UNITY_6000_3_OR_NEWER
+                Selection.entityIds = selectedIds.Select(id => (UnityEngine.EntityId) id).ToArray();
+#else
                 Selection.instanceIDs = selectedIds;
+#endif
             }
         }
 

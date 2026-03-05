@@ -51,7 +51,11 @@ namespace SOSXR.EditorSpice.EditorScripts
 
         private static void OnHierarchyWindowItemOnGUI(int instanceID, Rect selectionRect)
         {
+#if UNITY_6000_3_OR_NEWER
+            var gameObject = EditorUtility.EntityIdToObject(instanceID) as GameObject;
+#else
             var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
+#endif
 
             if (gameObject == null)
             {
@@ -114,7 +118,11 @@ namespace SOSXR.EditorSpice.EditorScripts
                 return;
             }
 
+#if UNITY_6000_3_OR_NEWER
+            var isSelected = Selection.entityIds.Contains((UnityEngine.EntityId) instanceID);
+#else
             var isSelected = Selection.instanceIDs.Contains(instanceID);
+#endif
             var isHovering = selectionRect.Contains(Event.current.mousePosition);
 
             var color = UnityEditorBackgroundColor.Get(isSelected, isHovering, _hierarchyHasFocus);

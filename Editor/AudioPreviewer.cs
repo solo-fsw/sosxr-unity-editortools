@@ -21,7 +21,11 @@ namespace SOSXR.EditorSpice.EditorScripts
         [OnOpenAsset]
         public static bool OnOpenAsset(int instanceID, int line)
         {
+#if UNITY_6000_3_OR_NEWER
+            var obj = EditorUtility.EntityIdToObject(instanceID);
+#else
             var obj = EditorUtility.InstanceIDToObject(instanceID);
+#endif
 
             if (obj is not AudioClip audioClip)
             {
