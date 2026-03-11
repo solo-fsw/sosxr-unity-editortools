@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace SOSXR.BuildHelpers
 {
+    /// <summary>
+    /// Utility to open the local Builds folder in the project hierarchy.
+    /// </summary>
     public static class OpenBuildsFolder
     {
         private static readonly string _folderName = "_Builds";

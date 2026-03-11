@@ -5,9 +5,15 @@ using UnityEngine;
 
 namespace SOSXR.BuildHelpers
 {
+    /// <summary>
+    /// Custom editor for BuildInfoDetails assets. Adds quick reveal functionality to locate the associated asset in the Project window.
+    /// </summary>
     [CustomEditor(typeof(BuildInfoDetails), true)]
     public class BuildInfoDetailsEditor : Editor
     {
+        /// <summary>
+        /// Draws the default inspector and adds a helper button to reveal the corresponding asset in the Project view.
+        /// </summary>
         public override void OnInspectorGUI()
         {
             var buildInfoDetails = (BuildInfoDetails) target;

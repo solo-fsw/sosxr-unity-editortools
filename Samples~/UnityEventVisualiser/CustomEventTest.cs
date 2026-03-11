@@ -4,6 +4,16 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
+/// <summary>
+/// Purpose: Demonstrates firing UnityEvents from code, including a nested complex event type.
+/// 
+/// Use Case: Learn how to declare and invoke simple and complex events from MonoBehaviours.
+/// 
+/// How It Works: Exposes a simple UnityEvent, a custom composite event, and a reference to a ScriptableObjectTest to broaden scenarios.
+/// 
+/// Integration: Works with EditorSpice event visualisation samples to observe event wiring.
+/// Related Classes: ScriptableObjectEventTest, CustomComplexEvent, UnityEventDemo.
+/// </summary>
 public class CustomEventTest : MonoBehaviour
 {
     public UnityEvent simpleEvent;

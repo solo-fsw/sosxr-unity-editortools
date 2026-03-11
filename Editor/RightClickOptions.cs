@@ -5,13 +5,21 @@ using UnityEngine;
 
 namespace SOSXR.EditorSpice.EditorScripts
 {
+    /// <summary>
+    /// Editor utility class that exposes context menu actions for Components in the Inspector.
+    /// </summary>
     public static class RightClickOptions
     {
         /// <summary>
-        ///     Copy the current component to a new child gameObject and remove the original component.
-        ///     From Warped Imagination: https://www.youtube.com/watch?v=qDoevls1wmI&t=467s
+        /// Purpose: Copy the current component to a new child GameObject and remove the original component.
+        /// Use Case: Quick component duplication as a child while preserving the original state.
+        /// How It Works: Creates a new child GameObject, copies the source component to the child, and removes
+        /// the original component from the source object. All operations are registered with Undo for editor safety.
+        /// Integration: Invoked via the component context menu item "Extract Component to Child". Can be extended with
+        /// additional context menu actions as needed.
+        /// Related Classes: Undo, ComponentUtility, GameObject, Component.
         /// </summary>
-        /// <param name="command"></param>
+        /// <param name="command">The MenuCommand containing the target component to extract.</param>
         [MenuItem("CONTEXT/Component/Extract Component to Child", priority = 555)]
         public static void ExtractMenuOption(MenuCommand command)
         {

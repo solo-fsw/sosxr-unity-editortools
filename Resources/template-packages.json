@@ -1,7 +1,6 @@
 {
   "packages": [
     "com.unity.modules.imageconversion",
-    "solo-fsw/sosxr-unity-enhancedlogger",
     "solo-fsw/sosxr-unity-swatchr",
     "solo-fsw/sosxr-unity-additionalunityevents",
     "solo-fsw/sosxr-unity-additionalgizmos",

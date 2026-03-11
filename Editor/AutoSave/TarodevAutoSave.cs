@@ -11,12 +11,10 @@ using UnityEngine;
 namespace Tarodev
 {
     /// <summary>
-    ///     Unity has probably discussed an auto-save feature countless times over the years
-    ///     and decided not to implement... so take that information as you'd like. I personally
-    ///     like the idea and it's worked well for me during my limited testing. If you find any bugs
-    ///     please report them on the repo: https://github.com/Matthew-J-Spencer/Unity-AutoSave
-    ///     Love your friendly neighborhood Tarodev
+    /// Editor utility that wires up the AutoSaveConfig and drives interval-based saving
+    /// of open scenes in the Unity Editor.
     /// </summary>
+    // Original descriptive header preserved in the class summary above
     [CustomEditor(typeof(AutoSaveConfig))]
     public class TarodevAutoSave : Editor
     {

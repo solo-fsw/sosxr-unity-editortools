@@ -7,9 +7,11 @@ using UnityEngine;
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
-    ///     This allows you to copy the HTML attribution from FlatIcon and append it to a Markdown file, in Markdown format, without losing the original data.
-    ///     Flaticon provides HTML attribution for icons (<a href="https://www.flaticon.com/free-icons/sushi" title="sushi icons">Sushi icons created by nawicon - Flaticon</a>), which can be cumbersome to include in Markdown files.
-    ///     Right click on a Markdown file in the Project window, select "SOSXR/Append FlatIcon attribution to Markdown", paste the HTML attribution, and it will be converted to Markdown format and appended to the file.
+    /// Appends FlatIcon attribution to Markdown files by converting HTML attribution to Markdown format.
+    /// Use Case: When you need to include Flaticon HTML attributions in Markdown files without manual formatting.
+    /// How It Works: Presents a small popup to paste the HTML attribution, converts it to Markdown, and appends it to the target file.
+    /// Integration: Exposes a context menu item under Assets/Create/SOSXR/Append FlatIcon attribution to Markdown.
+    /// Related Classes: AttributionPopup inner class, ConvertHtmlToMarkdown helper.
     /// </summary>
     public static class MarkdownAttributionAppender
     {
@@ -36,6 +38,13 @@ namespace SOSXR.EditorSpice.EditorScripts
             private string _filePath;
 
 
+            /// <summary>
+            /// Opens a small utility window to paste Flaticon HTML attribution and append it as Markdown to the target file.
+            /// Use Case: Invoked from the editor via the context menu after selecting a Markdown file.
+            /// How It Works: Creates an AttributionPopup window bound to the provided file path and shows it as a utility window.
+            /// Integration: Part of the Markdown attribution workflow; relies on ConvertHtmlToMarkdown for conversion.
+            /// Related Classes: AttributionPopup inner class, MarkdownAttributionAppender.
+            /// </summary>
             public static void Show(string filePath)
             {
                 var window = CreateInstance<AttributionPopup>();

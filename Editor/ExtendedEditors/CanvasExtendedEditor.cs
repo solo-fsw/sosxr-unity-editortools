@@ -5,8 +5,23 @@ using UnityEngine;
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
-    ///     Based on: Warped Imagination
-    ///     https://www.youtube.com/watch?v=iqbUbtwiiz0
+    /// Custom inspector extension for Canvas that adds world-space canvas utilities.
+    /// 
+    /// Purpose:
+    /// Exposes a small helper to automatically bind the Main Camera as the World Camera for world-space canvases during development.
+    /// 
+    /// Features:
+    /// - Automatic main camera assignment for world-space canvases
+    /// 
+    /// How to Extend:
+    /// To add this extension to a new component type:
+    /// 1. Create a new class inheriting from EditorGUIHelpers
+    /// 2. Add [CustomEditor(typeof(YourComponentType))] attribute
+    /// 3. Override CustomInspectorContent() to add your UI
+    /// 4. Use existing helper methods to implement editor behavior
+    /// 
+    /// Attribution:
+    /// Based on Warped Imagination: https://www.youtube.com/watch?v=iqbUbtwiiz0
     /// </summary>
     [CustomEditor(typeof(Canvas))]
     public class CanvasExtendedEditor : EditorGUIHelpers

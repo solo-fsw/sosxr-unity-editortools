@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace SOSXR.BuildHelpers
 {
+    /// <summary>
+    /// Stores persistent build information and configuration used by the BuildInfoManager.
+    /// </summary>
     [CreateAssetMenu(fileName = "BuildInfoDetails", menuName = "SOSXR/BuildInfoDetails")]
     public class BuildInfoDetails : ScriptableObject
     {
@@ -20,7 +23,13 @@ namespace SOSXR.BuildHelpers
         [Tooltip("The indicator to append to the semVer for production builds")]
         public string ProductionBuildIndicator = "p";
 
+        /// <summary>
+        /// SemVer value prior to the most recent change.
+        /// </summary>
         [HideInInspector] public string OldSemVer;
+        /// <summary>
+        /// Android bundle version code prior to the most recent change.
+        /// </summary>
         [HideInInspector] public int OldBundleVersionCode;
 
         [Header("Current Build")]
@@ -33,6 +42,10 @@ namespace SOSXR.BuildHelpers
         [DisableEditing] public int TotalSuccessBuilds;
         [DisableEditing] public BuildResult LastBuildResult = BuildResult.Unknown;
 
+        /// <summary>
+        /// Exposes the configured path for the build info CSV file.
+        /// Creates the directory if it does not exist.
+        /// </summary>
         public string FilePath
         {
             get
