@@ -1,0 +1,24 @@
+// This file is generated. Do not modify by hand.
+// XML documentation file not found. To check if public methods have XML comments,
+// make sure the XML doc file is present and located next to the scraped dll
+namespace SOSXR.EditorSpice.EditorScripts
+{
+    [UnityEditor.CustomEditor(typeof(UnityEngine.AudioSource))] public class AudioSourceExtendedEditor : EditorGUIHelpers
+    {
+        public AudioSourceExtendedEditor() {}
+        protected override void CustomInspectorContent();
+    }
+
+    public static class HierarchyIconDisplay
+    {
+    }
+
+    public static class HierarchyToggleButton
+    {
+    }
+
+    public class ToggleUsingHierarchyIcon
+    {
+        public ToggleUsingHierarchyIcon() {}
+    }
+}

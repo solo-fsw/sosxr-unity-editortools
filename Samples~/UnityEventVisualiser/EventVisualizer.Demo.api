@@ -1,0 +1,24 @@
+// This file is generated. Do not modify by hand.
+// XML documentation file not found. To check if public methods have XML comments,
+// make sure the XML doc file is present and located next to the scraped dll
+public class CustomComplexEvent : UnityEngine.Events.UnityEvent<string, int, int>
+{
+    public CustomComplexEvent() {}
+}
+
+public class CustomEventTest : UnityEngine.MonoBehaviour
+{
+    public CustomComplexEvent complexEvent;
+    public UnityEngine.Events.UnityEvent simpleEvent;
+    public ScriptableObjectEventTest soTest;
+    public CustomEventTest() {}
+    [UnityEngine.ContextMenu(@"TriggerComplexEvent")] public void TriggerComplexEvent();
+    [UnityEngine.ContextMenu(@"TriggerSimpleEvent")] public void TriggerSimpleEvent();
+}
+
+[UnityEngine.CreateAssetMenu(menuName = @"SOSXR/UnityEventVisualizer/Scriptable Object Test")] public class ScriptableObjectEventTest : UnityEngine.ScriptableObject
+{
+    public UnityEngine.Events.UnityEvent OnTest;
+    public ScriptableObjectEventTest() {}
+    [UnityEngine.ContextMenu(@"DoTest")] public void DoTest();
+}

@@ -1,0 +1,1057 @@
+// This file is generated. Do not modify by hand.
+// XML documentation file not found. To check if public methods have XML comments,
+// make sure the XML doc file is present and located next to the scraped dll
+public static class CloseWindowTab
+{
+}
+
+public static class CompileProject
+{
+}
+
+public static class LockInspector
+{
+    [UnityEditor.MenuItem(@"Edit/Toggle Inspector Lock %l")] public static void Lock();
+    [UnityEditor.MenuItem(@"Edit/Toggle Inspector Lock %l", true)] public static bool Valid();
+}
+
+public static class ReadmeHelpers
+{
+    public static string GetProjectName();
+}
+
+public class ReadmeShower : UnityEditor.Editor
+{
+    public ReadmeShower() {}
+}
+
+public static class SaveSceneAndProject
+{
+    [UnityEditor.MenuItem(@"File/Save Scene And Project %#&s")] public static void FunctionSaveSceneAndProject();
+}
+
+public static class WavUtility
+{
+    public static byte[] FromAudioClip(UnityEngine.AudioClip clip);
+}
+
+namespace EventVisualizer.Base
+{
+    public class EdgeGUI : UnityEditor.Graphs.IEdgeGUI
+    {
+        public const float kEdgeWidth = 6f;
+        public System.Collections.Generic.List<int> edgeSelection { get; set; }
+        public UnityEditor.Graphs.GraphGUI host { get; set; }
+        public EdgeGUI() {}
+        public void BeginSlotDragging(UnityEditor.Graphs.Slot slot, bool allowStartDrag, bool allowEndDrag);
+        public static UnityEngine.Vector3 CalculateBezierPoint(float t, UnityEngine.Vector3 p0, UnityEngine.Vector3 p1, UnityEngine.Vector3 p2, UnityEngine.Vector3 p3);
+        public static UnityEngine.Color ColorForIndex(string name);
+        public void DoDraggedEdge();
+        public void DoEdges();
+        public void EndDragging();
+        public void EndSlotDragging(UnityEditor.Graphs.Slot slot, bool allowMultiple);
+        public UnityEditor.Graphs.Edge FindClosestEdge();
+        public void SlotDragging(UnityEditor.Graphs.Slot slot, bool allowEndDrag, bool allowMultiple);
+    }
+
+    public static class EdgeTriggersTracker
+    {
+        public static readonly float TimeToLive = 1f;
+        public static void CleanObsolete();
+        public static System.Collections.Generic.List<float> GetTimings(EventCall eventCall);
+        public static System.Collections.Generic.List<float> GetTimings(UnityEditor.Graphs.Edge edge);
+        public static bool HasData();
+        public static void RegisterTrigger(UnityEditor.Graphs.Edge edge, EventCall eventCall);
+        public class EdgeTrigger
+        {
+            public UnityEditor.Graphs.Edge edge;
+            public EventCall eventCall;
+            public float triggeredTime;
+            public EdgeTrigger() {}
+        }
+    }
+
+    public class EditorZoomArea
+    {
+        public EditorZoomArea() {}
+        public static UnityEngine.Rect Begin(float zoomScale, UnityEngine.Rect screenCoordsArea);
+        public static void End();
+    }
+
+    public class EventCall
+    {
+        public readonly UnityEngine.Color color;
+        public readonly string eventFullName;
+        public readonly string eventShortName;
+        public readonly string method;
+        public NodeData nodeReceiver;
+        public NodeData nodeSender;
+        public System.Action OnTriggered;
+        public readonly UnityEngine.Object receiver;
+        public readonly UnityEngine.Object sender;
+        public readonly UnityEngine.Events.UnityEventBase unityEvent;
+        public double lastTimeExecuted { get; }
+        public string MethodFullPath { get; }
+        public string ReceiverComponentName { get; }
+        public string ReceiverComponentNameSimple { get; }
+        public int timesExecuted { get; }
+        public EventCall(UnityEngine.Object sender, UnityEngine.Object receiver, string eventShortName, string eventFullName, string methodName, UnityEngine.Events.UnityEventBase unityEvent) {}
+        public override bool Equals(object obj);
+        public override int GetHashCode();
+        public void TriggerFourArgs<T0, T1, T2, T3>(T0 arg, T1 arg1, T2 arg2, T3 arg3);
+        public void TriggerOneArg<T0>(T0 arg0);
+        public void TriggerThreeArgs<T0, T1, T2>(T0 arg, T1 arg1, T2 arg2);
+        public void TriggerTwoArgs<T0, T1>(T0 arg0, T1 arg1);
+        public void TriggerZeroArgs();
+    }
+
+    public static class EventsFinder
+    {
+        public static bool NeedsGraphRefresh;
+        public static System.Collections.Generic.List<EventCall> FindAllEvents(UnityEngine.GameObject[] roots, bool searchHierarchy = true);
+    }
+
+    public class EventsGraph : UnityEditor.Graphs.Graph
+    {
+        public EventsGraph() {}
+        public static EventsGraph Create();
+        public EventsGraphGUI GetEditor();
+        public void RebuildGraph(UnityEngine.GameObject[] roots, bool searchHierarchy);
+        public void RefreshGraphConnections();
+    }
+
+    public class EventsGraphGUI : UnityEditor.Graphs.GraphGUI
+    {
+        [UnityEngine.SerializeField] public int SelectionOverride;
+        public override UnityEditor.Graphs.IEdgeGUI edgeGUI { get; }
+        public EventsGraphGUI() {}
+        public override void NodeGUI(UnityEditor.Graphs.Node node);
+        public override void OnGraphGUI();
+    }
+
+    public class EventsGraphWindow : UnityEditor.EditorWindow
+    {
+        public EventsGraphWindow.SavedPrefBool eventFullName;
+        public UnityEngine.GUISkin guiSkin;
+        public float separation = 3f;
+        public EventsGraphWindow.SavedPrefBool showComponentName;
+        public EventsGraphWindow.SavedPrefBool showLabels;
+        public EventsGraphWindow.SavedPrefBool showOnlyWhenSelected;
+        public EventsGraphWindow.SavedPrefBool showTimesExecuted;
+        public EventsGraphWindow() {}
+        public UnityEngine.Vector2 ConvertScreenCoordsToZoomCoords(UnityEngine.Vector2 screenCoords);
+        public void Initialize();
+        public void OverrideSelection(int overrideIndex);
+        public void RebuildGraph(UnityEngine.GameObject[] roots, bool searchHierarchy);
+        public void RebuildGraphOnSelected(bool searchHierarchy);
+        public void RefreshGraphConnections();
+        public class SavedPrefBool
+        {
+            protected readonly bool defaultValue;
+            public readonly string name;
+            protected bool value;
+            public SavedPrefBool(string name, bool defaultValue) {}
+            public bool Get();
+            public void Set(bool value);
+        }
+    }
+
+    public static class FindInGraphButton
+    {
+    }
+
+    public class NodeData
+    {
+        public UnityEngine.Object Entity { get; }
+        public System.Collections.Generic.List<EventCall> Inputs { get; }
+        public string Name { get; }
+        public static System.Collections.Generic.ICollection<NodeData> Nodes { get; }
+        public System.Collections.Generic.List<EventCall> Outputs { get; }
+        public NodeData(UnityEngine.Object entity) {}
+        public static void ClearAll();
+        public static void ClearSlots();
+        public static void RegisterEvent(EventCall eventCall);
+    }
+
+    public class NodeGUI : UnityEditor.Graphs.Node
+    {
+        public bool isValid { get; }
+        public override string title { get; }
+        public NodeGUI() {}
+        public static NodeGUI Create(NodeData dataInstance);
+        public override void NodeUI(UnityEditor.Graphs.GraphGUI host);
+        public void PopulateEdges();
+    }
+
+    public static class RectExtensions
+    {
+        public static UnityEngine.Rect ScaleSizeBy(this UnityEngine.Rect rect, float scale);
+        public static UnityEngine.Rect ScaleSizeBy(this UnityEngine.Rect rect, UnityEngine.Vector2 scale);
+        public static UnityEngine.Rect ScaleSizeBy(this UnityEngine.Rect rect, float scale, UnityEngine.Vector2 pivotPoint);
+        public static UnityEngine.Rect ScaleSizeBy(this UnityEngine.Rect rect, UnityEngine.Vector2 scale, UnityEngine.Vector2 pivotPoint);
+        public static UnityEngine.Vector2 TopLeft(this UnityEngine.Rect rect);
+    }
+}
+
+namespace EventVisualizer.Puppy
+{
+    public static class EditorHelper
+    {
+        public static object GetTargetObjectOfProperty(UnityEditor.SerializedProperty prop);
+        public static object GetTargetObjectWithProperty(UnityEditor.SerializedProperty prop);
+    }
+}
+
+namespace MG.GIF
+{
+    public class Decoder : System.IDisposable
+    {
+        public UnityEngine.Color32 BackgroundColour;
+        public ushort Height;
+        public string Version;
+        public ushort Width;
+        public Decoder() {}
+        public Decoder(byte[] data) {}
+        public void Dispose();
+        protected virtual void Dispose(bool disposing);
+        public static string Ident();
+        public Decoder Load(byte[] data);
+        public Image NextImage();
+    }
+
+    public class Image : System.ICloneable
+    {
+        public int Delay;
+        public int Height;
+        public UnityEngine.Color32[] RawImage;
+        public int Width;
+        public Image() {}
+        public Image(Image img) {}
+        public object Clone();
+        public UnityEngine.Texture2D CreateTexture();
+    }
+}
+
+namespace MG.MDV
+{
+    public abstract class Block
+    {
+        public string ID;
+        public float Indent;
+        public Block Parent;
+        public UnityEngine.Rect Rect;
+        public Block(float indent) {}
+        public abstract void Arrange(Context context, UnityEngine.Vector2 anchor, float maxWidth);
+        public abstract void Draw(Context context);
+        public virtual Block Find(string id);
+    }
+
+    public class BlockContainer : Block
+    {
+        public bool Highlight;
+        public bool Horizontal;
+        public bool IsTableHeader;
+        public bool IsTableRow;
+        public bool Quoted;
+        public BlockContainer(float indent) {}
+        public Block Add(Block block);
+        public override void Arrange(Context context, UnityEngine.Vector2 pos, float maxWidth);
+        public override void Draw(Context context);
+        public override Block Find(string id);
+        public void RemoveTrailingSpace();
+    }
+
+    public class BlockContent : Block
+    {
+        public bool IsEmpty { get; }
+        public BlockContent(float indent) {}
+        public void Add(Content content);
+        public override void Arrange(Context context, UnityEngine.Vector2 pos, float maxWidth);
+        public override void Draw(Context context);
+        public void Prefix(Content content);
+    }
+
+    public class BlockLine : Block
+    {
+        public BlockLine(float indent) {}
+        public override void Arrange(Context context, UnityEngine.Vector2 pos, float maxWidth);
+        public override void Draw(Context context);
+    }
+
+    public class BlockSpace : Block
+    {
+        public BlockSpace(float indent) {}
+        public override void Arrange(Context context, UnityEngine.Vector2 pos, float maxWidth);
+        public override void Draw(Context context);
+    }
+
+    public abstract class Content
+    {
+        public string Link;
+        public UnityEngine.Rect Location;
+        public UnityEngine.GUIContent Payload;
+        public Style Style;
+        public bool CanUpdate { get; }
+        public float Height { get; }
+        public float Width { get; }
+        public Content(UnityEngine.GUIContent payload, Style style, string link) {}
+        public void CalcSize(Context context);
+        public void Draw(Context context);
+        public virtual void Update(Context context);
+    }
+
+    public class ContentImage : Content
+    {
+        public string Alt;
+        public string URL;
+        public ContentImage(UnityEngine.GUIContent payload, Style style, string link) {}
+        public override void Update(Context context);
+    }
+
+    public class ContentText : Content
+    {
+        public ContentText(UnityEngine.GUIContent payload, Style style, string link) {}
+    }
+
+    public class Context
+    {
+        public float IndentSize { get; }
+        public float LineHeight { get; }
+        public float MinWidth { get; }
+        public Context(UnityEngine.GUISkin skin, HandlerImages images, HandlerNavigate navigate) {}
+        public UnityEngine.GUIStyle Apply(Style style);
+        public UnityEngine.Vector2 CalcSize(UnityEngine.GUIContent content);
+        public UnityEngine.Texture FetchImage(string url);
+        public void Reset();
+        public void SelectPage(string path);
+    }
+
+    public class HandlerImages
+    {
+        public string CurrentPath;
+        public HandlerImages() {}
+        public UnityEngine.Texture FetchImage(string url);
+        public bool Update();
+        public bool UpdateAnimations();
+        public bool UpdateRequests();
+    }
+
+    public class HandlerNavigate
+    {
+        public string CurrentPath;
+        public System.Func<string, Block> FindBlock;
+        public History History;
+        public System.Action<float> ScrollTo;
+        public HandlerNavigate() {}
+        public void SelectPage(string url);
+    }
+
+    public class History
+    {
+        public bool CanBack { get; }
+        public bool CanForward { get; }
+        public int Count { get; }
+        public string Current { get; }
+        public bool IsEmpty { get; }
+        public History() {}
+        public void Add(string url);
+        public string Back();
+        public void Clear();
+        public string Forward();
+        public string Join();
+        public void OnOpen(string url);
+    }
+
+    public interface IActions
+    {
+        public UnityEngine.Texture FetchImage(string url);
+        public void SelectPage(string url);
+    }
+
+    public interface IBuilder
+    {
+        public void EndBlock();
+        public void EndTable();
+        public void EndTableRow();
+        public void HorizontalLine();
+        public void Image(string url, string alt, string tooltip);
+        public void Indent();
+        public void NewLine();
+        public void Outdent();
+        public void Prefix(string text, Style style);
+        public void Space();
+        public void StartBlock(bool quoted);
+        public void StartTable();
+        public void StartTableRow(bool isHeader);
+        public void Text(string text, Style style, string link, string tooltip);
+    }
+
+    public class Layout
+    {
+        public float Height { get; }
+        public Layout(Context context, BlockContainer doc) {}
+        public void Arrange(float maxWidth);
+        public void Draw();
+        public Block Find(string id);
+    }
+
+    public class LayoutBuilder : IBuilder
+    {
+        public LayoutBuilder(Context context) {}
+        public void EndBlock();
+        public void EndTable();
+        public void EndTableRow();
+        public Layout GetLayout();
+        public void HorizontalLine();
+        public void Image(string url, string alt, string title);
+        public void Indent();
+        public void NewLine();
+        public void Outdent();
+        public void Prefix(string text, Style style);
+        public void Space();
+        public void StartBlock(bool quoted);
+        public void StartTable();
+        public void StartTableRow(bool isHeader);
+        public void Text(string text, Style style, string link, string tooltip);
+    }
+
+    public class MarkdownAsset : UnityEngine.TextAsset
+    {
+        public MarkdownAsset() {}
+    }
+
+    [UnityEditor.AssetImporters.ScriptedImporter(1, @"markdown")] public class MarkdownAssetImporter : UnityEditor.AssetImporters.ScriptedImporter
+    {
+        public MarkdownAssetImporter() {}
+        public override void OnImportAsset(UnityEditor.AssetImporters.AssetImportContext ctx);
+    }
+
+    [UnityEditor.CustomEditor(typeof(UnityEngine.TextAsset))] public class MarkdownEditor : UnityEditor.Editor
+    {
+        public UnityEngine.GUISkin SkinDark;
+        public UnityEngine.GUISkin SkinLight;
+        public MarkdownEditor() {}
+        protected void OnDisable();
+        protected void OnEnable();
+        protected override void OnHeaderGUI();
+        public override void OnInspectorGUI();
+        public override bool UseDefaultMargins();
+    }
+
+    [UnityEditor.CustomEditor(typeof(MarkdownAsset))] public class MarkdownEditorAsset : UnityEditor.Editor
+    {
+        public UnityEngine.GUISkin SkinDark;
+        public UnityEngine.GUISkin SkinLight;
+        public MarkdownEditorAsset() {}
+        protected void OnDisable();
+        protected void OnEnable();
+        protected override void OnHeaderGUI();
+        public override void OnInspectorGUI();
+        public override bool UseDefaultMargins();
+    }
+
+    public class MarkdownViewer
+    {
+        public static readonly UnityEngine.Vector2 Margin;
+        public MarkdownViewer(UnityEngine.GUISkin skin, string path, string content) {}
+        public MarkdownViewer(UnityEngine.GUISkin skin, string path, string content, System.Func<float> viewWidthProvider) {}
+        public void Draw();
+        public bool Update();
+    }
+
+    public class Menus
+    {
+        public Menus() {}
+    }
+
+    public static class Preferences
+    {
+        public static bool DarkSkin { get; }
+        public static string JIRA { get; }
+        public static bool PipedTables { get; }
+        public static bool PipedTablesRequireRequireHeaderSeparator { get; }
+        public static bool StripHTML { get; }
+        public class MarkownSettings : UnityEditor.SettingsProvider
+        {
+            public MarkownSettings(string path, UnityEditor.SettingsScope scopes = UnityEditor.SettingsScope.User, System.Collections.Generic.IEnumerable<string> keywords = default(System.Collections.Generic.IEnumerable<string>)) {}
+            public override void OnGUI(string searchContext);
+        }
+    }
+
+    public class RendererBlockCode : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Syntax.CodeBlock>
+    {
+        public RendererBlockCode() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Syntax.CodeBlock block);
+    }
+
+    public class RendererBlockHeading : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Syntax.HeadingBlock>
+    {
+        public RendererBlockHeading() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Syntax.HeadingBlock block);
+    }
+
+    public class RendererBlockHtml : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Syntax.HtmlBlock>
+    {
+        public RendererBlockHtml() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Syntax.HtmlBlock block);
+    }
+
+    public class RendererBlockList : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Syntax.ListBlock>
+    {
+        public RendererBlockList() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Syntax.ListBlock block);
+    }
+
+    public class RendererBlockParagraph : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Syntax.ParagraphBlock>
+    {
+        public RendererBlockParagraph() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Syntax.ParagraphBlock block);
+    }
+
+    public class RendererBlockQuote : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Syntax.QuoteBlock>
+    {
+        public RendererBlockQuote() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Syntax.QuoteBlock block);
+    }
+
+    public class RendererBlockThematicBreak : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Syntax.ThematicBreakBlock>
+    {
+        public RendererBlockThematicBreak() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Syntax.ThematicBreakBlock block);
+    }
+
+    public class RendererInlineAutoLink : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Syntax.Inlines.AutolinkInline>
+    {
+        public RendererInlineAutoLink() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Syntax.Inlines.AutolinkInline node);
+    }
+
+    public class RendererInlineCode : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Syntax.Inlines.CodeInline>
+    {
+        public RendererInlineCode() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Syntax.Inlines.CodeInline node);
+    }
+
+    public class RendererInlineDelimiter : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Syntax.Inlines.DelimiterInline>
+    {
+        public RendererInlineDelimiter() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Syntax.Inlines.DelimiterInline node);
+    }
+
+    public class RendererInlineEmphasis : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Syntax.Inlines.EmphasisInline>
+    {
+        public RendererInlineEmphasis() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Syntax.Inlines.EmphasisInline node);
+    }
+
+    public class RendererInlineHtml : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Syntax.Inlines.HtmlInline>
+    {
+        public RendererInlineHtml() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Syntax.Inlines.HtmlInline node);
+    }
+
+    public class RendererInlineHtmlEntity : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Syntax.Inlines.HtmlEntityInline>
+    {
+        public RendererInlineHtmlEntity() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Syntax.Inlines.HtmlEntityInline node);
+    }
+
+    public class RendererInlineLineBreak : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Syntax.Inlines.LineBreakInline>
+    {
+        public RendererInlineLineBreak() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Syntax.Inlines.LineBreakInline node);
+    }
+
+    public class RendererInlineLink : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Syntax.Inlines.LinkInline>
+    {
+        public RendererInlineLink() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Syntax.Inlines.LinkInline node);
+    }
+
+    public class RendererInlineLiteral : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Syntax.Inlines.LiteralInline>
+    {
+        public RendererInlineLiteral() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Syntax.Inlines.LiteralInline node);
+    }
+
+    public class RendererMarkdown : Markdig.Renderers.RendererBase
+    {
+        public bool ConsumeNewLine;
+        public bool ConsumeSpace;
+        public RendererMarkdown(LayoutBuilder doc) {}
+        public override object Render(Markdig.Syntax.MarkdownObject document);
+    }
+
+    public class RendererTable : Markdig.Renderers.MarkdownObjectRenderer<RendererMarkdown, Markdig.Extensions.Tables.Table>
+    {
+        public RendererTable() {}
+        protected override void Write(RendererMarkdown renderer, Markdig.Extensions.Tables.Table table);
+    }
+
+    public struct Style
+    {
+        public static readonly Style Default;
+        public bool Block { get; set; }
+        public bool Bold { get; set; }
+        public bool Fixed { get; set; }
+        public bool Italic { get; set; }
+        public bool Link { get; set; }
+        public int Size { get; set; }
+        public void Clear();
+        public override bool Equals(object a);
+        public UnityEngine.FontStyle GetFontStyle();
+        public override int GetHashCode();
+        public static bool operator ==(Style a, Style b);
+        public static bool operator !=(Style a, Style b);
+    }
+
+    public class StyleConverter
+    {
+        public StyleConverter(UnityEngine.GUISkin skin) {}
+        public UnityEngine.GUIStyle Apply(Style src);
+    }
+
+    public static class Utils
+    {
+        public static string PathCombine(string _a, string _b, string separator = @"/");
+        public static string PathNormalise(string _a, string separator = @"/");
+    }
+}
+
+namespace SOSXR.AssetDependencyGraph
+{
+    public class AssetDependencyGraph : UnityEditor.EditorWindow
+    {
+        public AssetDependencyGraph() {}
+        [UnityEditor.MenuItem(@"SOSXR/Asset Dependency/Asset Dependency Graph %#&g")] public static void CreateTestGraphViewWindow();
+        public void OnDisable();
+        public void OnEnable();
+    }
+
+    public class AssetGraphView : UnityEditor.Experimental.GraphView.GraphView
+    {
+        public AssetGraphView() {}
+    }
+}
+
+namespace SOSXR.BuildHelpers
+{
+    [UnityEngine.CreateAssetMenu(fileName = @"BuildInfoDetails", menuName = @"SOSXR/BuildInfoDetails")] public class BuildInfoDetails : UnityEngine.ScriptableObject
+    {
+        [SOSXR.EditorSpice.EditorScripts.DisableEditing] [UnityEngine.Tooltip(@"Android only")] public int AndroidBundleVersionCode;
+        [UnityEngine.Tooltip(@"The indicator to append to the semVer for development builds")] public string DevelopmentBuildIndicator = @"d";
+        [UnityEngine.Tooltip(@"The initial semantic version of the project, set if the semVer is not similar to this format")] public string InitialSemVer = @"0_0_1";
+        [SOSXR.EditorSpice.EditorScripts.DisableEditing] public UnityEditor.Build.Reporting.BuildResult LastBuildResult;
+        [UnityEngine.HideInInspector] public int OldBundleVersionCode;
+        [UnityEngine.HideInInspector] public string OldSemVer;
+        [UnityEngine.Tooltip(@"The indicator to append to the semVer for production builds")] public string ProductionBuildIndicator = @"p";
+        [SOSXR.EditorSpice.EditorScripts.DisableEditing] [UnityEngine.Header(@"Current Build")] public string SemVer;
+        [SOSXR.EditorSpice.EditorScripts.DisableEditing] [UnityEngine.Header(@"Previous Builds")] public int TotalAttemptedBuilds;
+        [SOSXR.EditorSpice.EditorScripts.DisableEditing] public int TotalSuccessBuilds;
+        public string FilePath { get; }
+        public BuildInfoDetails() {}
+    }
+
+    [UnityEditor.CustomEditor(typeof(BuildInfoDetails), true)] public class BuildInfoDetailsEditor : UnityEditor.Editor
+    {
+        public BuildInfoDetailsEditor() {}
+        public override void OnInspectorGUI();
+    }
+
+    public class BuildInfoManager : UnityEditor.Build.IOrderedCallback, UnityEditor.Build.IPostprocessBuildWithReport, UnityEditor.Build.IPreprocessBuildWithReport
+    {
+        public int callbackOrder { get; }
+        public BuildInfoManager() {}
+        public static void ChangeAndroidVersion(bool increment);
+        public static void ChangeSemVer(bool increment);
+        public void OnPostprocessBuild(UnityEditor.Build.Reporting.BuildReport report);
+        public void OnPreprocessBuild(UnityEditor.Build.Reporting.BuildReport report);
+        public static void WriteHeadersToFile();
+        public static void WritePostBuildInfoToFile();
+        public static void WritePreBuildInfoToFile();
+    }
+
+    public static class OpenBuildsFolder
+    {
+        [UnityEditor.MenuItem(@"SOSXR/Folders/Builds", false, 100)] public static void Builds();
+    }
+}
+
+namespace SOSXR.EditorSpice.EditorScripts
+{
+    public class AssetPostprocessorHandler : UnityEditor.AssetPostprocessor
+    {
+        public AssetPostprocessorHandler() {}
+    }
+
+    public static class AudioPreviewer
+    {
+        public static bool IsPreviewClipPlaying();
+        [UnityEditor.Callbacks.OnOpenAsset] public static bool OnOpenAsset(int instanceID, int line);
+        public static void PlayPreviewClip(UnityEngine.AudioClip audioClip);
+        public static void StopAllPreviewClips();
+    }
+
+    [UnityEditor.CustomEditor(typeof(UnityEngine.Canvas))] public class CanvasExtendedEditor : EditorGUIHelpers
+    {
+        public CanvasExtendedEditor() {}
+        protected override void CustomInspectorContent();
+    }
+
+    public static class ContextProperties
+    {
+    }
+
+    public class CreateCustomGameObject : UnityEditor.Editor
+    {
+        public CreateCustomGameObject() {}
+    }
+
+    public class CreateMaterialsForTextures : UnityEditor.ScriptableWizard
+    {
+        public UnityEngine.Shader Shader;
+        public CreateMaterialsForTextures() {}
+    }
+
+    public class CustomInspectorExtension : UnityEditor.Editor
+    {
+        protected UnityEditor.Editor InternalEditor;
+        public CustomInspectorExtension() {}
+        protected void GetInternalEditor(string typeName);
+        public override void OnInspectorGUI();
+    }
+
+    public class DefineSymbolManager
+    {
+        public DefineSymbolManager() {}
+        public static void AddDefineSymbol(string defineSymbol);
+        public static void RemoveDefineSymbol(string defineSymbol);
+    }
+
+    public class DisableEditingAttribute : UnityEngine.PropertyAttribute
+    {
+        public DisableEditingAttribute() {}
+    }
+
+    [UnityEditor.CustomPropertyDrawer(typeof(DisableEditingAttribute))] public class DisableEditingDrawer : UnityEditor.PropertyDrawer
+    {
+        public DisableEditingDrawer() {}
+        public override float GetPropertyHeight(UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+        public override void OnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    public static class EditorExtensions
+    {
+        public static void AnimBoolDropdown(this UnityEditor.AnimatedValues.AnimBool animBool, string labelName = @"SOSXR");
+        public static string BrowseForFolder(this string defaultPath);
+        public static bool ConfirmOverwrite(this string path);
+        public static string ConvertCamelCaseToSpace(string input);
+        public static void PingAndSelect(this UnityEngine.Object asset);
+    }
+
+    public abstract class EditorGUIHelpers : UnityEditor.Editor
+    {
+        protected UnityEngine.GUIStyle AlternateBoxStyle;
+        protected const float ButtonWidth = 150f;
+        protected UnityEngine.GUIStyle DefaultBoxStyle;
+        protected const int DefaultLargeSpace = 20;
+        protected const int DefaultSmallSpace = 5;
+        protected bool EnableDefaultInspector;
+        protected UnityEditor.Editor InternalEditor;
+        protected UnityEngine.GUIStyle LabelStyle;
+        protected UnityEngine.GUIStyle SmallFontButtonStyle;
+        protected UnityEngine.GUIStyle TitleStyle;
+        protected EditorGUIHelpers() {}
+        protected static void AddSOSXRHeader();
+        protected void AlternateVerticalBoxedLayout(System.Action methodName);
+        protected void CreateAnimationCurveField(string propertyName, string toolTip = @"", int start = 0, float startValue = 0f, int end = 1, float endValue = 1f);
+        protected static bool CreateButton(string text, int buttonWidth);
+        protected static bool CreateButton(string text, UnityEngine.GUIStyle style);
+        protected void CreateColorField(string propertyName, bool hdr = true, string toolTip = @"");
+        protected void CreateCustomInspectorToggleButtons();
+        protected void CreateEnumField(string propertyName, System.Type enumType, string toolTip = @"");
+        protected void CreateFloatField(string propertyName, string toolTip = @"");
+        protected void CreateFloatSliderProperty(string propertyName, string toolTip = @"", float minValue = 0f, float maxValue = 10f);
+        protected static void CreateHeader(string titleName, UnityEngine.GUIStyle style);
+        protected bool CreateHeaderToggle(string propertyName, string titleName);
+        protected void CreateIntField(string propertyName, string toolTip = @"");
+        protected void CreateIntSliderProperty(string propertyName, string toolTip = @"", int minValue = 0, int maxValue = 10);
+        protected void CreateNestedEditor(string propertyName, string toolTip = @"");
+        protected void CreateObjectField(string propertyName, System.Type type, string toolTip = @"", bool allowSceneObjects = true);
+        protected void CreatePropertyField(string propertyName, string toolTip = @"", bool includeChildren = true);
+        protected static void CreateSpace(int size);
+        protected void CreateStringField(string propertyName, string toolTip = @"");
+        protected UnityEditor.SerializedProperty CreateToggleProperty(string propertyName, string toolTip = @"");
+        protected void CreateVector3Field(string propertyName, string toolTip = @"");
+        protected abstract void CustomInspectorContent();
+        protected void DefaultVerticalBoxedLayout(System.Action methodName);
+        protected void GetInternalEditor(string typeName);
+        protected void GetInternalEditor(System.Type editorType);
+        protected void OnDisable();
+        public override void OnInspectorGUI();
+    }
+
+    public class HierarchyScriptDropHandler
+    {
+        public HierarchyScriptDropHandler() {}
+        public static UnityEngine.GameObject CreateAndRename(string startingName);
+    }
+
+    public static class LayoutSwitcherTool
+    {
+        [UnityEditor.ShortcutManagement.Shortcut(@"SOSXR/Layout Switcher: Open Layout 1", UnityEngine.KeyCode.Alpha1, UnityEditor.ShortcutManagement.ShortcutModifiers.Alt)] public static void OpenLayout1();
+        [UnityEditor.ShortcutManagement.Shortcut(@"SOSXR/Layout Switcher: Open Layout 2", UnityEngine.KeyCode.Alpha2, UnityEditor.ShortcutManagement.ShortcutModifiers.Alt)] public static void OpenLayout2();
+        [UnityEditor.ShortcutManagement.Shortcut(@"SOSXR/Layout Switcher: Open Layout 3E", UnityEngine.KeyCode.Alpha3, UnityEditor.ShortcutManagement.ShortcutModifiers.Alt)] public static void OpenLayout3E();
+        [UnityEditor.ShortcutManagement.Shortcut(@"SOSXR/Layout Switcher: Open Layout Default", UnityEngine.KeyCode.Alpha0, UnityEditor.ShortcutManagement.ShortcutModifiers.Alt)] public static void OpenLayoutDefault();
+    }
+
+    public static class MarkdownAttributionAppender
+    {
+    }
+
+    public static class MarkdownHelper
+    {
+    }
+
+    public static class MenuItems
+    {
+        public static void OpenFolder(string path);
+    }
+
+    public class MissingMonoBehaviourDetector : UnityEngine.MonoBehaviour
+    {
+        public MissingMonoBehaviourDetector() {}
+        [UnityEditor.MenuItem(@"SOSXR/DANGER/Remove Missing Scripts From Selected GameObjects")] public static void RemoveMissingScripts();
+    }
+
+    public class MissingReferencesFinder : UnityEngine.MonoBehaviour
+    {
+        public MissingReferencesFinder() {}
+        [UnityEditor.MenuItem(@"SOSXR/Missing References/Search in all scenes", false, 51)] public static void FindMissingReferencesInAllScenes();
+        [UnityEditor.MenuItem(@"SOSXR/Missing References/Search in assets", false, 52)] public static void FindMissingReferencesInAssets();
+        [UnityEditor.MenuItem(@"SOSXR/Missing References/Search in scene", false, 50)] public static void FindMissingReferencesInCurrentScene();
+    }
+
+    public static class MonoBehaviourUtility
+    {
+        public static int GetMonoBehavioursWithMissingScriptCount(UnityEngine.MonoBehaviour behaviour);
+    }
+
+    public static class Package
+    {
+        public static void IsInstalled(string packageName, System.Action<bool> callback);
+    }
+
+    public static class PackageIsInstalled
+    {
+        public static readonly System.Collections.Generic.Dictionary<string, bool> Cache = new();
+        public static bool PackageInstalled(string packageName);
+    }
+
+    public static class PivotUtilities
+    {
+    }
+
+    public static class ProjectPresets
+    {
+    }
+
+    public static class RightClickOptions
+    {
+        [UnityEditor.MenuItem(@"CONTEXT/Component/Extract Component to Child", priority = 555)] public static void ExtractMenuOption(UnityEditor.MenuCommand command);
+    }
+
+    public class SetIconWindow : UnityEditor.EditorWindow
+    {
+        public SetIconWindow() {}
+        [UnityEditor.MenuItem(@"SOSXR/Set Icon... _%i", priority = 0)] public static void ShowMenuItem();
+        [UnityEditor.MenuItem(@"SOSXR/Set Icon... _%i", validate = true)] public static bool ValidateMenuItem();
+    }
+
+    public class SetScriptingDefineSymbols
+    {
+        public SetScriptingDefineSymbols() {}
+    }
+
+    public static class UnityEditorBackgroundColor
+    {
+        public static UnityEngine.Color Get(bool isSelected, bool isHovererd, bool isWindowFocused);
+    }
+
+    public abstract class UnityEventButtonBase : UnityEditor.PropertyDrawer
+    {
+        protected readonly UnityEditorInternal.UnityEventDrawer baseDrawer = new();
+        protected const string ButtonLabel = @"SOSXR: Invoke";
+        protected const float buttonWidth = 100f;
+        protected const string DisabledLabel = @"Play Mode Only";
+        protected const float fieldWidth = 150f;
+        protected UnityEventButtonBase() {}
+        protected static UnityEngine.Rect ButtonRect(UnityEngine.Rect position);
+        protected static UnityEngine.Rect FieldRect(UnityEngine.Rect position);
+        public override float GetPropertyHeight(UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+        protected static string GetPropertyKey(UnityEditor.SerializedProperty property);
+        protected static T GetStoredValue<T>(UnityEditor.SerializedProperty property, T defaultValue);
+        public override void OnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+        protected static void SetStoredValue<T>(UnityEditor.SerializedProperty property, T value);
+        protected abstract void SOSXROnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    [UnityEditor.CustomPropertyDrawer(typeof(UnityEngine.Events.UnityEvent<bool>), true)] public class UnityEventDrawerBoolWithButton : UnityEventButtonBase
+    {
+        public UnityEventDrawerBoolWithButton() {}
+        protected override void SOSXROnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    [UnityEditor.CustomPropertyDrawer(typeof(UnityEngine.Events.UnityEvent<float>), true)] public class UnityEventDrawerFloatWithButton : UnityEventButtonBase
+    {
+        public UnityEventDrawerFloatWithButton() {}
+        protected override void SOSXROnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    [UnityEditor.CustomPropertyDrawer(typeof(UnityEngine.Events.UnityEvent<UnityEngine.GameObject>), true)] public class UnityEventDrawerGameObjectWithButton : UnityEventButtonBase
+    {
+        public UnityEventDrawerGameObjectWithButton() {}
+        protected override void SOSXROnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    [UnityEditor.CustomPropertyDrawer(typeof(UnityEngine.Events.UnityEvent<int>), true)] public class UnityEventDrawerIntWithButton : UnityEventButtonBase
+    {
+        public UnityEventDrawerIntWithButton() {}
+        protected override void SOSXROnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    [UnityEditor.CustomPropertyDrawer(typeof(UnityEngine.Events.UnityEvent<UnityEngine.Quaternion>), true)] public class UnityEventDrawerQuaternionWithButton : UnityEventButtonBase
+    {
+        public UnityEventDrawerQuaternionWithButton() {}
+        protected override void SOSXROnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    [UnityEditor.CustomPropertyDrawer(typeof(UnityEngine.Events.UnityEvent<string>), true)] public class UnityEventDrawerStringWithButton : UnityEventButtonBase
+    {
+        public UnityEventDrawerStringWithButton() {}
+        protected override void SOSXROnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    [UnityEditor.CustomPropertyDrawer(typeof(UnityEngine.Events.UnityEvent<UnityEngine.Transform>), true)] public class UnityEventDrawerTransformWithButton : UnityEventButtonBase
+    {
+        public UnityEventDrawerTransformWithButton() {}
+        protected override void SOSXROnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    [UnityEditor.CustomPropertyDrawer(typeof(UnityEngine.Events.UnityEvent<UnityEngine.Vector2Int>), true)] public class UnityEventDrawerVector2IntWithButton : UnityEventButtonBase
+    {
+        public UnityEventDrawerVector2IntWithButton() {}
+        protected override void SOSXROnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    [UnityEditor.CustomPropertyDrawer(typeof(UnityEngine.Events.UnityEvent<UnityEngine.Vector2>), true)] public class UnityEventDrawerVector2WithButton : UnityEventButtonBase
+    {
+        public UnityEventDrawerVector2WithButton() {}
+        protected override void SOSXROnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    [UnityEditor.CustomPropertyDrawer(typeof(UnityEngine.Events.UnityEvent<UnityEngine.Vector3Int>), true)] public class UnityEventDrawerVector3IntWithButton : UnityEventButtonBase
+    {
+        public UnityEventDrawerVector3IntWithButton() {}
+        protected override void SOSXROnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    [UnityEditor.CustomPropertyDrawer(typeof(UnityEngine.Events.UnityEvent<UnityEngine.Vector3>), true)] public class UnityEventDrawerVector3WithButton : UnityEventButtonBase
+    {
+        public UnityEventDrawerVector3WithButton() {}
+        protected override void SOSXROnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    [UnityEditor.CustomPropertyDrawer(typeof(UnityEngine.Events.UnityEvent), true)] public class UnityEventDrawerWithButton : UnityEventButtonBase
+    {
+        public UnityEventDrawerWithButton() {}
+        protected override void SOSXROnGUI(UnityEngine.Rect position, UnityEditor.SerializedProperty property, UnityEngine.GUIContent label);
+    }
+
+    [UnityEditor.CustomEditor(typeof(UnityEngine.Video.VideoPlayer))] public class VideoPlayerExtendedEditor : EditorGUIHelpers
+    {
+        public VideoPlayerExtendedEditor() {}
+        protected override void CustomInspectorContent();
+    }
+
+    [UnityEditor.CustomEditor(typeof(UnityEngine.XR.Interaction.Toolkit.Interactors.XRGazeInteractor))] public class XRGazeInteractorExtendedEditor : EditorGUIHelpers
+    {
+        public XRGazeInteractorExtendedEditor() {}
+        protected override void CustomInspectorContent();
+    }
+
+    [UnityEditor.CustomEditor(typeof(UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable))] public class XRGrabInteractableExtendedEditor : EditorGUIHelpers
+    {
+        public XRGrabInteractableExtendedEditor() {}
+        protected override void CustomInspectorContent();
+    }
+
+    public static class XRInteractButtons
+    {
+        public const float ButtonWidth = 150f;
+        public static void CreateActivateButtons(UnityEngine.XR.Interaction.Toolkit.Interactables.IXRActivateInteractable interactor);
+        public static void CreateFirstLastFocusButtons(UnityEngine.XR.Interaction.Toolkit.Interactables.IXRFocusInteractable interactable);
+        public static void CreateFirstLastHoverButtons(UnityEngine.XR.Interaction.Toolkit.Interactables.IXRHoverInteractable interactable);
+        public static void CreateFirstLastSelectButtons(UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable interactable);
+        public static void CreateFocusButtons(UnityEngine.XR.Interaction.Toolkit.Interactables.IXRFocusInteractable interactable);
+        public static void CreateHoverButtons(UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable interactor);
+        public static void CreateHoverButtons(UnityEngine.XR.Interaction.Toolkit.Interactors.IXRHoverInteractor interactor);
+        public static void CreateSelectButtons(UnityEngine.XR.Interaction.Toolkit.Interactables.IXRSelectInteractable interactable);
+        public static void CreateSelectButtons(UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor interactor);
+        public static void CreateUIHoverButtons(UnityEngine.XR.Interaction.Toolkit.UI.IUIHoverInteractor interactor);
+    }
+
+    [UnityEditor.CustomEditor(typeof(UnityEngine.XR.Interaction.Toolkit.Interactors.XRDirectInteractor))] public class XRInteractorExtendedBaseInteractorEditor : EditorGUIHelpers
+    {
+        public XRInteractorExtendedBaseInteractorEditor() {}
+        protected override void CustomInspectorContent();
+    }
+
+    [UnityEditor.CustomEditor(typeof(UnityEngine.XR.Interaction.Toolkit.Interactors.NearFarInteractor))] public class XRNearFarInteractorExtendedEditor : EditorGUIHelpers
+    {
+        public XRNearFarInteractorExtendedEditor() {}
+        protected override void CustomInspectorContent();
+    }
+
+    [UnityEditor.CustomEditor(typeof(UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor))] public class XRSocketInteractorExtendedEditor : EditorGUIHelpers
+    {
+        public XRSocketInteractorExtendedEditor() {}
+        protected override void CustomInspectorContent();
+    }
+}
+
+namespace SOSXR.Setup
+{
+    public static class ProjectSetup
+    {
+        [UnityEditor.MenuItem(@"SOSXR/Setup/Create Folders", priority = 1)] public static void CreateFolders();
+        [UnityEditor.MenuItem(@"SOSXR/Setup/Import Essential Assets")] public static void ImportEssentials();
+        [UnityEditor.MenuItem(@"SOSXR/Setup/Install Essential Packages - Beta")] public static void InstallBetaPackages();
+        [UnityEditor.MenuItem(@"SOSXR/Setup/Install Essential Packages - Stable")] public static void InstallStablePackages();
+    }
+}
+
+namespace SOSXR.WhatUsesThis
+{
+    public static class WhatUsesThis
+    {
+    }
+}
+
+namespace Tarodev
+{
+    [UnityEngine.CreateAssetMenu(fileName = @"AutoSaveConfig", menuName = @"SOSXR/AutoSaveConfig")] public class AutoSaveConfig : UnityEngine.ScriptableObject
+    {
+        [UnityEngine.Tooltip(@"Enable auto save functionality")] public bool Enabled;
+        [UnityEngine.Min(1f)] [UnityEngine.Tooltip(@"The frequency in minutes auto save will activate")] public int Frequency = 1;
+        [UnityEngine.Tooltip(@"Log a message every time the scene is auto saved")] public bool Logging;
+        public AutoSaveConfig() {}
+    }
+
+    [UnityEditor.CustomEditor(typeof(AutoSaveConfig))] public class TarodevAutoSave : UnityEditor.Editor
+    {
+        public TarodevAutoSave() {}
+        public override void OnInspectorGUI();
+        [UnityEditor.MenuItem(@"SOSXR/AutoSave/Find config")] public static void ShowConfig();
+    }
+}

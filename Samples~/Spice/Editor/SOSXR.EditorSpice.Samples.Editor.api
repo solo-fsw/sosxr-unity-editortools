@@ -1,0 +1,11 @@
+// This file is generated. Do not modify by hand.
+// XML documentation file not found. To check if public methods have XML comments,
+// make sure the XML doc file is present and located next to the scraped dll
+namespace SOSXR.EditorSpice.EditorScripts.Samples.Editor
+{
+    [UnityEditor.CustomEditor(typeof(FadeBoolDemo))] public class FadeBoolDemoEditor : UnityEditor.Editor
+    {
+        public FadeBoolDemoEditor() {}
+        public override void OnInspectorGUI();
+    }
+}

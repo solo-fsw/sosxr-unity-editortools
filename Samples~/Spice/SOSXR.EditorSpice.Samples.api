@@ -1,0 +1,36 @@
+// This file is generated. Do not modify by hand.
+// XML documentation file not found. To check if public methods have XML comments,
+// make sure the XML doc file is present and located next to the scraped dll
+namespace SOSXR
+{
+    public class SetHideFlags : UnityEngine.MonoBehaviour
+    {
+        public SetHideFlags() {}
+        [UnityEngine.ContextMenu(@"SetFlags")] public void SetFlags();
+    }
+}
+
+namespace SOSXR.EditorSpice.EditorScripts.Samples
+{
+    public class FadeBoolDemo : UnityEngine.MonoBehaviour
+    {
+        public FadeBoolDemo() {}
+    }
+
+    public class UnityEventDemo : UnityEngine.MonoBehaviour
+    {
+        public UnityEngine.Events.UnityEvent OnEvent;
+        public UnityEngine.Events.UnityEvent<bool> OnEventBool;
+        public UnityEngine.Events.UnityEvent<float> OnEventFloat;
+        public UnityEngine.Events.UnityEvent<UnityEngine.GameObject> OnEventGameObject;
+        public UnityEngine.Events.UnityEvent<int> OnEventInt;
+        public UnityEngine.Events.UnityEvent<UnityEngine.Quaternion> OnEventQuaternion;
+        public UnityEngine.Events.UnityEvent<string> OnEventString;
+        public UnityEngine.Events.UnityEvent<UnityEngine.Transform> OnEventTransform;
+        public UnityEngine.Events.UnityEvent<UnityEngine.Vector2> OnEventVector2;
+        public UnityEngine.Events.UnityEvent<UnityEngine.Vector2Int> OnEventVector2Int;
+        public UnityEngine.Events.UnityEvent<UnityEngine.Vector3> OnEventVector3;
+        public UnityEngine.Events.UnityEvent<UnityEngine.Vector3Int> OnEventVector3Int;
+        public UnityEventDemo() {}
+    }
+}
