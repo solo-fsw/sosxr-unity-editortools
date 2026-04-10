@@ -21,6 +21,11 @@ namespace SOSXR.EditorSpice.EditorScripts
 
         protected static string GetPropertyKey(SerializedProperty property)
         {
+            if (property?.serializedObject?.targetObject == null)
+            {
+                return property?.propertyPath ?? "null";
+            }
+
             return $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}";
         }
 
@@ -62,6 +67,12 @@ namespace SOSXR.EditorSpice.EditorScripts
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            // Prevent drawing when serializedObject or target is null (during domain reload)
+            if (property?.serializedObject == null)
+            {
+                return;
+            }
+
             baseDrawer.OnGUI(position, property, label);
 
             if (!Application.isPlaying)
@@ -84,6 +95,11 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         protected override void SOSXROnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            if (property?.serializedObject?.targetObject == null || fieldInfo == null)
+            {
+                return;
+            }
+
             if (GUI.Button(ButtonRect(position), ButtonLabel))
             {
                 var targetObject = property.serializedObject.targetObject;
@@ -99,6 +115,11 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         protected override void SOSXROnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            if (property?.serializedObject?.targetObject == null || fieldInfo == null)
+            {
+                return;
+            }
+
             var currentValue = GetStoredValue(property, "SOSXR");
             var newValue = EditorGUI.TextField(FieldRect(position), currentValue);
 
@@ -122,6 +143,11 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         protected override void SOSXROnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            if (property?.serializedObject?.targetObject == null || fieldInfo == null)
+            {
+                return;
+            }
+
             var currentValue = GetStoredValue(property, 42);
             var newValue = EditorGUI.IntField(FieldRect(position), currentValue);
 
@@ -145,6 +171,11 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         protected override void SOSXROnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            if (property?.serializedObject?.targetObject == null || fieldInfo == null)
+            {
+                return;
+            }
+
             var currentValue = GetStoredValue(property, 3.14f);
             var newValue = EditorGUI.FloatField(FieldRect(position), currentValue);
 
@@ -168,6 +199,11 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         protected override void SOSXROnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            if (property?.serializedObject?.targetObject == null || fieldInfo == null)
+            {
+                return;
+            }
+
             var currentValue = GetStoredValue(property, false);
             var newValue = EditorGUI.Toggle(FieldRect(position), currentValue);
 
@@ -191,6 +227,11 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         protected override void SOSXROnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            if (property?.serializedObject?.targetObject == null || fieldInfo == null)
+            {
+                return;
+            }
+
             var currentValue = GetStoredValue(property, new Vector2(0.17f, 1.62f)); // 1.62f – The gravitational acceleration on the Moon (m/s²). 0.17f – The approximate reflectivity (albedo) of the Moon.
             var newValue = EditorGUI.Vector2Field(FieldRect(position), GUIContent.none, currentValue);
 
@@ -214,6 +255,11 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         protected override void SOSXROnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            if (property?.serializedObject?.targetObject == null || fieldInfo == null)
+            {
+                return;
+            }
+
             var currentValue = GetStoredValue(property, new Vector3(1.61f, 3.14f, 9.81f)); // 1.61f – Represents the golden ratio (approximately).  3.14f – Approximates π (pi), used in calculations involving circles. 9.81f – Represents the gravitational acceleration on Earth (m/s²).
             var newValue = EditorGUI.Vector3Field(FieldRect(position), GUIContent.none, currentValue);
 
@@ -237,6 +283,11 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         protected override void SOSXROnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            if (property?.serializedObject?.targetObject == null || fieldInfo == null)
+            {
+                return;
+            }
+
             var currentValue = GetStoredValue(property, new Vector2Int(0, 1));
             var newValue = EditorGUI.Vector2IntField(FieldRect(position), GUIContent.none, currentValue);
 
@@ -260,6 +311,11 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         protected override void SOSXROnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            if (property?.serializedObject?.targetObject == null || fieldInfo == null)
+            {
+                return;
+            }
+
             var currentValue = GetStoredValue(property, new Vector3Int(32, 64, 128));
             var newValue = EditorGUI.Vector3IntField(FieldRect(position), GUIContent.none, currentValue);
 
@@ -283,6 +339,11 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         protected override void SOSXROnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            if (property?.serializedObject?.targetObject == null || fieldInfo == null)
+            {
+                return;
+            }
+
             var currentValue = GetStoredValue(property, new Vector3(45, 90, 180));
             var newValue = EditorGUI.Vector3Field(FieldRect(position), GUIContent.none, currentValue);
 
@@ -306,6 +367,11 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         protected override void SOSXROnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            if (property?.serializedObject?.targetObject == null || fieldInfo == null)
+            {
+                return;
+            }
+
             var currentValue = GetStoredValue<Transform>(property, null);
             var newValue = EditorGUI.ObjectField(FieldRect(position), GUIContent.none, currentValue, typeof(Transform), true) as Transform;
 
@@ -329,6 +395,11 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         protected override void SOSXROnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            if (property?.serializedObject?.targetObject == null || fieldInfo == null)
+            {
+                return;
+            }
+
             var currentValue = GetStoredValue<GameObject>(property, null);
             var newValue = EditorGUI.ObjectField(FieldRect(position), GUIContent.none, currentValue, typeof(GameObject), true) as GameObject;
 

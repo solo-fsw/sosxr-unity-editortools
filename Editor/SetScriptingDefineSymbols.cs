@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SOSXR.EditorSpice.EditorScripts
 {
-    // [InitializeOnLoad] // This will call the constructor of the class when Unity starts
+    [InitializeOnLoad] // This will call the constructor of the class when Unity starts
     public class SetScriptingDefineSymbols
     {
         static SetScriptingDefineSymbols()

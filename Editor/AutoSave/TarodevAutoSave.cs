@@ -23,7 +23,7 @@ namespace Tarodev
         private static Task _task;
 
 
-        // [InitializeOnLoadMethod]
+        [InitializeOnLoadMethod]
         private static void OnInitialize()
         {
             FetchConfig();

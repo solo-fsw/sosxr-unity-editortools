@@ -9,7 +9,7 @@ namespace SOSXR.EditorSpice.EditorScripts
     /// </summary>
     public static class ContextProperties
     {
-        // [InitializeOnLoadMethod]
+        [InitializeOnLoadMethod]
         private static void Init()
         {
             EditorApplication.contextualPropertyMenu += OnPropertyContextMenu;

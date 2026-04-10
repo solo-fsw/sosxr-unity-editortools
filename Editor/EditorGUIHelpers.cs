@@ -458,7 +458,16 @@ namespace SOSXR.EditorSpice.EditorScripts
                 return;
             }
 
-            DestroyImmediate(InternalEditor);
+            // Use delayCall to avoid DestroyImmediate during serialization callbacks
+            // which can cause null reference exceptions in Unity's built-in editors
+            EditorApplication.delayCall += () =>
+            {
+                if (InternalEditor != null)
+                {
+                    DestroyImmediate(InternalEditor);
+                    InternalEditor = null;
+                }
+            };
         }
     }
 }

@@ -1,23 +1,18 @@
-using System;
+﻿using System;
 using UnityEditor;
 using UnityEngine;
-
 
 namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
     ///     From Warped Imagination: https://www.youtube.com/watch?v=FpOAcfULmTE
     /// </summary>
-    // [InitializeOnLoad]
+    [InitializeOnLoad]
     public class HierarchyScriptDropHandler
     {
-        static HierarchyScriptDropHandler()
-        {
-            DragAndDrop.AddDropHandler(OnScriptHierarchyDrop);
-        }
+        static HierarchyScriptDropHandler() => DragAndDrop.AddDropHandlerV2(OnScriptHierarchyDrop);
 
-
-        private static DragAndDropVisualMode OnScriptHierarchyDrop(int draginstanceid, HierarchyDropFlags dropMode, Transform parentForDraggedObjects, bool perform)
+        private static DragAndDropVisualMode OnScriptHierarchyDrop(EntityId dropTargetEntityId, HierarchyDropFlags dropMode, Transform parentForDraggedObjects, bool perform)
         {
             var monoScript = GetScriptBeingDragged();
 
@@ -26,7 +21,7 @@ namespace SOSXR.EditorSpice.EditorScripts
                 if (perform)
                 {
                     var gameObject = CreateAndRename(monoScript.name);
-                    var component = gameObject.AddComponent(monoScript.GetClass());
+                    _ = gameObject.AddComponent(monoScript.GetClass());
                 }
 
                 return DragAndDropVisualMode.Copy;
@@ -35,10 +30,9 @@ namespace SOSXR.EditorSpice.EditorScripts
             return DragAndDropVisualMode.None;
         }
 
-
         public static GameObject CreateAndRename(string startingName)
         {
-            var gameObject = new GameObject(startingName);
+            GameObject gameObject = new(startingName);
 
             if (Selection.activeGameObject != null)
             {
@@ -55,15 +49,14 @@ namespace SOSXR.EditorSpice.EditorScripts
 
             Undo.RegisterCreatedObjectUndo(gameObject, "Created GameObject");
 
-            EditorApplication.delayCall += () =>
+            EditorApplication.delayCall += static () =>
             {
-                var sceneHierarchyType = Type.GetType("UnityEditor.SceneHierarchyWindow,UnityEditor");
-                EditorWindow.GetWindow(sceneHierarchyType).SendEvent(EditorGUIUtility.CommandEvent("Rename"));
+                Type sceneHierarchyType = Type.GetType("UnityEditor.SceneHierarchyWindow,UnityEditor");
+                _ = EditorWindow.GetWindow(sceneHierarchyType).SendEvent(EditorGUIUtility.CommandEvent("Rename"));
             };
 
             return gameObject;
         }
-
 
         private static MonoScript GetScriptBeingDragged()
         {

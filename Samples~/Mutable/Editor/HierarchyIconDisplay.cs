@@ -18,7 +18,7 @@ namespace SOSXR.EditorSpice.EditorScripts
     /// Integration: Editor-only utility. Drop into an Editor folder; enabled at editor load.
     /// Related Classes: ToggleUsingHierarchyIcon, HierarchyToggleButton, AudioSourceExtendedEditor.
     /// </summary>
-    // [InitializeOnLoad] // This will call the constructor of the class when Unity starts
+    [InitializeOnLoad] // This will call the constructor of the class when Unity starts
     public static class HierarchyIconDisplay
     {
         static HierarchyIconDisplay()

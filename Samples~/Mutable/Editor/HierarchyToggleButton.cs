@@ -15,7 +15,7 @@ namespace SOSXR.EditorSpice.EditorScripts
     /// Integration: Demonstrates an Editor extension pattern alongside ToggleUsingHierarchyIcon.
     /// Related Classes: ToggleUsingHierarchyIcon, HierarchyIconDisplay.
     /// </summary>
-    // [InitializeOnLoad]
+    [InitializeOnLoad]
     public static class HierarchyToggleButton
     {
         static HierarchyToggleButton()

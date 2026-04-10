@@ -20,7 +20,7 @@ public static class ReadmeHelpers
     public static string GetProjectName();
 }
 
-public class ReadmeShower : UnityEditor.Editor
+[UnityEditor.InitializeOnLoad] public class ReadmeShower : UnityEditor.Editor
 {
     public ReadmeShower() {}
 }
@@ -721,7 +721,7 @@ namespace SOSXR.EditorSpice.EditorScripts
         public override void OnInspectorGUI();
     }
 
-    public class DefineSymbolManager
+    [UnityEditor.InitializeOnLoad] public class DefineSymbolManager
     {
         public DefineSymbolManager() {}
         public static void AddDefineSymbol(string defineSymbol);
@@ -791,7 +791,7 @@ namespace SOSXR.EditorSpice.EditorScripts
         public override void OnInspectorGUI();
     }
 
-    public class HierarchyScriptDropHandler
+    [UnityEditor.InitializeOnLoad] public class HierarchyScriptDropHandler
     {
         public HierarchyScriptDropHandler() {}
         public static UnityEngine.GameObject CreateAndRename(string startingName);
@@ -868,7 +868,7 @@ namespace SOSXR.EditorSpice.EditorScripts
         [UnityEditor.MenuItem(@"SOSXR/Set Icon... _%i", validate = true)] public static bool ValidateMenuItem();
     }
 
-    public class SetScriptingDefineSymbols
+    [UnityEditor.InitializeOnLoad] public class SetScriptingDefineSymbols
     {
         public SetScriptingDefineSymbols() {}
     }

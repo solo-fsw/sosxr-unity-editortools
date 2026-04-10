@@ -31,15 +31,30 @@ namespace SOSXR.EditorSpice.EditorScripts
 
         private void OnEnable()
         {
-            GetInternalEditor("CanvasEditor");
+            // Delay initialization to avoid null reference during domain reload
+            EditorApplication.delayCall += () =>
+            {
+                if (this == null || target == null)
+                {
+                    return;
+                }
+
+                GetInternalEditor("CanvasEditor");
+            };
         }
 
 
         protected override void CustomInspectorContent()
         {
+            // Null check to prevent errors during domain reload or object destruction
+            if (target == null)
+            {
+                return;
+            }
+
             var canvas = (Canvas) target;
 
-            if (canvas.renderMode != RenderMode.WorldSpace)
+            if (canvas == null || canvas.renderMode != RenderMode.WorldSpace)
             {
                 return;
             }

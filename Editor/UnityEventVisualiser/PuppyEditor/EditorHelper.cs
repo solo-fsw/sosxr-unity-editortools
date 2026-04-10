@@ -16,6 +16,11 @@ namespace EventVisualizer.Puppy
 
         public static object GetTargetObjectOfProperty(SerializedProperty prop)
         {
+            if (prop?.serializedObject?.targetObject == null)
+            {
+                return null;
+            }
+
             var path = prop.propertyPath.Replace(".Array.data[", "[");
             object obj = prop.serializedObject.targetObject;
             var elements = path.Split('.');
@@ -40,6 +45,11 @@ namespace EventVisualizer.Puppy
 
         public static object GetTargetObjectWithProperty(SerializedProperty prop)
         {
+            if (prop?.serializedObject?.targetObject == null)
+            {
+                return null;
+            }
+
             var path = prop.propertyPath.Replace(".Array.data[", "[");
             object obj = prop.serializedObject.targetObject;
             var elements = path.Split('.');
