@@ -41,7 +41,7 @@ namespace SOSXR.EditorSpice.EditorScripts
             action.DefaultContent = content;
 
             ProjectWindowUtil.StartNameEditingIfProjectWindowExists(
-                0,
+                default(EntityId),
                 action,
                 filePath,
                 EditorGUIUtility.IconContent("TextAsset Icon").image as Texture2D,
@@ -50,12 +50,12 @@ namespace SOSXR.EditorSpice.EditorScripts
         }
 
 
-        private class DoCreateMarkdownFile : EndNameEditAction
+        private class DoCreateMarkdownFile : AssetCreationEndAction
         {
             public string DefaultContent;
 
 
-            public override void Action(int instanceId, string pathName, string resourceFile)
+            public override void Action(EntityId instanceId, string pathName, string resourceFile)
             {
                 var fileName = Path.GetFileNameWithoutExtension(pathName);
                 var content = string.IsNullOrEmpty(DefaultContent) ? "# " + fileName : DefaultContent;

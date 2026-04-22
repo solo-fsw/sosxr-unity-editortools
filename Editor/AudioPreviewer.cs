@@ -22,7 +22,9 @@ namespace SOSXR.EditorSpice.EditorScripts
         public static bool OnOpenAsset(int instanceID, int line)
         {
 #if UNITY_6000_3_OR_NEWER
-            var obj = EditorUtility.EntityIdToObject(instanceID);
+#pragma warning disable CS0618
+            var obj = EditorUtility.InstanceIDToObject(instanceID);
+#pragma warning restore CS0618
 #else
             var obj = EditorUtility.InstanceIDToObject(instanceID);
 #endif

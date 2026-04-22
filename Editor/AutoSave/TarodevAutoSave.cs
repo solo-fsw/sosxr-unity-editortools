@@ -122,7 +122,7 @@ namespace Tarodev
             FetchConfig();
 
             var path = GetConfigPath();
-            EditorGUIUtility.PingObject(AssetDatabase.LoadAssetAtPath<AutoSaveConfig>(path).GetInstanceID());
+            EditorGUIUtility.PingObject(AssetDatabase.LoadAssetAtPath<AutoSaveConfig>(path).GetEntityId());
         }
 
 

@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Graphs;
 using UnityEngine;
@@ -17,7 +17,7 @@ namespace EventVisualizer.Base
 
             var node = CreateInstance<NodeGUI>();
             node.Initialize(dataInstance);
-            node.name = dataInstance.Entity.GetInstanceID().ToString();
+            node.name = dataInstance.Entity.GetEntityId().ToString();
             node.icon = (Texture2D) EditorGUIUtility.IconContent(isGameObject ? "Gameobject Icon" : "ScriptableObject Icon").image;
 
             return node;
@@ -102,7 +102,7 @@ namespace EventVisualizer.Base
 
                 foreach (var call in outCalls)
                 {
-                    var targetNode = graph[call.receiver.GetInstanceID().ToString()];
+                    var targetNode = graph[call.receiver.GetEntityId().ToString()];
                     var inSlot = targetNode[call.MethodFullPath];
 
                     if (graph.Connected(outSlot, inSlot))

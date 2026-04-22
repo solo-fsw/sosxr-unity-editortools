@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.Graphs;
@@ -40,8 +40,8 @@ namespace EventVisualizer.Base
                 var isActive = selection.Contains(node);
                 var style = Styles.GetNodeStyle(node.style, node.color, isActive);
 
-                node.position = GUILayout.Window(
-                    node.GetInstanceID(),
+                    node.position = GUILayout.Window(
+                    node.GetEntityId().GetHashCode(),
                     node.position,
                     delegate { NodeGUI(node2); },
                     node.title,
@@ -107,12 +107,13 @@ namespace EventVisualizer.Base
                 {
                     if (selection[i] != null)
                     {
-                        selectedIds[i] = int.Parse(selection[i].name);
-                    }
+                var entityId = int.Parse(selection[i].name);
+                    selectedIds[i] = entityId;
                 }
+            }
 
 #if UNITY_6000_3_OR_NEWER
-                Selection.entityIds = selectedIds.Select(id => (UnityEngine.EntityId) id).ToArray();
+                Selection.entityIds = selectedIds.Select(id => default(EntityId)).ToArray();
 #else
                 Selection.instanceIDs = selectedIds;
 #endif

@@ -26,7 +26,7 @@ namespace SOSXR.EditorSpice.EditorScripts
                 return property?.propertyPath ?? "null";
             }
 
-            return $"{property.serializedObject.targetObject.GetInstanceID()}_{property.propertyPath}";
+            return $"{property.serializedObject.targetObject.GetEntityId()}_{property.propertyPath}";
         }
 
 

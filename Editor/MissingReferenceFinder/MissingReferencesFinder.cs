@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -95,7 +95,7 @@ namespace SOSXR.EditorSpice.EditorScripts
                             }
 
                             if (sp.objectReferenceValue == null
-                                && (sp.objectReferenceInstanceIDValue != 0 || objectReferenceStringValue.StartsWith("Missing")))
+                                && (sp.objectReferenceEntityIdValue.GetHashCode() != 0 || objectReferenceStringValue.StartsWith("Missing")))
                             {
                                 ShowError(context, go, component.GetType().Name, ObjectNames.NicifyVariableName(sp.name));
                             }

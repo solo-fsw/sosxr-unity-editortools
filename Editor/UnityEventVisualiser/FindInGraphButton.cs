@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+using UnityEditor;
+using UnityEngine;
 
 namespace EventVisualizer.Base
 {
@@ -9,7 +10,8 @@ namespace EventVisualizer.Base
         {
             var window = EditorWindow.GetWindow<EventsGraphWindow>();
 
-            window?.OverrideSelection(Selection.activeEntityId);
+            var entityId = Selection.activeGameObject != null ? Selection.activeGameObject.GetEntityId() : default;
+            window?.OverrideSelection(entityId.GetHashCode());
         }
 
         [MenuItem("GameObject/EventGraph/Graph just this", false, 0)]

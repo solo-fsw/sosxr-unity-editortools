@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -54,7 +54,7 @@ namespace EventVisualizer.Base
                 }
                 else
                 {
-                    selectedComponents = new HashSet<Object>(GameObject.FindObjectsByType(type, FindObjectsInactive.Exclude, FindObjectsSortMode.None));
+                    selectedComponents = new HashSet<Object>(GameObject.FindObjectsByType(type, FindObjectsInactive.Exclude));
                 }
 
                 foreach (var caller in selectedComponents)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Object = UnityEngine.Object;
 
@@ -60,7 +60,7 @@ namespace EventVisualizer.Base
 
         private static NodeData CreateNode(Object entity)
         {
-            var id = entity.GetInstanceID();
+            var id = entity.GetEntityId().GetHashCode();
 
             NodeData nodeData;
 
