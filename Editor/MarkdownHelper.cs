@@ -23,6 +23,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
             if (Selection.assetGUIDs.Length > 0)
             {
+
                 var selectedPath = AssetDatabase.GUIDToAssetPath(Selection.assetGUIDs[0]);
 
                 if (Directory.Exists(selectedPath))

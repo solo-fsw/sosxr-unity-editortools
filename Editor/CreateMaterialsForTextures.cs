@@ -21,6 +21,7 @@ namespace SOSXR.EditorSpice.EditorScripts
         }
 
 
+
         private void OnEnable()
         {
             Shader = Shader.Find("SimpleLit");

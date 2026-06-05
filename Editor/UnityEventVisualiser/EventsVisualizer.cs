@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -152,15 +152,26 @@ namespace EventVisualizer.Base
         {
             var sw = Stopwatch.StartNew();
 
-            #if NET_4_6
-            var objects = AppDomain.CurrentDomain.GetAssemblies().Where(a => !a.IsDynamic)
-                                   .SelectMany(a => a.GetTypes())
-                                   .Where(t => typeof(Component).IsAssignableFrom(t));
-            #else
-			var objects = AppDomain.CurrentDomain.GetAssemblies()
-				.SelectMany(a => a.GetTypes())
-				.Where(t => typeof(Component).IsAssignableFrom(t));
-            #endif
+            IEnumerable<Type> objects;
+
+            try
+            {
+                var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+                if (assemblies == null)
+                {
+                    UnityEngine.Debug.LogError("Assemblies collection is null.");
+                    return;
+                }
+
+                objects = assemblies
+                    .SelectMany(a => a.GetTypes())
+                    .Where(t => typeof(Component).IsAssignableFrom(t));
+            }
+            catch (Exception e)
+            {
+                UnityEngine.Debug.LogError($"Assembly operation failed: {e.Message}");
+                return;
+            }
 
             foreach (var obj in objects)
             {

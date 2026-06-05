@@ -26,6 +26,7 @@ namespace SOSXR.EditorSpice.EditorScripts
             var source = command.context as Component;
 
             var undoGroupIndex = Undo.GetCurrentGroup();
+
             Undo.IncrementCurrentGroup();
 
             var child = new GameObject(source.GetType().Name);

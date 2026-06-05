@@ -21,6 +21,7 @@ namespace SOSXR.EditorSpice.EditorScripts
 
         protected const int DefaultSmallSpace = 5;
         protected const int DefaultLargeSpace = 20;
+
         private const int DefaultCheckBoxWidth = 15;
 
         protected const float ButtonWidth = 150f;
