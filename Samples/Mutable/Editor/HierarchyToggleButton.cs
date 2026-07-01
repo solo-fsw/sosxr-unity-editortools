@@ -24,13 +24,9 @@ namespace SOSXR.EditorSpice.EditorScripts
         }
 
 
-        private static void HandleHierarchyWindowItemOnGUI(int instanceID, Rect selectionRect)
+        private static void HandleHierarchyWindowItemOnGUI(UnityEngine.EntityId instanceID, Rect selectionRect)
         {
-#if UNITY_6000_3_OR_NEWER
             var gameObject = EditorUtility.EntityIdToObject(instanceID) as GameObject;
-#else
-            var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
-#endif
 
             if (gameObject == null)
             {

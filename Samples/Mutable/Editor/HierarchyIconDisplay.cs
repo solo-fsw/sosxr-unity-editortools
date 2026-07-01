@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -8,13 +8,13 @@ namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
     /// Purpose: Show an editor-only icon overlay in the Hierarchy for objects based on their components.
-    /// 
+    ///
     /// Use Case: Useful during learning or debugging to quickly identify an object's primary component
     /// without opening the Inspector.
-    /// 
+    ///
     /// How It Works: Hooks into EditorApplication.hierarchyWindowItemOnGUI to render an icon next to GameObjects
     /// by selecting the most relevant component type.
-    /// 
+    ///
     /// Integration: Editor-only utility. Drop into an Editor folder; enabled at editor load.
     /// Related Classes: ToggleUsingHierarchyIcon, HierarchyToggleButton, AudioSourceExtendedEditor.
     /// </summary>
@@ -23,7 +23,7 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         static HierarchyIconDisplay()
         {
-            EditorApplication.hierarchyWindowItemOnGUI += OnHierarchyWindowItemOnGUI;
+            EditorApplication.hierarchyWindowItemByEntityIdOnGUI += OnHierarchyWindowItemOnGUI;
             EditorApplication.update += OnEditorUpdate;
         }
 
@@ -49,13 +49,9 @@ namespace SOSXR.EditorSpice.EditorScripts
         }
 
 
-        private static void OnHierarchyWindowItemOnGUI(int instanceID, Rect selectionRect)
+        private static void OnHierarchyWindowItemOnGUI(UnityEngine.EntityId instanceID, Rect selectionRect)
         {
-#if UNITY_6000_3_OR_NEWER
             var gameObject = EditorUtility.EntityIdToObject(instanceID) as GameObject;
-#else
-            var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
-#endif
 
             if (gameObject == null)
             {
@@ -98,11 +94,11 @@ namespace SOSXR.EditorSpice.EditorScripts
 
             if (components.Length == 1 && gameObjectIcon != null)
             {
-                content = new GUIContent(gameObjectIcon) {tooltip = "GameObject Icon"};
+                content = new GUIContent(gameObjectIcon) { tooltip = "GameObject Icon" };
             }
             else if (!IncludeScripts)
             {
-                content = EditorGUIUtility.ObjectContent(null, type); // Gimme the icon for the particular content. 
+                content = EditorGUIUtility.ObjectContent(null, type); // Gimme the icon for the particular content.
             }
             else
             {
@@ -119,7 +115,7 @@ namespace SOSXR.EditorSpice.EditorScripts
             }
 
 #if UNITY_6000_3_OR_NEWER
-            var isSelected = Selection.entityIds.Contains((UnityEngine.EntityId) instanceID);
+            var isSelected = Selection.entityIds.Contains(instanceID);
 #else
             var isSelected = Selection.instanceIDs.Contains(instanceID);
 #endif

@@ -1,4 +1,4 @@
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 
@@ -6,12 +6,12 @@ namespace SOSXR.EditorSpice.EditorScripts
 {
     /// <summary>
     /// Purpose: Toggle a GameObject's active state by clicking a hierarchy icon.
-    /// 
+    ///
     /// Use Case: Fast activation/deactivation during scene editing without opening the Inspector.
-    /// 
+    ///
     /// How It Works: Subscribes to EditorApplication.hierarchyWindowItemOnGUI and toggles active state on click;
     /// records undo and marks the object dirty when not in Play mode.
-    /// 
+    ///
     /// Integration: Editor-spice sample demonstrating common Editor scripting patterns.
     /// Related Classes: HierarchyIconDisplay, HierarchyToggleButton.
     /// </summary>
@@ -20,17 +20,17 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         static ToggleUsingHierarchyIcon()
         {
+#if UNITY_6000_3_OR_NEWER
+            EditorApplication.hierarchyWindowItemByEntityIdOnGUI += HandleHierarchyWindowItemOnGUI;
+#else
             EditorApplication.hierarchyWindowItemOnGUI += HandleHierarchyWindowItemOnGUI;
+#endif
         }
 
 
-        private static void HandleHierarchyWindowItemOnGUI(int instanceID, Rect selectionRect)
+        private static void HandleHierarchyWindowItemOnGUI(UnityEngine.EntityId instanceID, Rect selectionRect)
         {
-#if UNITY_6000_3_OR_NEWER
             var obj = EditorUtility.EntityIdToObject(instanceID) as GameObject;
-#else
-            var obj = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
-#endif
 
             if (obj == null)
             {
