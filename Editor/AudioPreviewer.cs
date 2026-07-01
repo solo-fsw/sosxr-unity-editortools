@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Reflection;
 using UnityEditor;
 using UnityEditor.Callbacks;
@@ -19,11 +19,11 @@ namespace SOSXR.EditorSpice.EditorScripts
 
 
         [OnOpenAsset]
-        public static bool OnOpenAsset(int instanceID, int line)
+        public static bool OnOpenAsset(int entityId, int line)
         {
 #if UNITY_6000_3_OR_NEWER
 #pragma warning disable CS0618
-            var obj = EditorUtility.InstanceIDToObject(instanceID);
+            var obj = EditorUtility.EntityIdToObject(entityId);
 #pragma warning restore CS0618
 #else
             var obj = EditorUtility.InstanceIDToObject(instanceID);
@@ -38,7 +38,7 @@ namespace SOSXR.EditorSpice.EditorScripts
             {
                 StopAllPreviewClips();
 
-                if (_lastPlayedAudioClipId.HasValue && _lastPlayedAudioClipId != instanceID)
+                if (_lastPlayedAudioClipId.HasValue && _lastPlayedAudioClipId != entityId)
                 {
                     PlayPreviewClip(audioClip);
                 }
@@ -48,7 +48,7 @@ namespace SOSXR.EditorSpice.EditorScripts
                 PlayPreviewClip(audioClip);
             }
 
-            _lastPlayedAudioClipId = instanceID;
+            _lastPlayedAudioClipId = entityId;
 
             return true; // I have control of this asset
         }
@@ -60,10 +60,10 @@ namespace SOSXR.EditorSpice.EditorScripts
                 "PlayPreviewClip",
                 BindingFlags.Static | BindingFlags.Public,
                 null,
-                new[] {typeof(AudioClip), typeof(int), typeof(bool)},
+                new[] { typeof(AudioClip), typeof(int), typeof(bool) },
                 null);
 
-            methodInfo?.Invoke(null, new object[] {audioClip, 0, false});
+            methodInfo?.Invoke(null, new object[] { audioClip, 0, false });
         }
 
 
@@ -73,7 +73,7 @@ namespace SOSXR.EditorSpice.EditorScripts
                 "IsPreviewClipPlaying",
                 BindingFlags.Static | BindingFlags.Public);
 
-            return (bool) methodInfo?.Invoke(null, null)!;
+            return (bool)methodInfo?.Invoke(null, null)!;
         }
 
 
