@@ -156,16 +156,7 @@ namespace EventVisualizer.Base
 
             try
             {
-                var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-                if (assemblies == null)
-                {
-                    UnityEngine.Debug.LogError("Assemblies collection is null.");
-                    return;
-                }
-
-                objects = assemblies
-                    .SelectMany(a => a.GetTypes())
-                    .Where(t => typeof(Component).IsAssignableFrom(t));
+                objects = TypeCache.GetTypesDerivedFrom<Component>();
             }
             catch (Exception e)
             {

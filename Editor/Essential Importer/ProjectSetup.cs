@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -156,7 +156,7 @@ namespace SOSXR.Setup
                     return false;
                 }
 
-                ImportPackage(fullPath, false);
+                UnityEditor.AssetPackage.Package.Import(fullPath, false);
 
                 return true;
             }

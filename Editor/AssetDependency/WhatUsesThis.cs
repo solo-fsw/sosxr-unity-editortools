@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.Json;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -13,7 +13,7 @@ namespace SOSXR.WhatUsesThis
     public static class WhatUsesThis
     {
         private static Dictionary<string, List<string>> Dict => _dict ?? Load() ?? CleanBuild();
-        private const string CacheFilename = "Temp/WhatUsesThis.bin";
+        private const string CacheFilename = "Temp/WhatUsesThis.json";
 
         private static Dictionary<string, List<string>> _dict;
 
@@ -86,8 +86,7 @@ namespace SOSXR.WhatUsesThis
 
             using var stream = new FileStream(CacheFilename, FileMode.Create);
 
-            var bin = new BinaryFormatter();
-            bin.Serialize(stream, _dict);
+            JsonSerializer.Serialize(stream, _dict);
         }
 
 
@@ -97,8 +96,7 @@ namespace SOSXR.WhatUsesThis
             {
                 using var stream = new FileStream(CacheFilename, FileMode.Open);
 
-                var bin = new BinaryFormatter();
-                _dict = (Dictionary<string, List<string>>) bin.Deserialize(stream);
+                _dict = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(stream);
             }
             catch (Exception)
             {

@@ -580,6 +580,7 @@ namespace EventVisualizer.Base
         }
 
 
+        [Serializable]
         public class SavedPrefBool
         {
             public readonly string name;

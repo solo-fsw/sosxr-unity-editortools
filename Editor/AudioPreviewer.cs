@@ -15,18 +15,22 @@ namespace SOSXR.EditorSpice.EditorScripts
     {
         private static Assembly AudioImporterAssembly => typeof(AudioImporter).Assembly;
         private static Type AudioUtil => AudioImporterAssembly.GetType("UnityEditor.AudioUtil");
+#if UNITY_6000_3_OR_NEWER
+        private static EntityId? _lastPlayedAudioClipId;
+#else
         private static int? _lastPlayedAudioClipId;
+#endif
 
 
         [OnOpenAsset]
+#if UNITY_6000_3_OR_NEWER
+        public static bool OnOpenAsset(EntityId entityId, int line)
+        {
+            var obj = EditorUtility.EntityIdToObject(entityId);
+#else
         public static bool OnOpenAsset(int entityId, int line)
         {
-#if UNITY_6000_3_OR_NEWER
-#pragma warning disable CS0618
-            var obj = EditorUtility.EntityIdToObject(entityId);
-#pragma warning restore CS0618
-#else
-            var obj = EditorUtility.InstanceIDToObject(instanceID);
+            var obj = EditorUtility.InstanceIDToObject(entityId);
 #endif
 
             if (obj is not AudioClip audioClip)
